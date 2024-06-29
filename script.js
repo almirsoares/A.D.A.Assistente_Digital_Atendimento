@@ -12,7 +12,7 @@ function calcularProporcional() {
     const diferencaDias = Math.floor((dataNova - dataAntiga) / (1000 * 60 * 60 * 24));
     const diasTotais = diasBase + diferencaDias;
 
-    const valorProporcional = (valorPlano / diasBase) * diferencaDias;
+    const valorProporcional = 30 + (valorPlano / diasBase) * diferencaDias;
 
     document.getElementById('resultado').innerText = `Proporcional de Vencimento: R$ ${valorProporcional.toFixed(2)} para ${diasTotais} dias totais`;
 }
