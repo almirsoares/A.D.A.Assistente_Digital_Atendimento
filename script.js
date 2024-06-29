@@ -6,7 +6,7 @@ function calcularProporcional() {
     
     const umDia = 24 * 60 * 60 * 1000;
     const diferencaDias = Math.round((dataNova - dataAntiga) / umDia);
-    diferencaDias = diferencaDias + 30;
+
     // Cálculo proporcional (exemplo)
     const valorProporcional = (valorPlano / 30) * diferencaDias;
 
