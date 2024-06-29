@@ -8,13 +8,6 @@ body {
     height: 100vh;
 }
 
-.header {
-    background-color: #10772a; /* Cor verde */
-    text-align: center;
-    padding: 20px 0; /* Aumenta o padding para espaçamento vertical */
-    margin-bottom: 20px;
-}
-
 .container {
     background-color: #10772a; /* Fundo verde para o container */
     padding: 20px;
@@ -23,28 +16,26 @@ body {
     width: 90%;
     max-width: 600px;
     margin: 0 auto; /* Centraliza o container na página */
+    text-align: center; /* Centraliza conteúdo dentro do container */
 }
 
 h1 {
     color: #fff; /* Texto branco */
-    margin: 0;
+    margin: 0 0 20px; /* Espaçamento inferior */
 }
 
-h2 {
-    color: #ffd712; /* Cor amarela */
-}
-
-form {
+.menu {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: center; /* Centraliza os botões */
 }
 
 .menu-item {
     display: inline-block;
     padding: 10px 20px;
     background-color: #ffd712; /* Cor amarela */
-    color: #000; /* Preto */
+    color: #000; /* Texto preto */
     text-decoration: none;
     border: none;
     border-radius: 5px;
@@ -54,17 +45,4 @@ form {
 
 .menu-item:hover {
     background-color: #e6b800; /* Amarelo mais escuro ao passar o mouse */
-}
-
-#resultado {
-    margin-top: 20px;
-}
-
-.footer {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.footer .menu-item {
-    margin-right: 10px;
 }
