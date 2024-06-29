@@ -8,6 +8,13 @@ body {
     height: 100vh;
 }
 
+.header {
+    background-color: #10772a; /* Cor verde */
+    text-align: center;
+    padding: 20px 0; /* Aumenta o padding para espaçamento vertical */
+    margin-bottom: 20px;
+}
+
 .container {
     background-color: #10772a; /* Fundo verde para o container */
     padding: 20px;
@@ -16,37 +23,28 @@ body {
     width: 90%;
     max-width: 600px;
     margin: 0 auto; /* Centraliza o container na página */
-    text-align: center; /* Centraliza conteúdo dentro do container */
-}
-
-.containerC {
-    background-color: #10772a; /* Fundo verde para o container */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto; /* Centraliza o container na página */
-    text-align: left; /* Centraliza conteúdo dentro do container */
 }
 
 h1 {
     color: #fff; /* Texto branco */
-    margin: 0 0 20px; /* Espaçamento inferior */
+    margin: 0;
 }
 
-.menu {
+h2 {
+    color: #ffd712; /* Cor amarela */
+}
+
+form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: center; /* Centraliza os botões */
 }
 
 .menu-item {
     display: inline-block;
     padding: 10px 20px;
     background-color: #ffd712; /* Cor amarela */
-    color: #000; /* Texto preto */
+    color: #000; /* Preto */
     text-decoration: none;
     border: none;
     border-radius: 5px;
@@ -56,4 +54,17 @@ h1 {
 
 .menu-item:hover {
     background-color: #e6b800; /* Amarelo mais escuro ao passar o mouse */
+}
+
+#resultado {
+    margin-top: 20px;
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer .menu-item {
+    margin-right: 10px;
 }
