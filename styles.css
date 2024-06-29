@@ -10,18 +10,19 @@ body {
 
 .header {
     background-color: #10772a; /* Cor verde */
-    padding: 10px;
     text-align: center;
+    padding: 20px 0; /* Aumenta o padding para espaçamento vertical */
     margin-bottom: 20px;
 }
 
 .header .logo {
     height: 50px;
     width: auto;
+    margin-top: 10px; /* Espaçamento superior para a logo */
 }
 
 .container {
-    background-color: #fff;
+    background-color: #10772a; /* Fundo verde para o container */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -31,7 +32,7 @@ body {
 }
 
 h1 {
-    color: #000; /* Cor verde */
+    color: #fff; /* Texto branco */
     margin: 0;
 }
 
@@ -49,7 +50,7 @@ form {
     display: inline-block;
     padding: 10px 20px;
     background-color: #ffd712; /* Cor amarela */
-    color: #fff;
+    color: #000; /* Preto */
     text-decoration: none;
     border: none;
     border-radius: 5px;
