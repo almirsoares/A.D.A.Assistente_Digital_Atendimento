@@ -9,8 +9,56 @@
 <body>
     <div class="container">
         <h1>Calcular Proporcional de Vencimento</h1>
-        <p>Aqui você pode calcular o proporcional de vencimento.</p>
+        <form id="proporcionalForm">
+            <div>
+                <label for="valorPlano">Valor do Plano:</label>
+                <input type="number" id="valorPlano" name="valorPlano" required>
+            </div>
+            <div>
+                <label for="diaAntigo">Dia Antigo de Vencimento:</label>
+                <input type="number" id="diaAntigo" name="diaAntigo" required>
+            </div>
+            <div>
+                <label for="mesAntigo">Mês Antigo de Vencimento:</label>
+                <input type="number" id="mesAntigo" name="mesAntigo" required>
+            </div>
+            <div>
+                <label for="diaNovo">Dia Novo de Vencimento:</label>
+                <input type="number" id="diaNovo" name="diaNovo" required>
+            </div>
+            <div>
+                <label for="mesNovo">Mês Novo de Vencimento:</label>
+                <input type="number" id="mesNovo" name="mesNovo" required>
+            </div>
+            <button type="button" class="menu-item" onclick="calcularProporcional()">Calcular</button>
+        </form>
+        <p id="resultado"></p>
         <button onclick="location.href='index.html'" class="menu-item">Voltar</button>
     </div>
+    <script>
+        function calcularProporcional() {
+            const valorPlano = parseFloat(document.getElementById('valorPlano').value);
+            const diaAntigo = parseFloat(document.getElementById('diaAntigo').value);
+            const mesAntigo = parseFloat(document.getElementById('mesAntigo').value);
+            const diaNovo = parseFloat(document.getElementById('diaNovo').value);
+            const mesNovo = parseFloat(document.getElementById('mesNovo').value);
+
+            if (isNaN(valorPlano) || isNaN(diaAntigo) || isNaN(mesAntigo) || isNaN(diaNovo) || isNaN(mesNovo)) {
+                alert("Por favor, preencha todos os campos com valores válidos.");
+                return;
+            }
+
+            const diasBase = 30;
+            const dataAntiga = new Date(new Date().getFullYear(), mesAntigo - 1, diaAntigo);
+            const dataNova = new Date(new Date().getFullYear(), mesNovo - 1, diaNovo);
+
+            const diferencaDias = Math.floor((dataNova - dataAntiga) / (1000 * 60 * 60 * 24));
+            const diasTotais = diasBase + diferencaDias;
+
+            const valorProporcional = (valorPlano / diasBase) * diferencaDias;
+
+            document.getElementById('resultado').innerText = `Proporcional de Vencimento: R$ ${valorProporcional.toFixed(2)} para ${diasTotais} dias totais`;
+        }
+    </script>
 </body>
 </html>
