@@ -86,8 +86,11 @@ form div {
 .footer {
     margin-top: 20px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espaço entre os botões */
 }
 
 .footer .menu-item {
-    margin-right: 10px;
+    margin: 0; /* Remove o margin-right para que os botões fiquem lado a lado */
 }
