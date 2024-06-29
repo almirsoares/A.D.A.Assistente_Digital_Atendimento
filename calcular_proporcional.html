@@ -23,7 +23,14 @@
                 <input type="date" id="dataNova" name="dataNova" required>
             </div>
         </form>
-        <p id="resultado"></p>
+        <div class="output-container">
+            <h2>Mensagem ao Cliente</h2>
+            <textarea id="mensagemCliente" readonly></textarea>
+        </div>
+        <div class="output-container">
+            <h2>Protocolo</h2>
+            <textarea id="protocolo" readonly></textarea>
+        </div>
         <div class="footer">
             <button type="button" class="menu-item" onclick="calcularProporcional()">Calcular</button>
             <button onclick="location.href='index.html'" class="menu-item">Voltar</button>
