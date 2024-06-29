@@ -8,7 +8,7 @@ function calcularProporcional() {
     const diferencaDias = Math.round((dataNova - dataAntiga) / umDia);
 
     // Cálculo proporcional (exemplo)
-    const valorProporcional = (valorPlano / 30) * diferencaDias;
+    const valorProporcional = (valorPlano / 30) * (diferencaDias +30);
 
     // Mensagem programada
     const mensagemCliente = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${valorProporcional.toFixed(2)} devido ao *valor proporcional de ${diferencaDias} dias* de uso, tudo bem?`;
