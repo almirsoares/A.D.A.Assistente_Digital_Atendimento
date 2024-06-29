@@ -20,7 +20,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-.menu {
+form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -40,4 +40,8 @@ h1 {
 
 .menu-item:hover {
     background-color: #0056b3;
+}
+
+#resultado {
+    margin-top: 20px;
 }
