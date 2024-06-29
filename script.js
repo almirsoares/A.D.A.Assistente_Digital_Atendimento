@@ -5,10 +5,10 @@ function calcularProporcional() {
     const dataNova = new Date(document.getElementById('dataNova').value);
     
     const umDia = 24 * 60 * 60 * 1000;
-    const diferencaDias = Math.round((dataNova - dataAntiga) / umDia);
+    const diferencaDias = Math.round((dataNova - dataAntiga) / umDia) + 30;
 
     // Cálculo proporcional (exemplo)
-    const valorProporcional = (valorPlano / 30) * (diferencaDias +30);
+    const valorProporcional = (valorPlano / 30) * (diferencaDias);
 
     // Mensagem programada
     const mensagemCliente = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${valorProporcional.toFixed(2)} devido ao *valor proporcional de ${diferencaDias} dias* de uso, tudo bem?`;
