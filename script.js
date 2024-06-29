@@ -14,5 +14,6 @@ function calcularProporcional() {
 
     const valorProporcional = valorPlano + (valorPlano / diasBase) * diferencaDias;
 
-    document.getElementById('resultado').innerText = `Proporcional de Vencimento: R$ ${valorProporcional.toFixed(2)} para ${diasTotais} dias totais`;
+    document.getElementById('resultado').innerText = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${valorProporcional.toFixed(2)}  devido ao *valor proporcional de ${diasTotais} dias* de uso, tudo bem?`;
+
 }
