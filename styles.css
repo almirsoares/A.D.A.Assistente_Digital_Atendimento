@@ -14,10 +14,30 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin: 0;
+    color: #10772a; /* Cor verde */
+}
+
+h2 {
+    color: #ffd712; /* Cor amarelo */
 }
 
 form {
@@ -44,4 +64,12 @@ form {
 
 #resultado {
     margin-top: 20px;
+}
+
+.footer {
+    margin-top: 20px;
+}
+
+.footer .menu-item {
+    margin-right: 10px;
 }
