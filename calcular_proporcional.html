@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <img src="https://dtel.com.br/assets/imgs/logo.svg" alt="Logo" class="logo">
-    <title>Calcular Proporcional de Vencimento</title>
+    <title>App de Trabalho - Calcular Proporcional</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header class="header">
+        <img src="https://dtel.com.br/assets/imgs/logo.svg" alt="Logo" class="logo">
+    </header>
     <div class="container">
         <h1>Calcular Proporcional de Vencimento</h1>
         <form id="proporcionalForm">
@@ -26,7 +28,9 @@
             <button type="button" class="menu-item" onclick="calcularProporcional()">Calcular</button>
         </form>
         <p id="resultado"></p>
-        <button onclick="location.href='index.html'" class="menu-item">Voltar</button>
+        <div class="footer">
+            <button onclick="location.href='index.html'" class="menu-item">Voltar</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
