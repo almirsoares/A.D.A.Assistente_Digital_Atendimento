@@ -19,6 +19,17 @@ body {
     text-align: center; /* Centraliza conteúdo dentro do container */
 }
 
+.containerC {
+    background-color: #10772a; /* Fundo verde para o container */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto; /* Centraliza o container na página */
+    text-align: left; /* Centraliza conteúdo dentro do container */
+}
+
 h1 {
     color: #fff; /* Texto branco */
     margin: 0 0 20px; /* Espaçamento inferior */
