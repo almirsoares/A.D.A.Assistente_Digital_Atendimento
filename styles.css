@@ -15,12 +15,6 @@ body {
     margin-bottom: 20px;
 }
 
-.header .logo {
-    height: 50px;
-    width: auto;
-    margin-top: 10px; /* Espaçamento superior para a logo */
-}
-
 .container {
     background-color: #10772a; /* Fundo verde para o container */
     padding: 20px;
