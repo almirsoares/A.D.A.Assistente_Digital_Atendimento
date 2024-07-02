@@ -53,7 +53,6 @@ function calcularProporcional() {
     Motivo: Cliente solicitou alteração
     Gerou Proporcional? ( X )SIM ( )NÃO
     Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)}
-    Faturas atualizadas
     ${mensagemConfirmacao}
     ${mensagemApp}
     Atendimento finalizado.`;
