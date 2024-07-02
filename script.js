@@ -50,12 +50,12 @@ function calcularProporcional() {
     
 
     const mensagemProtocolo = `Solicitou troca de vencimento de: ${diaAntigo.toString().padStart(2, '0')}/${mesAntigo.toString().padStart(2, '0')} para ${diaNovo.toString().padStart(2, '0')}/${mesNovo.toString().padStart(2, '0')}
-    Motivo: Cliente solicitou alteração
-    Gerou Proporcional? ( X )SIM ( )NÃO
-    Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)}
-    ${mensagemConfirmacao}
-    ${mensagemApp}
-    Atendimento finalizado.`;
+Motivo: Cliente solicitou alteração
+Gerou Proporcional? ( X )SIM ( )NÃO
+Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)}
+${mensagemConfirmacao}
+${mensagemApp}
+Atendimento finalizado.`;
 
     // Exibir o protocolo
     document.getElementById('protocolo').value = mensagemProtocolo;
