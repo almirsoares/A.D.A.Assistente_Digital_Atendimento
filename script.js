@@ -18,8 +18,8 @@ function calcularProporcional() {
         totalDias = (diaNovo - diaAntigo) + (mesNovo - mesAntigo) * 30;
     }
 
-    totalDias = totalDias+30;
     // Calcula o valor proporcional
+    totalDias = 30 + totalDias;
     const valorProporcional = (valorPlano / 30) * totalDias;
 
     // Mensagem ao cliente
@@ -28,9 +28,36 @@ function calcularProporcional() {
     // Exibir a mensagem ao cliente
     document.getElementById('mensagemCliente').value = mensagemCliente;
 
-    // Gerar um exemplo de protocolo (isso pode ser ajustado conforme necessário)
+    // Gerar a mensagem de protocolo
+    const desejaMudanca = document.getElementById('desejaMudanca').checked ? "SIM" : "NÃO";
+    const utilizaApp = document.getElementById('utilizaApp').checked ? "SIM" : "NÃO";
     const protocolo = `PROTOCOLO-${Math.floor(Math.random() * 1000000)}`;
 
+    let mensagemConfirmacao;
+    let mensagemApp;
+
+    if (desejaMudanca === "SIM") {
+        mensagemConfirmacao = "Faturas Atualizadas";
+        if (utilizaApp === "SIM") {
+            mensagemApp = "Cliente confirmou mudança em app";
+        } else {
+            mensagemApp = ">>> ADICIONAR PROTOCOLO DE CARNE <<<";
+        }
+    } else {
+        mensagemConfirmacao = "Cliente desistiu da mudança de data de vencimento.";
+    }
+    
+    
+
+    const mensagemProtocolo = `Solicitou troca de vencimento de: ${diaAntigo.toString().padStart(2, '0')}/${mesAntigo.toString().padStart(2, '0')} para ${diaNovo.toString().padStart(2, '0')}/${mesNovo.toString().padStart(2, '0')}
+    Motivo: Cliente solicitou alteração
+    Gerou Proporcional? ( X )SIM ( )NÃO
+    Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)}
+    Faturas atualizadas
+    ${mensagemConfirmacao}
+    ${mensagemApp}
+    Atendimento finalizado.`;
+
     // Exibir o protocolo
-    document.getElementById('protocolo').value = protocolo;
+    document.getElementById('protocolo').value = mensagemProtocolo;
 }
