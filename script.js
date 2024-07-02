@@ -44,7 +44,7 @@ function calcularProporcional() {
             mensagemApp = ">>> ADICIONAR PROTOCOLO DE CARNE <<<";
         }
     } else {
-        mensagemConfirmacao = "Cliente desistiu da mudança de data de vencimento.";
+        mensagemConfirmacao = "";
     }
     
     
