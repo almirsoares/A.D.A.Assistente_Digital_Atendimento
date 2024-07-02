@@ -5,9 +5,9 @@ function calcularProporcional() {
     const dataNova = new Date(document.getElementById('dataNova').value);
 
     // Extração dos dias e meses das datas
-    const diaAntigo = dataAntiga.getDate();
+    const diaAntigo = dataAntiga.getDate()+1;
     const mesAntigo = dataAntiga.getMonth() + 1; // getMonth() retorna 0-11, então adicionamos 1
-    const diaNovo = dataNova.getDate();
+    const diaNovo = dataNova.getDate()+1;
     const mesNovo = dataNova.getMonth() + 1; // getMonth() retorna 0-11, então adicionamos 1
 
     // Aplicação da fórmula
