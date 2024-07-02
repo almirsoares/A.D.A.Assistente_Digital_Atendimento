@@ -10,26 +10,21 @@ function calcularProporcional() {
         return;
     }
 
-    // Cálculo da diferença em dias (considerando um ciclo fixo de 30 dias)
-    const umDia = 24 * 60 * 60 * 1000;
-    let diferencaDias = Math.round((dataNova - dataAntiga) / umDia);
+    // Extração dos dias e meses das datas
+    const diaAntigo = dataAntiga.getDate();
+    const mesAntigo = dataAntiga.getMonth() + 1; // getMonth() retorna 0-11, então adicionamos 1
+    const diaNovo = dataNova.getDate();
+    const mesNovo = dataNova.getMonth() + 1; // getMonth() retorna 0-11, então adicionamos 1
 
-    // Ajuste para ciclo fixo de 30 dias por mês
-    let totalDias = 0;
-    let dataTemp = new Date(dataAntiga);
-
-    while (dataTemp < dataNova) {
-        totalDias++;
-        dataTemp.setDate(dataTemp.getDate() + 1);
-        
-        // Pular dias extras no final do mês
-        if (dataTemp.getDate() === 1) {
-            dataTemp.setDate(dataTemp.getDate() - 1); // Volta ao último dia do mês anterior
-            dataTemp.setDate(30); // Ajusta para o último dia do ciclo de 30 dias
-        }
+    // Aplicação da fórmula
+    let totalDias;
+    if (diaNovo > diaAntigo) {
+        totalDias = (diaNovo - diaAntigo) + (mesNovo - mesAntigo) * 30;
+    } else {
+        totalDias = (diaNovo - diaAntigo) + (mesNovo - mesAntigo) * 30;
     }
 
-    totalDias = totalDias +30;
+    // Calcula o valor proporcional
     const valorProporcional = (valorPlano / 30) * totalDias;
 
     // Mensagem ao cliente
