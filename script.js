@@ -1,24 +1,48 @@
 function calcularProporcional() {
-    // Exemplo de cálculo de valor proporcional
-    const valorPlano = document.getElementById('valorPlano').value;
+    // Obtém os valores do formulário
+    const valorPlano = parseFloat(document.getElementById('valorPlano').value);
     const dataAntiga = new Date(document.getElementById('dataAntiga').value);
     const dataNova = new Date(document.getElementById('dataNova').value);
-    
+
+    // Validação simples das datas
+    if (dataAntiga >= dataNova) {
+        alert("A data nova deve ser posterior à data antiga.");
+        return;
+    }
+
+    // Cálculo da diferença em dias (considerando um ciclo fixo de 30 dias)
     const umDia = 24 * 60 * 60 * 1000;
-    const diferencaDias = Math.round((dataNova - dataAntiga) / umDia) + 30;
+    let diferencaDias = Math.round((dataNova - dataAntiga) / umDia);
 
-    // Cálculo proporcional (exemplo)
-    const valorProporcional = (valorPlano / 30) * diferencaDias;
+    // Ajuste para ciclo fixo de 30 dias por mês
+    let totalDias = 0;
+    let dataTemp = new Date(dataAntiga);
 
-    // Mensagem programada
-    const mensagemCliente = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${valorProporcional.toFixed(2)} devido ao *valor proporcional de ${diferencaDias} dias* de uso, tudo bem?`;
+    while (dataTemp < dataNova) {
+        totalDias++;
+        dataTemp.setDate(dataTemp.getDate() + 1);
+        // Pular dias extras no final do mês
+        if (dataTemp.getDate() == 1 && dataTemp.getMonth() != dataAntiga.getMonth()) {
+            totalDias -= dataTemp.getDate() - 1;
+        }
+    }
 
-    // Atualizar a caixa de texto com a mensagem ao cliente
+    // Corrigir para não exceder 30 dias
+    if (totalDias > 30) {
+        totalDias = 30;
+    }
+    totalDias = totalDias +30;
+    const valorProporcional = (valorPlano / 30) * totalDias;
+
+    // Mensagem ao cliente
+    const mensagemCliente = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${valorProporcional.toFixed(2)} devido ao *valor proporcional de ${totalDias} dias* de uso, tudo bem?`;
+
+    // Exibir a mensagem ao cliente
     document.getElementById('mensagemCliente').value = mensagemCliente;
 
-    // Exemplo de protocolo (pode ser modificado conforme necessário)
+    // Gerar um exemplo de protocolo (isso pode ser ajustado conforme necessário)
     const protocolo = `PROTOCOLO-${Math.floor(Math.random() * 1000000)}`;
 
-    // Atualizar a caixa de texto com o protocolo
+    // Exibir o protocolo
     document.getElementById('protocolo').value = protocolo;
 }
