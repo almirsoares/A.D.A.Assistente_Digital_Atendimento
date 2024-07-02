@@ -21,16 +21,14 @@ function calcularProporcional() {
     while (dataTemp < dataNova) {
         totalDias++;
         dataTemp.setDate(dataTemp.getDate() + 1);
+        
         // Pular dias extras no final do mês
-        if (dataTemp.getDate() == 1 && dataTemp.getMonth() != dataAntiga.getMonth()) {
-            totalDias -= dataTemp.getDate() - 1;
+        if (dataTemp.getDate() === 1) {
+            dataTemp.setDate(dataTemp.getDate() - 1); // Volta ao último dia do mês anterior
+            dataTemp.setDate(30); // Ajusta para o último dia do ciclo de 30 dias
         }
     }
 
-    // Corrigir para não exceder 30 dias
-    if (totalDias > 30) {
-        totalDias = 30;
-    }
     totalDias = totalDias +30;
     const valorProporcional = (valorPlano / 30) * totalDias;
 
