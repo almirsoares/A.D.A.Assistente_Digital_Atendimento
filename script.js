@@ -4,12 +4,6 @@ function calcularProporcional() {
     const dataAntiga = new Date(document.getElementById('dataAntiga').value);
     const dataNova = new Date(document.getElementById('dataNova').value);
 
-    // Validação simples das datas
-    if (dataAntiga >= dataNova) {
-        alert("A data nova deve ser posterior à data antiga.");
-        return;
-    }
-
     // Extração dos dias e meses das datas
     const diaAntigo = dataAntiga.getDate();
     const mesAntigo = dataAntiga.getMonth() + 1; // getMonth() retorna 0-11, então adicionamos 1
@@ -24,6 +18,7 @@ function calcularProporcional() {
         totalDias = (diaNovo - diaAntigo) + (mesNovo - mesAntigo) * 30;
     }
 
+    totalDias = totalDias+30;
     // Calcula o valor proporcional
     const valorProporcional = (valorPlano / 30) * totalDias;
 
