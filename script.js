@@ -1,3 +1,49 @@
+// Lista de cidades e suas informações
+const cidades = {
+    "Cidade1": {
+        nomeBase: "Base 1",
+        nomeVerdadeiro: "Cidade Um",
+        ddd: "11",
+        plataforma: "Plataforma A"
+    },
+    "Cidade2": {
+        nomeBase: "Base 2",
+        nomeVerdadeiro: "Cidade Dois",
+        ddd: "21",
+        plataforma: "Plataforma B"
+    },
+    // Adicione mais cidades conforme necessário
+};
+
+// Popula o menu suspenso com as cidades
+window.onload = function() {
+    const cidadeSelect = document.getElementById('cidade');
+    for (let cidade in cidades) {
+        const option = document.createElement('option');
+        option.value = cidade;
+        option.textContent = cidade;
+        cidadeSelect.appendChild(option);
+    }
+};
+
+// Função para localizar a base e exibir as informações
+function localizarBase() {
+    const cidadeSelecionada = document.getElementById('cidade').value;
+    const info = cidades[cidadeSelecionada];
+    if (info) {
+        document.getElementById('nomeBase').textContent = `Nome da Base: ${info.nomeBase}`;
+        document.getElementById('nomeVerdadeiro').textContent = `Nome Verdadeiro: ${info.nomeVerdadeiro}`;
+        document.getElementById('ddd').textContent = `DDD: ${info.ddd}`;
+        document.getElementById('plataforma').textContent = `Plataforma: ${info.plataforma}`;
+    } else {
+        document.getElementById('nomeBase').textContent = '';
+        document.getElementById('nomeVerdadeiro').textContent = '';
+        document.getElementById('ddd').textContent = '';
+        document.getElementById('plataforma').textContent = '';
+    }
+}
+
+
 function calcularProporcional() {
     // Obtém os valores do formulário
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
