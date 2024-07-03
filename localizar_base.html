@@ -9,8 +9,25 @@
 <body>
     <div class="container">
         <h1>Localizar Base</h1>
-        <p>Ainda não está pronto.</p>
+        <form id="localizarBaseForm">
+            <div>
+                <label for="cidade">Selecione a Cidade:</label>
+                <select id="cidade" name="cidade">
+                    <!-- Cidades serão adicionadas dinamicamente pelo JavaScript -->
+                </select>
+            </div>
+            <button type="button" onclick="localizarBase()">Localizar</button>
+        </form>
+        <div id="informacoesBase">
+            <h2>Informações da Base</h2>
+            <p id="nomeBase"></p>
+            <p id="nomeVerdadeiro"></p>
+            <p id="ddd"></p>
+            <p id="plataforma"></p>
+        </div>
         <button onclick="location.href='index.html'" class="menu-item">Voltar</button>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
+
