@@ -467,7 +467,7 @@ Motivo: Cliente solicitou alteração
 Gerou Proporcional? ( X )SIM ( )NÃO
 Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)}
 ${mensagemConfirmacao}
-${mensagemApp}
+if (utilizaApp === "SIM") {${mensagemApp}}
 Atendimento finalizado.`;
 
     // Exibir o protocolo
