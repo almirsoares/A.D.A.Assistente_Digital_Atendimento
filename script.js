@@ -431,6 +431,7 @@ function calcularProporcional() {
     }
 
     // Calcula o valor proporcional
+    const diasProporcional = totalDias;
     totalDias = 30 + totalDias;
     const valorProporcional = (valorPlano / 30) * totalDias;
 
@@ -456,7 +457,7 @@ function calcularProporcional() {
             mensagemApp = ">>> ADICIONAR PROTOCOLO DE CARNE <<<";
         }
     } else {
-        mensagemConfirmacao = "";
+        mensagemConfirmacao = "Cliente desistiu da mudança de data de vencimento.";
     }
     
     
