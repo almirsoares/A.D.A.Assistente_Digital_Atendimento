@@ -458,6 +458,7 @@ function calcularProporcional() {
         }
     } else {
         mensagemConfirmacao = "Cliente desistiu da mudança de data de vencimento.";
+        mensagemApp" ";
     }
     
     
@@ -467,7 +468,7 @@ Motivo: Cliente solicitou alteração
 Gerou Proporcional? ( X )SIM ( )NÃO
 Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)}
 ${mensagemConfirmacao}
-if (utilizaApp === "SIM") {${mensagemApp}}
+${mensagemApp}
 Atendimento finalizado.`;
 
     // Exibir o protocolo
