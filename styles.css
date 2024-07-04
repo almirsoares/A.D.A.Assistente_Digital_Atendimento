@@ -51,6 +51,7 @@ form div {
     display: flex;
     justify-content: space-between; /* Espaço entre o label e o input */
     align-items: center;
+    color: #fff; /* Texto branco */
 }
 
 .menu {
@@ -82,6 +83,7 @@ form div {
 #resultado {
     margin-top: 20px;
     text-align: right; /* Alinha o resultado à direita */
+    color: #fff; /* Texto branco */
 }
 
 .footer {
@@ -116,4 +118,5 @@ textarea {
     border: 1px solid #ccc;
     resize: none;
     background-color: #fff; /* Fundo branco */
+    color: #000; /* Texto preto */
 }
