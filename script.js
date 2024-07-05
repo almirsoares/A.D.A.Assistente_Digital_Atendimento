@@ -1,16 +1,28 @@
 // Lista de cidades e suas informações
 const cidades = {
-    "Cidade1": {
-        nomeBase: "Base 1",
-        nomeVerdadeiro: "Cidade Um",
-        ddd: "11",
-        plataforma: "Plataforma A"
+     "ABREU E LIMA": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "nce"
     },
-    "Cidade2": {
-        nomeBase: "Base 2",
-        nomeVerdadeiro: "Cidade Dois",
-        ddd: "21",
-        plataforma: "Plataforma B"
+    "AMARAJI": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Primavera ou escada",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "AMEIXAS": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "nce"
+    },
+        "APOTI": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "nce"
     },
     // Adicione mais cidades conforme necessário
 };
