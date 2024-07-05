@@ -18,9 +18,171 @@ const cidades = {
         ddd: "81",
         plataforma: "nce"
     },
-        "APOTI": {
+     "APOTI": {
         nomeBase: "DTEL",
         nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "nce"
+    },
+     "BELO JARDIM": {
+        nomeBase: "DX2",
+        nomeVerdadeiro: "Não importa",
+        ddd: "81",
+        plataforma: "u31"
+    },
+    "BARRA DE GUABIRABA": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "BARRA DE SÃO MIGUEL": {
+        nomeBase: "ALEL",
+        nomeVerdadeiro: "Não importa",
+        ddd: "82",
+        plataforma: "depende do serial"
+    },
+    "BEZERROS": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "unm"
+    },
+    "BOM CONSELHO": {
+        nomeBase: "BOM CONSELHO",
+        nomeVerdadeiro: "Não importa",
+        ddd: "87",
+        plataforma: "u31"
+    },
+    "BONANÇA": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "VITORIA OU MORENO",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "CABO DE SANTO AGOSTINHO": {
+        nomeBase: "PROTEGE",
+        nomeVerdadeiro: "Não importa",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "CAPOEIRAS": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Não importa",
+        ddd: "87",
+        plataforma: "nce"
+    },
+    "CAETÉS": {
+        nomeBase: "H&A",
+        nomeVerdadeiro: "Não importa",
+        ddd: "87",
+        plataforma: "nce"
+    },
+    "CAMELA": {
+        nomeBase: "LITORAL",
+        nomeVerdadeiro: "Não importa",
+        ddd: "81",
+        plataforma: "u31"
+    },
+    "CARPINA": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "CHÃ GRANDE": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "unm"
+    },
+    "COLÔNIA LEOPOLDINA": {
+        nomeBase: "PALMARES",
+        nomeVerdadeiro: "Não importa",
+        ddd: "82",
+        plataforma: "nce"
+    },
+    "CUCAU": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Rio Formoso",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "CUMARU": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "ESCADA": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Primavera ou escada",
+        ddd: "81",
+        plataforma: "UNM"
+    },
+    "ENSEADAS": {
+        nomeBase: "PROTEGE",
+        nomeVerdadeiro: "Não importa",
+        ddd: "81",
+        plataforma: "U31"
+    },
+    "FREXEIRAS": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Amaraji, frexeiras ou escada",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "GAMELEIRA": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "unm"
+    },
+    "GAIBU": {
+        nomeBase: "PROTEGE",
+        nomeVerdadeiro: "Não importa",
+        ddd: "81",
+        plataforma: "u31"
+    },
+    "GARANHUNS": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "NÃO FILTRE CIDADE",
+        ddd: "87",
+        plataforma: "nce"
+    },
+    "IGARASSU": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "IPOJUCA": {
+        nomeBase: "LITORAL",
+        nomeVerdadeiro: "Não importa",
+        ddd: "81",
+        plataforma: "depende do serial 🤷"
+    },
+    "JABOATÃO": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "81",
+        plataforma: "nce"
+    },
+    "JACUÍPE": {
+        nomeBase: "PALMARES",
+        nomeVerdadeiro: "Não importa",
+        ddd: "81",
+        plataforma: "U31"
+    },
+    "JAPARATINGA": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "Nome Informado",
+        ddd: "82",
+        plataforma: "nce"
+    },
+    "JUÇARAL": {
+        nomeBase: "DTEL",
+        nomeVerdadeiro: "CABO OU VITORIA",
         ddd: "81",
         plataforma: "nce"
     },
