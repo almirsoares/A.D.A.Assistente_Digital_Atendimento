@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #0f0f0f;
+    background-color: #f0f0f0;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -47,6 +47,7 @@ form div {
     display: flex;
     justify-content: space-between; /* Espaço entre o label e o input */
     align-items: center;
+    color: #fff;
 }
 .menu {
     display: flex;
@@ -74,6 +75,7 @@ form div {
 #resultado {
     margin-top: 20px;
     text-align: right; /* Alinha o resultado à direita */
+    color: #fff;
 }
 .footer {
     margin-top: 20px;
