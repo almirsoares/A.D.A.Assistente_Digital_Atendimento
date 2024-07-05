@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #bdbdbd;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -83,6 +83,7 @@ form div {
     display: flex;
     justify-content: center;
     gap: 10px; /* Espaço entre os botões */
+    color: #fff;
 }
 .footer .menu-item {
     margin: 0; /* Remove o margin-right para que os botões fiquem lado a lado */
