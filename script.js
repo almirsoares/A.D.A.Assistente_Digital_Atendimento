@@ -445,7 +445,8 @@ function calcularProporcional() {
             mensagemApp = ">>> ADICIONAR PROTOCOLO DE CARNE <<<";
         }
     } else {
-        mensagemConfirmacao = "";
+          mensagemConfirmacao = "Cliente desistiu da mudança de data de vencimento.";
+          mensagemApp = "";
     }
     
     
@@ -453,8 +454,7 @@ function calcularProporcional() {
 Motivo: Cliente solicitou alteração
 Gerou Proporcional? ( X )SIM ( )NÃO
 Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)}
-${mensagemConfirmacao}
-${mensagemApp}
+${mensagemConfirmacao} ${mensagemApp}
 Atendimento finalizado.`;
     // Exibir o protocolo
     document.getElementById('protocolo').value = mensagemProtocolo;
