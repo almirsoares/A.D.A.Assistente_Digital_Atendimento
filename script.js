@@ -438,7 +438,7 @@ function calcularProporcional() {
     let mensagemConfirmacao;
     let mensagemApp;
     if (desejaMudanca === "SIM") {
-        mensagemConfirmacao = "Faturas Atualizadas";
+        mensagemConfirmacao = "Faturas Atualizadas" , <br>;
         if (utilizaApp === "SIM") {
             mensagemApp = "Cliente confirmou mudança em app";
         } else {
