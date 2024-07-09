@@ -441,24 +441,12 @@ function calcularProporcional() {
         if (utilizaApp === "SIM") {
             mensagemApp = "Cliente confirmou mudança em app";
         } else {
-
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
             mensagemApp = ">>> ADICIONAR PROTOCOLO DE CARNE <<<";
         }
     } else {
           mensagemConfirmacao = "Cliente desistiu da mudança de data de vencimento.";
           mensagemApp = "";
     }
-    
     
     const mensagemProtocolo = `Solicitou troca de vencimento de: ${diaAntigo.toString().padStart(2, '0')}/${mesAntigo.toString().padStart(2, '0')} para ${diaNovo.toString().padStart(2, '0')}/${mesNovo.toString().padStart(2, '0')}
 Motivo: Cliente solicitou alteração
