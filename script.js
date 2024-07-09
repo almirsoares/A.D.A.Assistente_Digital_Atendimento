@@ -380,7 +380,6 @@ const cidades = {
     },
     // Adicione mais cidades conforme necessário
 };
-
 // Popula o menu suspenso com as cidades
 window.onload = function() {
     const cidadeSelect = document.getElementById('cidade');
@@ -426,25 +425,9 @@ function calcularProporcional() {
     }
     // Calcula o valor proporcional
     totalDias = 30 + totalDias;
-    const valorTotal = (valorPlano / 30) * totalDias;
-
-     const valorProporcional;
-     const proporcionalDias;
-     const mensagemProporcional;
-     
-    if ( totalDias>30 ){
-          proporcionalDias = totalDias -30;
-          valorProporcional = (valorPlano / 30) * proporcionalDias;
-          mensagemProporcional = 'devido a um valor adicional de ${valorProporcional.toFixed(2)} por um total extra de ${proporcionalDias} dias ' ;
-    } else {
-          proporcionalDias = totalDias;
-          valorProporcional = valorPlano;
-         mensagemProporcional="";
-    }
-
-     
+    const valorProporcional = (valorPlano / 30) * totalDias;
     // Mensagem ao cliente
-    const mensagemCliente = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${valorTotal.toFixed(2)} devido ao *total de ${totalDias} dias* de uso, ${mensagemProporcional} tudo bem?`;
+    const mensagemCliente = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${valorProporcional.toFixed(2)} devido ao *valor proporcional de ${totalDias} dias* de uso, tudo bem?`;
     // Exibir a mensagem ao cliente
     document.getElementById('mensagemCliente').value = mensagemCliente;
     // Gerar a mensagem de protocolo
@@ -454,10 +437,21 @@ function calcularProporcional() {
     let mensagemConfirmacao;
     let mensagemApp;
     if (desejaMudanca === "SIM") {
-        mensagemConfirmacao = "Faturas Atualizadas";
+        mensagemConfirmacao = "Faturas Atualizadas" , <br>;
         if (utilizaApp === "SIM") {
             mensagemApp = "Cliente confirmou mudança em app";
         } else {
+
+    
+          
+            
+    
+
+          
+          Expand Down
+    
+    
+  
             mensagemApp = ">>> ADICIONAR PROTOCOLO DE CARNE <<<";
         }
     } else {
