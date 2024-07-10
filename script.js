@@ -411,11 +411,13 @@ function calcularProporcional() {
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
     const dataAntiga = new Date(document.getElementById('dataAntiga').value);
     const dataNova = new Date(document.getElementById('dataNova').value);
+    
     // Extração dos dias e meses das datas
-    const diaAntigo = dataAntiga.getDate()+1;
+    const diaAntigo = dataAntiga.getDate() + 1;
     const mesAntigo = dataAntiga.getMonth() + 1; // getMonth() retorna 0-11, então adicionamos 1
-    const diaNovo = dataNova.getDate()+1;
+    const diaNovo = dataNova.getDate() + 1;
     const mesNovo = dataNova.getMonth() + 1; // getMonth() retorna 0-11, então adicionamos 1
+    
     // Aplicação da fórmula
     let totalDias;
     if (diaNovo > diaAntigo) {
@@ -423,13 +425,30 @@ function calcularProporcional() {
     } else {
         totalDias = (diaNovo - diaAntigo) + (mesNovo - mesAntigo) * 30;
     }
+    
     // Calcula o valor proporcional
     totalDias = 30 + totalDias;
-    const valorProporcional = (valorPlano / 30) * totalDias;
+    const valorTotal = (valorPlano / 30) * totalDias;
+
+    let valorProporcional;
+    let proporcionalDias;
+    let mensagemProporcional;
+
+    if (totalDias > 30) {
+        proporcionalDias = totalDias - 30;
+        valorProporcional = (valorPlano / 30) * proporcionalDias;
+        mensagemProporcional = `devido a um valor adicional de R$ ${valorProporcional.toFixed(2)} por um total extra de ${proporcionalDias} dias `;
+    } else {
+        proporcionalDias = totalDias;
+        valorProporcional = valorPlano;
+        mensagemProporcional = "";
+    }
+
     // Mensagem ao cliente
-    const mensagemCliente = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${valorProporcional.toFixed(2)} devido ao *valor proporcional de ${totalDias} dias* de uso, tudo bem?`;
+    const mensagemCliente = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${valorTotal.toFixed(2)} devido ao *total de ${totalDias} dias* de uso, ${mensagemProporcional} tudo bem?`;
     // Exibir a mensagem ao cliente
     document.getElementById('mensagemCliente').value = mensagemCliente;
+
     // Gerar a mensagem de protocolo
     const desejaMudanca = document.getElementById('desejaMudanca').checked ? "SIM" : "NÃO";
     const utilizaApp = document.getElementById('utilizaApp').checked ? "SIM" : "NÃO";
@@ -444,16 +463,17 @@ function calcularProporcional() {
             mensagemApp = ">>> ADICIONAR PROTOCOLO DE CARNE <<<";
         }
     } else {
-          mensagemConfirmacao = "Cliente desistiu da mudança de data de vencimento.";
-          mensagemApp = "";
+        mensagemConfirmacao = "Cliente desistiu da mudança de data de vencimento.";
+        mensagemApp = "";
     }
-    
+
     const mensagemProtocolo = `Solicitou troca de vencimento de: ${diaAntigo.toString().padStart(2, '0')}/${mesAntigo.toString().padStart(2, '0')} para ${diaNovo.toString().padStart(2, '0')}/${mesNovo.toString().padStart(2, '0')}
 Motivo: Cliente solicitou alteração
 Gerou Proporcional? ( X )SIM ( )NÃO
 Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)}
 ${mensagemConfirmacao} ${mensagemApp}
 Atendimento finalizado.`;
+    
     // Exibir o protocolo
     document.getElementById('protocolo').value = mensagemProtocolo;
 }
