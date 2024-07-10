@@ -440,7 +440,7 @@ function calcularProporcional() {
         mensagemProporcional = `devido a um valor adicional de R$ ${valorProporcional.toFixed(2)} por um total extra de ${proporcionalDias} dias `;
     } else {
         proporcionalDias = totalDias;
-        valorProporcional = valorPlano;
+        valorProporcional = valorTotal;
         mensagemProporcional = "";
     }
 
