@@ -110,3 +110,10 @@ textarea {
     resize: none;
     background-color: #fff; /* Fundo branco */
 }
+
+
+#usoTotal {
+    height: 20px; /* Ajusta a altura para uma linha */
+    overflow: hidden; /* Esconde o conteúdo que ultrapassa o tamanho */
+    resize: none; /* Impede redimensionamento */
+}

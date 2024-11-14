@@ -23,7 +23,33 @@
                 <label for="dataUltimoAcesso">Data de Último Acesso:</label>
                 <input type="date" id="dataUltimoAcesso" name="dataUltimoAcesso" required>
             </div>
+            <div>
+                <label for="valorMulta">Valor da Multa:</label>
+                <input type="number" id="valorMulta" name="valorMulta" step="0.01">
+            </div>
+            <div>
+                <label for="meses">Meses:</label>
+                <select id="meses" name="meses">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
         </form>
+        <div class="output-container">
+            <h2>Uso Total</h2>
+            <textarea id="usoTotal" rows="1" readonly></textarea>
+        </div>
         <div class="output-container">
             <h2>Protocolo</h2>
             <textarea id="protocolo" readonly></textarea>

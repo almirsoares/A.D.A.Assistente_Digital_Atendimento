@@ -82,14 +82,15 @@ Atendimento finalizado.`;
     document.getElementById('protocolo').value = mensagemProtocolo;
 }
 
-
 function calcularDesativacao() {
     // Obtenção de valores dos campos de entrada
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
     const dataVencimento = new Date(document.getElementById('dataVencimento').value);
     const dataUltimoAcesso = new Date(document.getElementById('dataUltimoAcesso').value);
+    const valorMultaDigitado = parseFloat(document.getElementById('valorMulta').value);
+    const meses = parseInt(document.getElementById('meses').value);
 
-    if (isNaN(valorPlano) || !dataVencimento || !dataUltimoAcesso) {
+    if (isNaN(valorPlano) || !dataVencimento || !dataUltimoAcesso || isNaN(valorMultaDigitado) || isNaN(meses)) {
         alert('Por favor, preencha todos os campos corretamente.');
         return;
     }
@@ -97,8 +98,43 @@ function calcularDesativacao() {
     // Chama a função calcularProporcional para obter os cálculos
     const resultado = calcularProporcional(valorPlano, dataVencimento, dataUltimoAcesso);
 
+    // Cálculo dos valores das faturas anteriores e proporcional
+    const dataMes1 = new Date(dataVencimento);
+    dataMes1.setMonth(dataMes1.getMonth() - 2);
+    const dataMes2 = new Date(dataVencimento);
+    dataMes2.setMonth(dataMes2.getMonth() - 1);
+
+    const valorProporcionalMes = resultado.valorTotal.toFixed(2);
+    const valorFatura = valorPlano.toFixed(2);
+
+    // Formatação das datas
+    const dataMes1Formatada = `${dataMes1.getDate().toString().padStart(2, '0')}/${(dataMes1.getMonth() + 1).toString().padStart(2, '0')}/${dataMes1.getFullYear()}`;
+    const dataMes2Formatada = `${dataMes2.getDate().toString().padStart(2, '0')}/${(dataMes2.getMonth() + 1).toString().padStart(2, '0')}/${dataMes2.getFullYear()}`;
+    const dataProporcionalFormatada = `${dataVencimento.getDate().toString().padStart(2, '0')}/${(dataVencimento.getMonth() + 1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()}`;
+
+    // Cálculo da multa
+    let textoMulta;
+    let valorMulta = 0;
+    if (meses === 0) {
+        textoMulta = "MULTA RESCISÓRIA : R$  (  ) SIM    ( X ) NÃO";
+    } else {
+        valorMulta = ((valorMultaDigitado - 500) * meses) / 12;
+        textoMulta = "MULTA RESCISÓRIA : R$  ( X ) SIM    (  ) NÃO";
+    }
+
+    // Mensagem de uso total
+    const usoTexto = `REF ${resultado.totalDias} DIAS DE USO`;
+    document.getElementById('usoTotal').value = usoTexto;
+
     // Mensagem de protocolo
-    const protocoloTexto = `Protocolo gerado: Valor proporcional para ${resultado.totalDias} dias é R$ ${resultado.valorTotal.toFixed(2)}`;
+    const protocoloTexto = `CONTRATO DESATIVADO\n` +
+        `Ajustado Faturas Referente aos dias utilizados :\n\n` +
+        `${dataMes1Formatada} - R$ ${valorFatura}\n` +
+        `${dataMes2Formatada} - R$ ${valorFatura}\n` +
+        `${dataProporcionalFormatada} - R$ ${valorProporcionalMes}\n\n` +
+        `${textoMulta}\n` +
+        `VALOR DA MULTA: R$ ${valorMulta.toFixed(2)}\n\n` +
+        `ENVIADO SMS DE PRÉ INCLUSÃO`;
+
     document.getElementById('protocolo').value = protocoloTexto;
 }
-
