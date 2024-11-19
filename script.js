@@ -108,9 +108,9 @@ function calcularDesativacao() {
     const valorFatura = valorPlano.toFixed(2);
 
     // Formatação das datas
-    const dataMes1Formatada = `${dataMes1.getDate().toString().padStart(2, '0')}/${(dataMes1.getMonth() + 1).toString().padStart(2, '0')}/${dataMes1.getFullYear()}`;
-    const dataMes2Formatada = `${dataMes2.getDate().toString().padStart(2, '0')}/${(dataMes2.getMonth() + 1).toString().padStart(2, '0')}/${dataMes2.getFullYear()}`;
-    const dataProporcionalFormatada = `${dataVencimento.getDate().toString().padStart(2, '0')}/${(dataVencimento.getMonth() + 1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()}`;
+    const dataMes1Formatada = `${(dataMes1.getDate()+1).toString().padStart(2, '0')}/${(dataMes1.getMonth() + 1).toString().padStart(2, '0')}/${dataMes1.getFullYear()}`;
+    const dataMes2Formatada = `${(dataMes2.getDate()+1).toString().padStart(2, '0')}/${(dataMes2.getMonth() + 1).toString().padStart(2, '0')}/${dataMes2.getFullYear()}`;
+    const dataProporcionalFormatada = `${(dataVencimento.getDate()+1).toString().padStart(2, '0')}/${(dataVencimento.getMonth() + 1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()}`;
 
     // Cálculo da multa
     let textoMulta;
