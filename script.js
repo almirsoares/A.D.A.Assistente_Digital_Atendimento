@@ -88,12 +88,16 @@ function calcularDesativacao() {
     const dataVencimento = new Date(document.getElementById('dataVencimento').value);
     const dataUltimoAcesso = new Date(document.getElementById('dataUltimoAcesso').value);
     const valorMultaDigitado = parseFloat(document.getElementById('valorMulta').value);
+    const multaEquipamento = parseFloat(document.getElementById('multaEquipamento').value);
     const meses = parseInt(document.getElementById('meses').value);
 
     if (isNaN(valorPlano) || !dataVencimento || !dataUltimoAcesso || isNaN(valorMultaDigitado) || isNaN(meses)) {
         alert('Por favor, preencha todos os campos corretamente.');
         return;
     }
+
+    // Adiciona 1 dia ao cálculo de vencimento
+    dataVencimento.setDate(dataVencimento.getDate() - 1);
 
     // Chama a função calcularProporcional para obter os cálculos
     const resultado = calcularProporcional(valorPlano, dataVencimento, dataUltimoAcesso);
@@ -108,9 +112,9 @@ function calcularDesativacao() {
     const valorFatura = valorPlano.toFixed(2);
 
     // Formatação das datas
-    const dataMes1Formatada = `${(dataMes1.getDate()+1).toString().padStart(2, '0')}/${(dataMes1.getMonth() + 1).toString().padStart(2, '0')}/${dataMes1.getFullYear()}`;
-    const dataMes2Formatada = `${(dataMes2.getDate()+1).toString().padStart(2, '0')}/${(dataMes2.getMonth() + 1).toString().padStart(2, '0')}/${dataMes2.getFullYear()}`;
-    const dataProporcionalFormatada = `${(dataVencimento.getDate()+1).toString().padStart(2, '0')}/${(dataVencimento.getMonth() + 1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()}`;
+    const dataMes1Formatada = `${(dataMes1.getDate()).toString().padStart(2, '0')}/${(dataMes1.getMonth() + 1).toString().padStart(2, '0')}/${dataMes1.getFullYear()}`;
+    const dataMes2Formatada = `${(dataMes2.getDate()).toString().padStart(2, '0')}/${(dataMes2.getMonth() + 1).toString().padStart(2, '0')}/${dataMes2.getFullYear()}`;
+    const dataProporcionalFormatada = `${(dataVencimento.getDate()).toString().padStart(2, '0')}/${(dataVencimento.getMonth() + 1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()}`;
 
     // Cálculo da multa
     let textoMulta;
@@ -127,14 +131,20 @@ function calcularDesativacao() {
     document.getElementById('usoTotal').value = usoTexto;
 
     // Mensagem de protocolo
-    const protocoloTexto = `CONTRATO DESATIVADO\n` +
+    let protocoloTexto = `CONTRATO DESATIVADO\n` +
         `Ajustado Faturas Referente aos dias utilizados :\n\n` +
         `${dataMes1Formatada} - R$ ${valorFatura}\n` +
         `${dataMes2Formatada} - R$ ${valorFatura}\n` +
         `${dataProporcionalFormatada} - R$ ${valorProporcionalMes}\n\n` +
         `${textoMulta}\n` +
-        `VALOR DA MULTA: R$ ${valorMulta.toFixed(2)}\n\n` +
-        `ENVIADO SMS DE PRÉ INCLUSÃO`;
+        `VALOR DA MULTA: R$ ${valorMulta.toFixed(2)}\n\n`;
+
+    // Adiciona multa do equipamento antes do SMS, se aplicável
+    if (multaEquipamento > 0) {
+        protocoloTexto += `MULTA ONU: R$ ${multaEquipamento.toFixed(2)}\n\n`;
+    }
+
+    protocoloTexto += `ENVIADO SMS DE PRÉ INCLUSÃO`;
 
     document.getElementById('protocolo').value = protocoloTexto;
 }
