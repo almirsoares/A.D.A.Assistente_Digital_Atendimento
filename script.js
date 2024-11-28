@@ -1,30 +1,21 @@
 // Função principal que calcula os valores proporcionais e retorna o resultado
 function calcularProporcional(valorPlano, dataAntiga, dataNova) {
-    // Extração dos dias e meses das datas
-    const diaAntigo = dataAntiga.getDate() + 1;
-    const mesAntigo = dataAntiga.getMonth() + 1;
-    const diaNovo = dataNova.getDate() + 1;
-    const mesNovo = dataNova.getMonth() + 1;
+    // Calcula a diferença em milissegundos entre as datas
+    const diferencaMilissegundos = dataNova - dataAntiga;
 
-    // Aplicação da fórmula
-    let totalDias;
-    if (diaNovo > diaAntigo) {
-        totalDias = (diaNovo - diaAntigo) + (mesNovo - mesAntigo) * 30;
-    } else {
-        totalDias = (diaNovo - diaAntigo) + (mesNovo - mesAntigo) * 30;
-    }
+    // Converte a diferença para dias corridos
+    const totalDias = Math.ceil(diferencaMilissegundos / (1000 * 3600 * 24));
 
-    // Ajuste de total de dias
-    totalDias = 30 + totalDias;
+    // Calcula o valor proporcional com base nos dias corridos
     const valorTotal = (valorPlano / 30) * totalDias;
 
     return {
         valorTotal,
         totalDias,
-        diaAntigo,
-        mesAntigo,
-        diaNovo,
-        mesNovo
+        diaAntigo: dataAntiga.getDate(),
+        mesAntigo: dataAntiga.getMonth() + 1,
+        diaNovo: dataNova.getDate(),
+        mesNovo: dataNova.getMonth() + 1
     };
 }
 
@@ -35,8 +26,13 @@ function calcularProporcionalVencimento() {
     const dataAntiga = new Date(document.getElementById('dataAntiga').value);
     const dataNova = new Date(document.getElementById('dataNova').value);
 
+
+    // Seta a data para o calculo ser referente ao dia do vencimento anterior para calcular o proporcional decorrendo daquele dia
+    const dataParaCalculo= new Date(dataAntiga);
+    dataParaCalculo.setMonth(dataParaCalculo.getMonth() - 1);
+    
     // Chama a função principal para obter os cálculos
-    const resultado = calcularProporcional(valorPlano, dataAntiga, dataNova);
+    const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataNova);
 
     let valorProporcional;
     let proporcionalDias;
@@ -96,11 +92,13 @@ function calcularDesativacao() {
         return;
     }
 
-    // Adiciona 1 dia ao cálculo de vencimento
-    dataVencimento.setDate(dataVencimento.getDate() - 1);
+    // Seta a data para o calculo ser referente ao dia do vencimento anterior para calcular o proporcional decorrendo daquele dia
+    const dataParaCalculo= new Date(dataVencimento);
+    dataParaCalculo.setMonth(dataParaCalculo.getMonth() - 1);
+    dataParaCalculo.setDate(dataParaCalculo.getDate() - 1);
 
     // Chama a função calcularProporcional para obter os cálculos
-    const resultado = calcularProporcional(valorPlano, dataVencimento, dataUltimoAcesso);
+    const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataUltimoAcesso);
 
     // Cálculo dos valores das faturas anteriores e proporcional
     const dataMes1 = new Date(dataVencimento);
