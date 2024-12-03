@@ -23,9 +23,8 @@ function calcularProporcional(valorPlano, dataAntiga, dataNova) {
 function calcularProporcionalVencimento() {
     // Obtém os valores do formulário
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
-    const dataAntiga = new Date(document.getElementById('dataAntiga').value);
-    const dataNova = new Date(document.getElementById('dataNova').value);
-
+    const dataAntiga = new Date(document.getElementById('dataAntiga').value + 'T00:00:00');
+    const dataNova = new Date(document.getElementById('dataNova').value + 'T00:00:00');
 
     // Seta a data para o calculo ser referente ao dia do vencimento anterior para calcular o proporcional decorrendo daquele dia
     const dataParaCalculo= new Date(dataAntiga);
@@ -79,10 +78,10 @@ Atendimento finalizado.`;
 }
 
 function calcularDesativacao() {
-    // Obtenção de valores dos campos de entrada
+    // Obtenção de valores dos campos de entrada   new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
-    const dataVencimento = new Date(document.getElementById('dataVencimento').value);
-    const dataUltimoAcesso = new Date(document.getElementById('dataUltimoAcesso').value);
+    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
+    const dataUltimoAcesso = new Date(document.getElementById('dataUltimoAcesso').value + 'T00:00:00');
     const valorMultaDigitado = parseFloat(document.getElementById('valorMulta').value);
     const multaEquipamento = parseFloat(document.getElementById('multaEquipamento').value);
     const meses = parseInt(document.getElementById('meses').value);
