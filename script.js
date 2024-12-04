@@ -13,7 +13,7 @@ function calcularProporcional(valorPlano, dataAntiga, dataNova) {
         valorTotal,
         totalDias,
         diaAntigo: dataAntiga.getDate(),
-        mesAntigo: dataAntiga.getMonth() + 1,
+        mesAntigo: dataAntiga.getMonth() + 2,
         diaNovo: dataNova.getDate(),
         mesNovo: dataNova.getMonth() + 1
     };
@@ -59,7 +59,7 @@ function calcularProporcionalVencimento() {
     let mensagemApp;
 
     if (desejaMudanca === "SIM") {
-        mensagemConfirmacao = "Faturas Atualizadas";
+        mensagemConfirmacao = "Faturas Atualizadas\n";
         mensagemApp = utilizaApp === "SIM" ? "Cliente confirmou mudança em app" : ">>> ADICIONAR PROTOCOLO DE CARNE <<<";
     } else {
         mensagemConfirmacao = "Cliente desistiu da mudança de data de vencimento.";
@@ -134,7 +134,7 @@ function calcularDesativacao() {
         `${dataMes2Formatada} - R$ ${valorFatura}\n` +
         `${dataProporcionalFormatada} - R$ ${valorProporcionalMes}\n\n` +
         `${textoMulta}\n` +
-        `VALOR DA MULTA: R$ ${valorMulta.toFixed(2)}\n\n`;
+        `VALOR DA MULTA: R$ ${valorMulta.toFixed(2)}\n`;
 
     // Adiciona multa do equipamento antes do SMS, se aplicável
     if (multaEquipamento > 0) {
