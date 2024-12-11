@@ -145,3 +145,46 @@ function calcularDesativacao() {
 
     document.getElementById('protocolo').value = protocoloTexto;
 }
+
+
+function calcularProporcionalPlanos() {
+    // Obtém os valores dos campos
+    const valorPlanoAnterior = parseFloat(document.getElementById('valorPlanoAnterior').value);
+    const diasPlanoAnterior = parseInt(document.getElementById('diasPlanoAnterior').value);
+    const descontoPlanoAnterior = parseFloat(document.getElementById('descontoPlanoAnterior').value);
+
+    const valorPlanoNovo = parseFloat(document.getElementById('valorPlanoNovo').value);
+    const diasPlanoNovo = parseInt(document.getElementById('diasPlanoNovo').value);
+    const descontoPlanoNovo = parseFloat(document.getElementById('descontoPlanoNovo').value);
+
+    // Validações básicas
+    if (isNaN(valorPlanoAnterior) || isNaN(diasPlanoAnterior) || isNaN(valorPlanoNovo) || isNaN(diasPlanoNovo)) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
+    }
+
+    // Calcula os valores proporcionais
+    const proporcionalAnterior = (valorPlanoAnterior / 30) * diasPlanoAnterior;
+    const proporcionalNovo = (valorPlanoNovo / 30) * diasPlanoNovo;
+
+    const propDescontoPlanoAnterior = (descontoPlanoAnterior / 30) * diasPlanoAnterior;
+    const propDescontoPlanoNovo = (descontoPlanoNovo / 30) * diasPlanoNovo;
+
+    // Soma os valores
+    const valorFaturaTotal = proporcionalAnterior + proporcionalNovo;
+    const valorDescontoTotal = propDescontoPlanoAnterior + propDescontoPlanoNovo;
+    const valorFinalCobrado = valorFaturaTotal - valorDescontoTotal;
+
+    // Atualiza os campos do resumo
+    document.getElementById('valorFaturaTotal').value = valorFaturaTotal.toFixed(2);
+    document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2);
+
+    // Exibe os campos de desconto apenas se aplicável
+    const descontoCampos = document.querySelectorAll('.desconto-campo');
+    if (valorDescontoTotal > 0) {
+        descontoCampos.forEach(campo => campo.style.display = 'block');
+        document.getElementById('valorDescontoTotal').value = valorDescontoTotal.toFixed(2);
+    } else {
+        descontoCampos.forEach(campo => campo.style.display = 'none');
+    }
+}
