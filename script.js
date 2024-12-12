@@ -147,6 +147,7 @@ function calcularDesativacao() {
 }
 
 
+// Função que calcula os valores proporcionais entre dois planos
 function calcularProporcionalPlanos() {
     // Obtém os valores dos campos
     const valorPlanoAnterior = parseFloat(document.getElementById('valorPlanoAnterior').value);
@@ -163,6 +164,19 @@ function calcularProporcionalPlanos() {
         return;
     }
 
+    // Verifica se os dias são menores ou iguais a 5 e emite alerta
+    if (diasPlanoAnterior <= 5) {
+        alert("A quantidade de dias para o plano anterior é menor ou igual a 5 e não será considerada no cálculo proporcional. Considere o plano de maior duração.");
+        diasPlanoNovo = diasPlanoNovo + diasPlanoAnterior;        
+        diasPlanoAnterior = 0;
+    }
+
+    if (diasPlanoNovo <= 5) {
+        alert("A quantidade de dias para o novo plano é menor ou igual a 5 e não será considerada no cálculo proporcional. Considere o plano de maior duração.");
+        diasPlanoAnterior = diasPlanoAnterior + diasPlanoNovo;
+        diasPlanoNovo = 0;
+    }
+
     // Calcula os valores proporcionais
     const proporcionalAnterior = (valorPlanoAnterior / 30) * diasPlanoAnterior;
     const proporcionalNovo = (valorPlanoNovo / 30) * diasPlanoNovo;
@@ -170,19 +184,17 @@ function calcularProporcionalPlanos() {
     let propDescontoPlanoAnterior = descontoPlanoAnterior;
     let propDescontoPlanoNovo = descontoPlanoNovo;
 
-    if (diasPlanoAnterior >30){
-	propDescontoPlanoAnterior = descontoPlanoAnterior;
+    if (diasPlanoAnterior > 30) {
+        propDescontoPlanoAnterior = descontoPlanoAnterior;
     } else {
-	propDescontoPlanoAnterior = (descontoPlanoAnterior / 30) * diasPlanoAnterior;
+        propDescontoPlanoAnterior = (descontoPlanoAnterior / 30) * diasPlanoAnterior;
     }
 
-    if (diasPlanoNovo >30){
-	propDescontoPlanoNovo = descontoPlanoNovo;
+    if (diasPlanoNovo > 30) {
+        propDescontoPlanoNovo = descontoPlanoNovo;
     } else {
-	propDescontoPlanoNovo = (descontoPlanoNovo / 30) * diasPlanoNovo;
+        propDescontoPlanoNovo = (descontoPlanoNovo / 30) * diasPlanoNovo;
     }
-
-
 
     // Soma os valores
     const valorFaturaTotal = proporcionalAnterior + proporcionalNovo;
