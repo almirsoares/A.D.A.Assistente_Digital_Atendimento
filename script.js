@@ -150,11 +150,11 @@ function calcularDesativacao() {
 function calcularProporcionalPlanos() {
     // Obtém os valores dos campos
     const valorPlanoAnterior = parseFloat(document.getElementById('valorPlanoAnterior').value);
-    const diasPlanoAnterior = parseInt(document.getElementById('diasPlanoAnterior').value);
+    let diasPlanoAnterior = parseInt(document.getElementById('diasPlanoAnterior').value);
     const descontoPlanoAnterior = parseFloat(document.getElementById('descontoPlanoAnterior').value);
 
     const valorPlanoNovo = parseFloat(document.getElementById('valorPlanoNovo').value);
-    const diasPlanoNovo = parseInt(document.getElementById('diasPlanoNovo').value);
+    let diasPlanoNovo = parseInt(document.getElementById('diasPlanoNovo').value);
     const descontoPlanoNovo = parseFloat(document.getElementById('descontoPlanoNovo').value);
 
     // Validações básicas
@@ -167,8 +167,22 @@ function calcularProporcionalPlanos() {
     const proporcionalAnterior = (valorPlanoAnterior / 30) * diasPlanoAnterior;
     const proporcionalNovo = (valorPlanoNovo / 30) * diasPlanoNovo;
 
-    const propDescontoPlanoAnterior = (descontoPlanoAnterior / 30) * diasPlanoAnterior;
-    const propDescontoPlanoNovo = (descontoPlanoNovo / 30) * diasPlanoNovo;
+    let propDescontoPlanoAnterior = descontoPlanoAnterior;
+    let propDescontoPlanoNovo = descontoPlanoNovo;
+
+    if (diasPlanoAnterior >30){
+	propDescontoPlanoAnterior = descontoPlanoAnterior;
+    } else {
+	propDescontoPlanoAnterior = (descontoPlanoAnterior / 30) * diasPlanoAnterior;
+    }
+
+    if (diasPlanoNovo >30){
+	propDescontoPlanoNovo = descontoPlanoNovo;
+    } else {
+	propDescontoPlanoNovo = (descontoPlanoNovo / 30) * diasPlanoNovo;
+    }
+
+
 
     // Soma os valores
     const valorFaturaTotal = proporcionalAnterior + proporcionalNovo;
