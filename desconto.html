@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Trabalho - Calcular Desconto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calcular Desconto</h1>
+        <form id="calculoDesconto">
+            <fieldset>
+                <legend>Informações do Desconto</legend>
+                <div>
+                    <label for="valorPlano">Valor do Plano:</label>
+                    <input type="number" id="valorPlano" name="valorPlano" step="0.01" required>
+                </div>
+
+                <div>
+                    <label for="descontoPlano">Desconto do Plano:</label>
+                    <input type="number" id="descontoPlano" name="descontoPlano" step="0.01" value="0">
+                </div>
+
+                <div>
+                    <label for="descontoSolicitado">Desconto Solicitado:</label>
+                    <input type="number" id="descontoSolicitado" name="descontoSolicitado" step="0.01" value="0">
+                </div>
+
+                <div>
+                    <label for="tipoDesconto">Tipo de Desconto:</label>
+                    <select id="tipoDesconto" name="tipoDesconto" required>
+                        <option value="porDias">Por Dias</option>
+                        <option value="porPorcentagem">Por %</option>
+                        <option value="porValor">Por Valor</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Resultado</legend>
+                <div>
+                    <label for="valorFaturaTotal">Valor da Fatura Total:</label>
+                    <input type="text" id="valorFaturaTotal" name="valorFaturaTotal" readonly>
+                </div>
+
+                <div>
+                    <label for="valorDescontoTotal" class="desconto-campo" style="display: none;">Valor Total de Desconto:</label>
+                    <input type="text" id="valorDescontoTotal" name="valorDescontoTotal" readonly class="desconto-campo" style="display: none;">
+                </div>
+
+                <div>
+                    <label for="valorFinalCobrado">Valor Final Cobrado:</label>
+                    <input type="text" id="valorFinalCobrado" name="valorFinalCobrado" readonly>
+                </div>
+            </fieldset>
+
+            <div class="footer">
+                <button onclick="location.href='index.html'" class="menu-item">Voltar</button>
+                <button type="button" class="menu-item" onclick="calcularDesconto()">Calcular</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
