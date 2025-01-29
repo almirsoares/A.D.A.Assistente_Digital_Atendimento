@@ -307,10 +307,6 @@ function calcularJurosMulta() {
     // Calcula o valor final com multa e juros
     const valorFinal = valorFatura + valorMulta + valorJuros;
 
-        alert(valorMulta);
-        alert(valorJuros);
-        alert(totalDias);
-
     // Atualiza os campos com os resultados
     document.getElementById('valorFinal').value = valorFinal.toFixed(2);
 }
