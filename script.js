@@ -21,6 +21,9 @@ function calcularProporcional(valorPlano, dataAntiga, dataNova) {
 
 // Função auxiliar que chama calcularProporcional e cuida das atribuições adicionais
 function calcularProporcionalVencimento() {
+
+        alert("Por favor, preencha todos os campos corretamente.");
+
     // Obtém os valores do formulário
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
     const dataAntiga = new Date(document.getElementById('dataAntiga').value + 'T00:00:00');
@@ -278,3 +281,62 @@ function calcularDesconto() {
     // Exibe os campos de desconto
     document.querySelectorAll('.desconto-campo').forEach(campo => campo.style.display = 'block');
 }
+// Função para calcular Juros e Multa utilizando calcularProporcional
+function calcularJurosMulta() {
+    const valorFatura = parseFloat(document.getElementById('valorFatura').value);
+    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
+    const dataAtualizada = new Date(document.getElementById('dataAtualizada').value + 'T00:00:00');
+    const multa = parseFloat(document.getElementById('multa').value) / 100;
+    const juros = parseFloat(document.getElementById('juros').value) / 100;
+
+    if (isNaN(valorFatura) || isNaN(multa) || isNaN(juros) || isNaN(dataVencimento) || isNaN(dataAtualizada)) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
+    }
+
+    // Usa a função calcularProporcional para obter o total de dias de atraso
+    const resultado = calcularProporcional(valorFatura, dataVencimento, dataAtualizada);
+    const totalDias = resultado.totalDias;
+
+    // Calcula multa fixa
+    const valorMulta = valorFatura * multa;
+
+    // Calcula juros compostos
+    const valorJuros = valorFatura * Math.pow(1 + juros, totalDias) - valorFatura;
+
+    // Calcula o valor final com multa e juros
+    const valorFinal = valorFatura + valorMulta + valorJuros;
+
+        alert(valorMulta);
+        alert(valorJuros);
+        alert(totalDias);
+
+    // Atualiza os campos com os resultados
+    document.getElementById('valorFinal').value = valorFinal.toFixed(2);
+}
+
+// Função para atualizar os valores de juros e multa com base na seleção do usuário
+function atualizarJurosMulta() {
+    const tipo = document.getElementById('tipoJurosMulta').value;
+    const multaInput = document.getElementById('multa');
+    const jurosInput = document.getElementById('juros');
+
+    if (tipo === "10") {
+        multaInput.value = 10;
+        jurosInput.value = 0.833;
+        multaInput.readOnly = true;
+        jurosInput.readOnly = true;
+    } else if (tipo === "2.5") {
+        multaInput.value = 2.5;
+        jurosInput.value = 0.033;
+        multaInput.readOnly = true;
+        jurosInput.readOnly = true;
+    } else {
+        multaInput.value = "";
+        jurosInput.value = "";
+        multaInput.readOnly = false;
+        jurosInput.readOnly = false;
+    }
+}
+
+
