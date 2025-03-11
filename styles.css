@@ -69,11 +69,11 @@ form div {
     color: #fff;
 }
 .menu {
-    display: flex;
-    flex-direction: column; /* Alinha os botões um abaixo do outro */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas de tamanho igual */
     gap: 10px;
-    width: 100%; /* Garante que o menu use toda a largura disponível */
-    align-items: center; /* Centraliza os botões horizontalmente */
+    width: 100%;
+    max-width: 400px; /* Ajuste conforme necessário */
 }
 .menu-item {
     display: inline-block;
