@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links e Formulários</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(2, 100px);
+            gap: 10px;
+            justify-content: center;
+        }
+        .grid button {
+            width: 100px;
+            height: 100px;
+            background-color: #ffd712; /* Cor amarela do CSS */
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .grid button:hover {
+            background-color: #e6b800;
+        }
+        .grid button:nth-child(4), .grid button:nth-child(5) {
+            grid-column: span 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Links e Formulários</h1>
+        <div class="grid">
+            <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdnItOpKQsgMR__Wf6-KHJ86ewMF8IFauZydY8WCj5RBW29cA/viewform?pli=1&pli=1', '_blank')">Televendas 💲</button>
+            <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScGUlyOlyQyrztmMbEDrpDurd8_gNfF8RoFcHsrOqqW2heFCg/viewform', '_blank')">Retirada: Negativação</button>
+            <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfL4_v7Bn1nuybGe0SvpCQ2mVdyg8ut9S3iP5v5rHowT1YcGQ/viewform', '_blank')">Inconcistência de pagamentos</button>
+            <button onclick="window.open('https://docs.google.com/spreadsheets/d/1q4--kY2RSNQ2P2gC7_7QgJqPvjmTtfktvhnbz-ogAsI/edit?gid=1202975067#gid=1202975067', '_blank')">Solicitação de desconto</button>
+            <button onclick="window.open('https://docs.google.com/spreadsheets/d/1gKmNQREwL7dLkjxDlPspHAzgxIQS-LMih6kSa2g0STM/edit?pli=1&gid=0#gid=0', '_blank')">Analise de crédito</button>
+        </div>
+		<div class="footer">
+        		<button onclick="location.href='index.html'" class="menu-item">Voltar</button>
+    		</div>
+    </div>
+</body>
+</html>
