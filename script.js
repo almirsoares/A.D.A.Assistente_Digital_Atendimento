@@ -319,7 +319,7 @@ function atualizarJurosMulta() {
 
     if (tipo === "10") {
         multaInput.value = 10;
-        jurosInput.value = 0.833;
+        jurosInput.value = 0.08333;
         multaInput.readOnly = true;
         jurosInput.readOnly = true;
     } else if (tipo === "2.5") {
@@ -334,5 +334,10 @@ function atualizarJurosMulta() {
         jurosInput.readOnly = false;
     }
 }
+
+// Define os valores padrão ao carregar a página com base na opção selecionada
+document.addEventListener("DOMContentLoaded", function () {
+    atualizarJurosMulta(); // Chama a função para definir os valores iniciais corretamente
+});
 
 
