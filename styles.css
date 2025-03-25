@@ -137,3 +137,50 @@ textarea {
     overflow: hidden; /* Esconde o conteúdo que ultrapassa o tamanho */
     resize: none; /* Impede redimensionamento */
 }
+
+/* Para garantir que os botões fiquem na mesma linha */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer .menu-item {
+    flex: 1;
+    margin: 0 10px;
+}
+
+/* Alinhar os títulos dos campos de data ao centro */
+.campo-data div {
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+}
+
+/* Garantir que os campos de data tenham largura suficiente */
+.campo-data input[type="date"] {
+    width: 100%;
+}
+
+/* Adicionar um espaçamento maior entre os campos de data */
+.campo-data div {
+    margin-bottom: 10px;
+}
+
+/* Responsividade para os campos de data e botões */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .campo-data div {
+        display: block;
+        width: 100%;
+    }
+
+    .campo-data {
+        display: block;
+    }
+}
+

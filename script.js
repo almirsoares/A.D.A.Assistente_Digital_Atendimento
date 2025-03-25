@@ -154,50 +154,39 @@ function calcularDesativacao() {
 function calcularProporcionalPlanos() {
     // Obtém os valores dos campos
     const valorPlanoAnterior = parseFloat(document.getElementById('valorPlanoAnterior').value);
-    let diasPlanoAnterior = parseInt(document.getElementById('diasPlanoAnterior').value);
     const descontoPlanoAnterior = parseFloat(document.getElementById('descontoPlanoAnterior').value);
-
     const valorPlanoNovo = parseFloat(document.getElementById('valorPlanoNovo').value);
-    let diasPlanoNovo = parseInt(document.getElementById('diasPlanoNovo').value);
     const descontoPlanoNovo = parseFloat(document.getElementById('descontoPlanoNovo').value);
 
-    // Validações básicas
-    if (isNaN(valorPlanoAnterior) || isNaN(diasPlanoAnterior) || isNaN(valorPlanoNovo) || isNaN(diasPlanoNovo)) {
+    // Obtém as datas
+    const dataInicioPlano = new Date(document.getElementById('inicioPlano').value + 'T00:00:00');
+    const dataTroca = new Date(document.getElementById('dataTroca').value + 'T00:00:00');
+    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
+
+    if (isNaN(valorPlanoAnterior) || isNaN(valorPlanoNovo) || isNaN(dataInicioPlano) || isNaN(dataTroca) || isNaN(dataVencimento)) {
         alert("Por favor, preencha todos os campos corretamente.");
         return;
     }
 
+    // Calcula o valor proporcional do plano anterior até a data de troca
+    const resultadoAnterior = calcularProporcional(valorPlanoAnterior, dataInicioPlano, dataTroca);
+    const proporcionalAnterior = resultadoAnterior.valorTotal;
+
+    // Calcula o valor proporcional do novo plano da data de troca até o vencimento
+    const resultadoNovo = calcularProporcional(valorPlanoNovo, dataTroca, dataVencimento);
+    const proporcionalNovo = resultadoNovo.valorTotal;
+
     // Verifica se os dias são menores ou iguais a 5 e emite alerta
-    if (diasPlanoAnterior <= 5) {
-        alert("A quantidade de dias para o plano anterior é menor ou igual a 5 e não será considerada no cálculo proporcional. Considere o plano de maior duração.");
-        diasPlanoNovo = diasPlanoNovo + diasPlanoAnterior;        
-        diasPlanoAnterior = 0;
+    if (resultadoAnterior.totalDias <= 5) {
+        alert("A quantidade de dias para o plano anterior é menor ou igual a 5. Nesta caso o proporcional de troca de plano é dispensada.");
+    }
+    if (resultadoNovo.totalDias <= 5) {
+        alert("A quantidade de dias para o novo plano é menor ou igual a 5. Nesta caso o proporcional de troca de plano é dispensada.");
     }
 
-    if (diasPlanoNovo <= 5) {
-        alert("A quantidade de dias para o novo plano é menor ou igual a 5 e não será considerada no cálculo proporcional. Considere o plano de maior duração.");
-        diasPlanoAnterior = diasPlanoAnterior + diasPlanoNovo;
-        diasPlanoNovo = 0;
-    }
-
-    // Calcula os valores proporcionais
-    const proporcionalAnterior = (valorPlanoAnterior / 30) * diasPlanoAnterior;
-    const proporcionalNovo = (valorPlanoNovo / 30) * diasPlanoNovo;
-
-    let propDescontoPlanoAnterior = descontoPlanoAnterior;
-    let propDescontoPlanoNovo = descontoPlanoNovo;
-
-    if (diasPlanoAnterior > 30) {
-        propDescontoPlanoAnterior = descontoPlanoAnterior;
-    } else {
-        propDescontoPlanoAnterior = (descontoPlanoAnterior / 30) * diasPlanoAnterior;
-    }
-
-    if (diasPlanoNovo > 30) {
-        propDescontoPlanoNovo = descontoPlanoNovo;
-    } else {
-        propDescontoPlanoNovo = (descontoPlanoNovo / 30) * diasPlanoNovo;
-    }
+    // Calcula os descontos proporcionais
+    const propDescontoPlanoAnterior = (descontoPlanoAnterior / 30) * resultadoAnterior.totalDias;
+    const propDescontoPlanoNovo = (descontoPlanoNovo / 30) * resultadoNovo.totalDias;
 
     // Soma os valores
     const valorFaturaTotal = proporcionalAnterior + proporcionalNovo;
@@ -217,6 +206,8 @@ function calcularProporcionalPlanos() {
         descontoCampos.forEach(campo => campo.style.display = 'none');
     }
 }
+
+
 
 // Função que calcula o desconto baseado no tipo selecionado
 function calcularDesconto() {

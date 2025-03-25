@@ -10,16 +10,30 @@
     <div class="container">
     <h1>Calcular Proporcional</h1>
     <form id="calculoProporcional">
+        
+        <!-- Campos de data acima das seções de plano -->
+        <div class="campo-data">
+            <div>
+                <label for="inicioPlano">Início do Plano:</label>
+                <input type="date" id="inicioPlano" name="inicioPlano" required>
+            </div>
+
+            <div>
+                <label for="dataTroca">Data de Troca:</label>
+                <input type="date" id="dataTroca" name="dataTroca" required>
+            </div>
+
+            <div>
+                <label for="dataVencimento">Vencimento:</label>
+                <input type="date" id="dataVencimento" name="dataVencimento" required>
+            </div>
+        </div>
+
         <fieldset>
             <legend>Plano Anterior</legend>
             <div>
                  <label for="valorPlanoAnterior">Valor do Plano:</label>
                  <input type="number" id="valorPlanoAnterior" name="valorPlanoAnterior" step="0.01" required>
-            </div>
-
-            <div>
-                 <label for="diasPlanoAnterior">Dias Utilizados:</label>
-                 <input type="number" id="diasPlanoAnterior" name="diasPlanoAnterior" required>
             </div>
 
             <div>
@@ -33,11 +47,6 @@
             <div>
                  <label for="valorPlanoNovo">Valor do Plano:</label>
                  <input type="number" id="valorPlanoNovo" name="valorPlanoNovo" step="0.01" required>
-            </div>
-
-            <div>
-                 <label for="diasPlanoNovo">Dias Utilizados:</label>
-                 <input type="number" id="diasPlanoNovo" name="diasPlanoNovo" required>
             </div>
 
             <div>
@@ -67,6 +76,7 @@
         <div class="footer">
             <button onclick="location.href='index.html'" class="menu-item">Voltar</button>
             <button type="button" class="menu-item" onclick="calcularProporcionalPlanos()">Calcular</button>
+            <button type="reset" class="menu-item">Limpar</button>
         </div>
 
     </form>
