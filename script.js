@@ -83,12 +83,6 @@ Atendimento finalizado.`;
 
 
 
-//Função para alternar o status do equipamento relacionado a desativação:
-function alternarStatus() {
-    const statusInput = document.getElementById('statusEquipamento');
-    statusInput.value = statusInput.value === "Ativo" ? "Devolvido" : "Ativo";
-}
-
 function calcularDesativacao() {
     // Obtenção de valores dos campos de entrada   new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);

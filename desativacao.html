@@ -46,11 +46,14 @@
                 </select>
             </div>
             <div style="display: flex; align-items: center; gap: 10px;">
-                <label for="multaEquipamento">Equipamento:</label>
-                <input type="number" id="multaEquipamento" name="multaEquipamento" step="0.01" value="0">
-                <input type="text" id="statusEquipamento" name="statusEquipamento" value="Ativo" readonly style="width: 80px; text-align: center;">
-                <button type="button" onclick="alternarStatus()">🔄</button>
-            </div>
+   		 <label for="multaEquipamento">Equipamento:</label>
+   		 <input type="number" id="multaEquipamento" name="multaEquipamento" step="0.01" value="0" style="width: 100px">
+   		 <label for="statusEquipamento">Status:</label>
+   		 <select id="statusEquipamento" name="statusEquipamento" style="width: 100px;">
+    		    <option value="Ativo">Ativo</option>
+     		    <option value="Devolvido">Devolvido</option>
+    		</select>
+	    </div>
         </form>
         <div class="output-container">
             <h2>Uso Total</h2>
