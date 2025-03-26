@@ -45,9 +45,11 @@
                     <option value="12">12</option>
                 </select>
             </div>
-            <div>
-                <label for="multaEquipamento">Multa do equipamento:</label>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label for="multaEquipamento">Equipamento:</label>
                 <input type="number" id="multaEquipamento" name="multaEquipamento" step="0.01" value="0">
+                <input type="text" id="statusEquipamento" name="statusEquipamento" value="Ativo" readonly style="width: 80px; text-align: center;">
+                <button type="button" onclick="alternarStatus()">🔄</button>
             </div>
         </form>
         <div class="output-container">

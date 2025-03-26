@@ -80,6 +80,15 @@ Atendimento finalizado.`;
     document.getElementById('protocolo').value = mensagemProtocolo;
 }
 
+
+
+
+//Função para alternar o status do equipamento relacionado a desativação:
+function alternarStatus() {
+    const statusInput = document.getElementById('statusEquipamento');
+    statusInput.value = statusInput.value === "Ativo" ? "Devolvido" : "Ativo";
+}
+
 function calcularDesativacao() {
     // Obtenção de valores dos campos de entrada   new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
@@ -122,7 +131,7 @@ function calcularDesativacao() {
     if (meses === 0) {
         textoMulta = "MULTA RESCISÓRIA : R$  (  ) SIM    ( X ) NÃO";
     } else {
-        valorMulta = ((valorMultaDigitado - 500) * meses) / 12;
+        valorMulta = ((valorMultaDigitado - multaEquipamento) * meses) / 12;
         textoMulta = "MULTA RESCISÓRIA : R$  ( X ) SIM    (  ) NÃO";
     }
 
@@ -139,8 +148,10 @@ function calcularDesativacao() {
         `${textoMulta}\n` +
         `VALOR DA MULTA: R$ ${valorMulta.toFixed(2)}\n`;
 
-    // Adiciona multa do equipamento antes do SMS, se aplicável
-    if (multaEquipamento > 0) {
+    // Verifica o status do equipamento pelo botão lógico
+    const statusEquipamento = document.getElementById('statusEquipamento').value;
+
+    if (statusEquipamento === "Ativo") {
         protocoloTexto += `MULTA ONU: R$ ${multaEquipamento.toFixed(2)}\n\n`;
     }
 
