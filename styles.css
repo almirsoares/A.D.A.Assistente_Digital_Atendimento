@@ -18,8 +18,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
+    width: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,7 +57,6 @@ form {
     flex-direction: column;
     gap: 10px;
     width: 100%; /* Garante que o formulário use toda a largura disponível */
-    max-width: 400px; /* Limita a largura máxima do formulário */
     align-items: flex-end; /* Alinha os itens do formulário à direita */
 }
 form div {
@@ -73,7 +71,6 @@ form div {
     grid-template-columns: repeat(2, 1fr); /* Duas colunas de tamanho igual */
     gap: 10px;
     width: 100%;
-    max-width: 400px; /* Ajuste conforme necessário */
 }
 .menu-item {
     display: inline-block;
@@ -86,7 +83,6 @@ form div {
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%; /* Garante que os botões usem toda a largura disponível */
-    max-width: 200px; /* Limita a largura máxima dos botões */
 }
 .menu-item:hover {
     background-color: #e6b800; /* Amarelo mais escuro ao passar o mouse */
@@ -110,14 +106,15 @@ form div {
 }
 
 .output-container {
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
-    max-width: 400px;
+    margin-right: 20px;
+
 }
 
 .output-container h2 {
     color: #ffd712; /* Cor amarela */
-    margin: 0;
+    margin:0;
     margin-bottom: 5px;
 }
 
@@ -141,7 +138,7 @@ textarea {
 /* Para garantir que os botões fiquem na mesma linha */
 .footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
