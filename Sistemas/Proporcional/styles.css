@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #35553e;
+    background-color: #ffffff;
 }
 
 .container {
@@ -154,6 +154,10 @@ legend {
     border-radius: 4px;
 }
 
+h2{
+    color: #fff;
+}
+
 /* ============ */
 .informacoes {
     display: flex;
@@ -166,10 +170,6 @@ legend {
 
 .inputData {
     width: 180px;
-}
-
-#mensagemCliente {
-    width: 70%;
 }
 
 textarea {
