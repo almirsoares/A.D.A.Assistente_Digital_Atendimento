@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Trabalho - Calcular Proporcional - troca de plano e data de vencimento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1 style="color: #fff;">Calcular Proporcional</h1>
+            <form id="calculoProporcional">
+                <!-- Campos de data acima das seções de plano -->
+                <div class="campo-data">
+                    <div class="column">
+                        <label for="inicioPlano">Início do Plano</label>
+                        <input type="date" class="inputDate" id="inicioPlano" name="inicioPlano" required>
+                    </div>
+                    <div class="column">
+                        <label for="dataTroca">Data de Troca</label>
+                        <input type="date" class="inputDate" id="dataTroca" name="dataTroca" required>
+                    </div>
+                    <div class="column">
+                        <label for="dataVencimento">Vencimento</label>
+                        <input type="date" class="inputDate" id="dataVencimento" name="dataVencimento" required>
+                    </div>
+                </div>
+                <div class="flex">
+                    <fieldset class="fieldset anterior">
+                        <legend>Plano Anterior</legend>
+                        <div class="column">
+                            <label for="valorPlanoAnterior">Valor do Plano</label>
+                            <input type="number" id="valorPlanoAnterior" name="valorPlanoAnterior" step="0.01" required>
+                        </div>
+                        <div class="column">
+                            <label for="descontoPlanoAnterior">Desconto(Se houver)</label>
+                            <input type="number" id="descontoPlanoAnterior" name="descontoPlanoAnterior" step="0.01"
+                                value="0">
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset novo">
+                        <legend>Plano Novo</legend>
+                        <div class="column">
+                            <label for="valorPlanoNovo">Valor do Plano</label>
+                            <input type="number" id="valorPlanoNovo" name="valorPlanoNovo" step="0.01" required>
+                        </div>
+
+                        <div class="column">
+                            <label for="descontoPlanoNovo">Desconto(Se houver)</label>
+                            <input type="number" id="descontoPlanoNovo" name="descontoPlanoNovo" step="0.01" value="0">
+                        </div>
+                    </fieldset>
+
+                </div>
+
+                <fieldset class="fieldset resultado">
+                    <legend>Resultado</legend>
+                    <div class="column">
+                        <label for="valorFaturaTotal">Valor da Fatura Total</label>
+                        <input type="text" id="valorFaturaTotal" name="valorFaturaTotal" readonly>
+                    </div>
+
+                    <div class="column">
+                        <label for="valorDescontoTotal" class="desconto-campo" style="display: none;">Valor Total de
+                            Desconto:</label>
+                        <input type="text" id="valorDescontoTotal" name="valorDescontoTotal" readonly
+                            class="desconto-campo" style="display: none;">
+                    </div>
+
+                    <div class="column">
+                        <label for="valorFinalCobrado">Valor Final Cobrado</label>
+                        <input type="text" id="valorFinalCobrado" name="valorFinalCobrado" readonly>
+                    </div>
+                </fieldset>
+
+                <div class="footer">
+                    <button onclick="location.href='/Sistemas'" class="menu-item">Voltar</button>
+                    <button type="button" class="menu-item" onclick="calcularProporcionalPlanos()">Calcular</button>
+                    <button type="reset" class="menu-item">Limpar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

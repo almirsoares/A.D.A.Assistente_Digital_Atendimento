@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juros e Multa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1 style="color: #fff;">Calculadora de Juros e Multa</h1>
+            <form id="calculoJurosMulta">
+                <fieldset class="fieldset info">
+                    <legend class="infoLegend">Informações do Cálculo</legend>
+                    <div class="column">
+                        <label for="valorFatura">Valor da Fatura</label>
+                        <input type="number" id="valorFatura" name="valorFatura" step="0.01" required>
+                    </div>
+                    <div class="flex">
+                        <div class="column">
+                            <label for="dataVencimento">Data de Vencimento</label>
+                            <input type="date" id="dataVencimento" name="dataVencimento" required>
+                        </div>
+                        <div class="column">
+                            <label for="dataAtualizada">Data Atualizada</label>
+                            <input type="date" id="dataAtualizada" name="dataAtualizada" required>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <label for="tipoJurosMulta">Selecione a Multa e Juros</label>
+                        <select id="tipoJurosMulta" name="tipoJurosMulta" onchange="atualizarJurosMulta()" required>
+                            <option value="10">Multa 10% - Juros 0,08333%</option>
+                            <option value="2.5">Multa 2,5% - Juros 0,033%</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="flex">
+                        <div class="column">
+                            <label for="multa">Multa (%)</label>
+                            <input type="number" id="multa" name="multa" step="0.01" required>
+                        </div>
+                        <div class="column">
+                            <label for="juros">Juros Diário (%)</label>
+                            <input type="number" id="juros" name="juros" step="0.001" required>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset resultado">
+                    <legend>Resultado</legend>
+                    <div class="column center">
+                        <label for="valorFinal">Valor Final com Juros e Multa</label>
+                        <input type="text" id="valorFinal" name="valorFinal" readonly>
+                    </div>
+                </fieldset>
+                <div class="footer">
+                    <button type="button" onclick="location.href='/Sistemas'" class="menu-item">Voltar</button>
+                    <button type="button" class="menu-item" onclick="calcularJurosMulta()">Calcular</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

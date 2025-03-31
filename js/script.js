@@ -22,7 +22,7 @@ function calcularProporcional(valorPlano, dataAntiga, dataNova) {
 // Função auxiliar que chama calcularProporcional e cuida das atribuições adicionais
 function calcularProporcionalVencimento() {
 
-        alert("Por favor, preencha todos os campos corretamente.");
+    alert("Por favor, preencha todos os campos corretamente.");
 
     // Obtém os valores do formulário
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
@@ -30,9 +30,9 @@ function calcularProporcionalVencimento() {
     const dataNova = new Date(document.getElementById('dataNova').value + 'T00:00:00');
 
     // Seta a data para o calculo ser referente ao dia do vencimento anterior para calcular o proporcional decorrendo daquele dia
-    const dataParaCalculo= new Date(dataAntiga);
+    const dataParaCalculo = new Date(dataAntiga);
     dataParaCalculo.setMonth(dataParaCalculo.getMonth() - 1);
-    
+
     // Chama a função principal para obter os cálculos
     const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataNova);
 
@@ -98,7 +98,7 @@ function calcularDesativacao() {
     }
 
     // Seta a data para o calculo ser referente ao dia do vencimento anterior para calcular o proporcional decorrendo daquele dia
-    const dataParaCalculo= new Date(dataVencimento);
+    const dataParaCalculo = new Date(dataVencimento);
     dataParaCalculo.setMonth(dataParaCalculo.getMonth() - 1);
     dataParaCalculo.setDate(dataParaCalculo.getDate() - 1);
 
@@ -236,8 +236,8 @@ function calcularDesconto() {
                 alert("Por favor, insira um número válido de dias.");
                 return;
             }
-            valorFaturaTotal = (valorFaturaTotal / 30) * (30-dias);
-            valorDescontoTotal = (valorDescontoTotal / 30) * (30-dias);
+            valorFaturaTotal = (valorFaturaTotal / 30) * (30 - dias);
+            valorDescontoTotal = (valorDescontoTotal / 30) * (30 - dias);
             break;
         case 'porPorcentagem':
             const percentual = parseFloat(descontoSolicitado);

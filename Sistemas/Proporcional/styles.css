@@ -1,0 +1,212 @@
+/* ====== STYLOS GERIAS ====== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #35553e;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.box {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: #10772a;
+    padding: 20px;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.flex {
+    display: flex;
+    gap: 10px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+
+.center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+label {
+    color: #fff;
+}
+
+input {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    border: 2px solid transparent;
+}
+
+input:focus {
+    border-color: red;
+    box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+/* === BOTÕES === */
+
+.menu-item {
+    width: 100%;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffd712;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background-color: #e6b800;
+}
+
+/* === */
+
+#resultado {
+    margin-top: 20px;
+    text-align: right;
+}
+
+
+.footer {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    color: #fff;
+}
+
+
+#usoTotal {
+    height: 20px;
+    overflow: hidden;
+    resize: none;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========= DESCRIÇÕES ========= */
+
+.fieldset {
+    width: 100%;
+    display: flex;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    gap: 10px;
+    text-align: left;
+}
+
+.fieldset legend {
+    align-items: start;
+    text-align: center;
+}
+
+legend {
+    color: #000;
+    background-color: #ffd712;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+}
+
+/* ============ */
+.informacoes {
+    display: flex;
+    justify-content: space-around;
+}
+
+.right {
+    flex-direction: column;
+}
+
+.inputData {
+    width: 180px;
+}
+
+#mensagemCliente {
+    width: 70%;
+}
+
+textarea {
+    width: 90%;
+    height: 100px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.resultado {
+    flex-direction: column;
+    text-align: center;
+}
+
+.output-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ===== RESPONSIVO ===== */
+@media screen and (max-width: 515px) {
+    .informacoes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+  
+}
+
+@media screen and (max-width: 610px) {
+    .container {
+        height: auto;
+    }
+
+    .box {
+        width: 90%;
+    }
+}
