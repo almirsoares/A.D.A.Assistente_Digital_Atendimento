@@ -134,6 +134,7 @@ function calcularDesativacao() {
     const usoTexto = `REF ${resultado.totalDias} DIAS DE USO`;
     document.getElementById('usoTotal').value = usoTexto;
 
+    
     // Mensagem de protocolo
     let protocoloTexto = `CONTRATO DESATIVADO\n` +
         `Ajustado Faturas Referente aos dias utilizados :\n\n` +
@@ -142,16 +143,12 @@ function calcularDesativacao() {
         `${dataProporcionalFormatada} - R$ ${valorProporcionalMes}\n\n` +
         `${textoMulta}\n` +
         `VALOR DA MULTA: R$ ${valorMulta.toFixed(2)}\n`;
-
     // Verifica o status do equipamento pelo botão lógico
     const statusEquipamento = document.getElementById('statusEquipamento').value;
-
     if (statusEquipamento === "Ativo") {
         protocoloTexto += `MULTA ONU: R$ ${multaEquipamento.toFixed(2)}\n\n`;
     }
-
     protocoloTexto += `ENVIADO SMS DE PRÉ INCLUSÃO`;
-
     document.getElementById('protocolo').value = protocoloTexto;
 }
 
