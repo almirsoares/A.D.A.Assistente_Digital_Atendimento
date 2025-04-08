@@ -156,11 +156,16 @@ legend {
 }
 
 .taxas {
-    padding: 5px;
+    padding: 5px 50px;
     border: none;
     border-radius: 3px;
     outline: none;
     border: 2px solid transparent;
+}
+
+.taxas option {
+    color: red;
+    
 }
 
 .taxas:focus {

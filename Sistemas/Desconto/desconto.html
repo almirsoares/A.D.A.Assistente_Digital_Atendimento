@@ -33,18 +33,20 @@
                         </div>
                     </div>
                     <div class="gap">
-                        <div class="column">
-                            <label for="descontoSolicitado">Desconto Solicitado</label>
-                            <input type="number" id="descontoSolicitado" name="descontoSolicitado" step="0.01"
-                                value="0">
-                        </div>
-                        <div class="column center">
-                            <label for="tipoDesconto">Tipo de Desconto</label>
-                            <select id="tipoDesconto" name="tipoDesconto" class="taxas" required>
-                                <option value="porDias">Por Dias</option>
-                                <option value="porPorcentagem">Por %</option>
-                                <option value="porValor">Por Valor</option>
-                            </select>
+                        <div class="flex">
+                            <div class="column">
+                                <label for="descontoSolicitado">Desconto Solicitado</label>
+                                <input type="number" id="descontoSolicitado" name="descontoSolicitado" step="0.01"
+                                    value="0">
+                            </div>
+                            <div class="column">
+                                <label for="tipoDesconto">Tipo de Desconto</label>
+                                <select id="tipoDesconto" name="tipoDesconto" class="taxas" required>
+                                    <option value="porDias">Por Dias</option>
+                                    <option value="porPorcentagem">Por %</option>
+                                    <option value="porValor">Por Valor</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </fieldset>
