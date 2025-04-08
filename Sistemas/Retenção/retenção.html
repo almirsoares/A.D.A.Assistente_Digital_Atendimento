@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!-- A.D.A. - Assistente Digital de Atendimento 
+     Desenvolvedores: 
+     - Almir Soares -- github.com/almirsoares
+     - Arthus Joaquim -- github.com/arthusjoaquim7
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Trabalho - Calcular Proporcional - Cancelamento</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../../img/robo.png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1 style="color: #fff;">Retenção</h1>
+            <form id="retenção">
+                <fieldset class="fieldset info center">
+                    <legend>Informações</legend>
+                    <div class="flex left">
+                        <div class="column">
+                            <label for="motivo">Motivo:</label>
+                            <input type="text" id="motivo" name="motivo" placeholder="Digite o motivo">
+                        </div>
+                        <div class="column">
+                            <label for="cliente-retido">Cliente Retido?</label>
+                            <select id="cliente-retido" name="cliente-retido" class="taxas" required>
+                                <option value="nao">Não</option>
+                                <option value="sim">Sim</option>
+                            </select>
+                        </div>
+                    </div>
+                        <div class="gap">
+                                <div class="column">
+                                    <label for="matriz-ofertas">Matriz de Ofertas:</label>
+                                    <div id="matriz-container">
+                                        <input type="text" name="matriz-ofertas[]" placeholder="1 - " class="matriz-ofertas">
+                                    </div>
+                                    <button type="button" onclick="adicionarOferta()">+</button>
+                                    <script>
+                                        let ofertaCount = 1;
+
+                                        function adicionarOferta() {
+                                            ofertaCount++;
+                                            const container = document.getElementById('matriz-container');
+                                            const novoInput = document.createElement('input');
+                                            novoInput.type = 'text';
+                                            novoInput.name = 'matriz-ofertas[]';
+                                            novoInput.placeholder = `${ofertaCount} - `;
+                                            novoInput.className = 'matriz-ofertas';
+                                            container.appendChild(novoInput);
+                                        }
+                                    </script>
+                                </div>
+                        </div>
+                </fieldset>
+                <script>
+                    document.getElementById('cliente-retido').addEventListener('change', function () {
+                        const valorPlanoFieldset = document.querySelector('fieldset:nth-of-type(2)');
+                        if (this.value === 'sim') {
+                            valorPlanoFieldset.style.display = 'none';
+                        } else {
+                            valorPlanoFieldset.style.display = 'block';
+                        }
+                    });
+                </script>
+                <fieldset class="fieldset">
+                    <legend>Valor do plano</legend>
+                    <div class="column">
+                        <label for="valorPlano">Valor do Plano</label>
+                        <input type="number" id="valorPlano" name="valorPlano" required>
+                    </div>
+                    <div class="column">
+                        <label for="dataVencimento">Data de Vencimento</label>
+                        <input type="date" id="dataVencimento" name="dataVencimento" required>
+                    </div>
+                    <div class="column">
+                        <label for="dataUltimoAcesso">Data de Último Acesso</label>
+                        <input type="date" id="dataUltimoAcesso" name="dataUltimoAcesso" required>
+                    </div>
+                    <div>
+                    <div class="column">
+                        <label for="valorMulta">Valor da Multa</label>
+                        <input type="number" id="valorMulta" name="valorMulta" step="0.01" value="0">
+                    </div>
+                    <div class="column">
+                        <label for="meses">Meses não utilizados</label>
+                        <select id="meses" class="status" name="meses">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="flexResp">
+                        <div class="column">
+                            <label for="multaEquipamento">Equipamento</label>
+                            <input type="number" id="multaEquipamento" name="multaEquipamento" step="0.01" value="0"
+                                style="width: 100px">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="footer">
+                    <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
+                    <button type="button" class="menu-item" onclick="calcularDesconto()">Calcular</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

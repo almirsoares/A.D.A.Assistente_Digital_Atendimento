@@ -145,7 +145,7 @@ function calcularDesativacao() {
         `VALOR DA MULTA: R$ ${valorMulta.toFixed(2)}\n`;
     // Verifica o status do equipamento pelo botão lógico
     const statusEquipamento = document.getElementById('statusEquipamento').value;
-    if (statusEquipamento === "Ativo") {
+    if (statusEquipamento === "Extraviado") {
         protocoloTexto += `MULTA ONU: R$ ${multaEquipamento.toFixed(2)}\n\n`;
     }
     protocoloTexto += `ENVIADO SMS DE PRÉ INCLUSÃO`;
