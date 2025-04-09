@@ -4,9 +4,9 @@
 <!-- A.D.A. - Assistente Digital de Atendimento 
      Desenvolvedores: 
      - Almir Soares -- github.com/almirsoares
-     - Arthus Joaquim -- github.com/arthusjoaquim7
+     - Arthur Joaquim -- github.com/arthurjoaquim7
 -->
-     
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,51 +21,53 @@
             <h1 style="color: #fff;">Calcular Proporcional de Vencimento</h1>
             <br>
             <form id="proporcionalForm" class="form">
-                <fieldset class="fieldset informacoes">
-                    <legend>Informações</legend>
-                    <div class="flex column left">
-                        <div class="column">
-                            <label for="valorPlano" class="label">Valor do Plano</label>
-                            <input type="number" id="valorPlano" name="valorPlano" required class="input">
+                <div class="flex">
+                    <fieldset class="informacoes">
+                        <legend>Informações</legend>
+                        <div class="flex column left">
+                            <div class="column">
+                                <label for="valorPlano" class="label">Valor do Plano</label>
+                                <input type="number" id="valorPlano" name="valorPlano" required class="input">
+                            </div>
+                            <div class="align">
+                                <input type="checkbox" class="checkbox" id="desejaMudanca" name="desejaMudanca" checked>
+                                <label for="desejaMudanca" class="label">Cliente deseja mudança?</label>
+                            </div>
+                            <div class="align">
+                                <input type="checkbox" class="checkbox" id="utilizaApp" name="utilizaApp" checked>
+                                <label for="utilizaApp" class="label">Cliente utiliza app?</label>
+                            </div>
                         </div>
-                        <div class="align">
-                            <input type="checkbox" class="checkbox" id="desejaMudanca" name="desejaMudanca" checked>
-                            <label for="desejaMudanca" class="label">Cliente deseja mudança?</label>
+                        <div class="flex right">
+                            <div class="column">
+                                <label for="dataAntiga" class="label">Data da próxima fatura</label>
+                                <input type="date" class="inputData" id="dataAntiga" name="dataAntiga" required>
+                            </div>
+                            <div class="column">
+                                <label for="dataNova" class="label">Nova data de vencimento</label>
+                                <input type="date" class="inputData" id="dataNova" name="dataNova" required>
+                            </div>
                         </div>
-                        <div class="align">
-                            <input type="checkbox" class="checkbox" id="utilizaApp" name="utilizaApp" checked>
-                            <label for="utilizaApp" class="label">Cliente utiliza app?</label>
-                        </div>
+                    </fieldset>
+                </div>
+                </form>
+                <fieldset class="resultado">
+                    <legend>Resultado</legend>
+                    <div class="output-container">
+                        <h2>Mensagem ao Cliente</h2>
+                        <textarea id="mensagemCliente" readonly class="textarea"></textarea>
                     </div>
-                    <div class="flex right">
-                        <div class="column">
-                            <label for="dataAntiga" class="label">Data da próxima fatura</label>
-                            <input type="date" class="inputData" id="dataAntiga" name="dataAntiga" required>
-                        </div>
-                        <div class="column">
-                            <label for="dataNova" class="label">Nova data de vencimento</label>
-                            <input type="date" class="inputData" id="dataNova" name="dataNova" required>
-                        </div>
+                    <div class="output-container">
+                        <h2>Protocolo</h2>
+                        <textarea id="protocolo" readonly class="textarea"></textarea>
                     </div>
-                  
                 </fieldset>
-            </form>
-            <fieldset class="fieldset resultado">
-                <legend>Resultado</legend>
-                <div class="output-container">
-                    <h2>Mensagem ao Cliente</h2>
-                    <textarea id="mensagemCliente" readonly></textarea>
+                <div class="footer">
+                    <button onclick="window.location.href = '../../index.html';" class="menu-item">Voltar</button>
+                    <button type="button" class="menu-item" onclick="calcularProporcionalVencimento()">Calcular</button>
                 </div>
-                <div class="output-container">
-                    <h2>Protocolo</h2>
-                    <textarea id="protocolo" readonly></textarea>
-                </div>
-                
-            </fieldset>
-            <div class="footer">
-                <button onclick="window.location.href = '../../index.html';" class="menu-item">Voltar</button>
-                <button type="button" class="menu-item" onclick="calcularProporcionalVencimento()">Calcular</button>
             </div>
+           
         </div>
     </div>
     <script src="../../js/script.js"></script>
