@@ -4,6 +4,11 @@ function calcularContrato() {
     const taxaInstalacao = parseFloat(document.getElementById('taxaInstalacao').value) || 0;
     const equipamento = parseFloat(document.getElementById('equipamentoComodato').value) || 0;
 
+    if (!valorOriginal || !beneficio || !taxaInstalacao || !equipamento) {
+        alert('Por favor, preencha todos os campos antes de calcular.');
+        return;
+    }
+
     const totalSimples = valorOriginal - beneficio;
     document.getElementById('totalPagarSimples').value = totalSimples.toFixed(2);
 

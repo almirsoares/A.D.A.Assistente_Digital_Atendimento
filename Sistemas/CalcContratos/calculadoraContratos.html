@@ -29,7 +29,7 @@
                         </div>
                         <div class="column">
                             <label for="beneficio">Benefício</label>
-                            <input type="number" id="beneficio" name="beneficio" step="0.01" value="0">
+                            <input type="number" id="beneficio" name="beneficio" step="0.01" required>
                         </div>
                         <div class="column">
                             <label for="totalPagarSimples">Total a Pagar</label>
@@ -43,11 +43,11 @@
                     <div class="flex left">
                         <div class="column">
                             <label for="taxaInstalacao">Taxa de Instalação</label>
-                            <input type="number" id="taxaInstalacao" name="taxaInstalacao" step="0.01" value="0">
+                            <input type="number" id="taxaInstalacao" name="taxaInstalacao" step="0.01" value="150">
                         </div>
                         <div class="column">
                             <label for="equipamentoComodato">Equipamento em Comodato</label>
-                            <input type="number" id="equipamentoComodato" name="equipamentoComodato" step="0.01" value="0">
+                            <input type="number" id="equipamentoComodato" name="equipamentoComodato" step="0.01" value="500">
                         </div>
                     </div>
                     <div class="flex left">
@@ -63,11 +63,13 @@
                             <label for="totalPagarComodato">Total a Pagar</label>
                             <input type="text" id="totalPagarComodato" name="totalPagarComodato" readonly>
                         </div>
+                    </div>
+                    <div class="flex left">
                         <div class="column">
                             <label for="totalBeneficios">Total de Benefícios</label>
                             <input type="text" id="totalBeneficios" name="totalBeneficios" readonly>
                         </div>
-                    </div>
+                    </div> 
                 </fieldset>
 
                 <div class="footer">
