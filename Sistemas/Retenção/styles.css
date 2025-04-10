@@ -70,9 +70,22 @@ input:focus {
     box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
 }
 
-.matriz-ofertas{
-    padding-right: 100%;
-}
+textarea {
+    width: 90%;
+    height: 100px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .resultado {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  h2{
+    color: #fff;
+    text-align: center;
+  }
 
 form {
     display: flex;
@@ -174,6 +187,11 @@ legend {
 .taxas:focus {
     border-color: red;
     box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
+}
+
+.flexResp {
+    display: flex;
+    gap: 10px;
 }
 
 /* ===== RESPONSIVO ===== */

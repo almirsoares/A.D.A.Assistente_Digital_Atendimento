@@ -241,3 +241,33 @@ function calcularJurosMulta() {
     // Atualiza os campos com os resultados
     document.getElementById('valorFinal').value = valorFinal.toFixed(2);
 }
+
+
+
+function protocoloRetencao() {
+    alert('função chamada');
+
+    const clienteRetido = document.getElementById('cliente-retido').value;
+    if (clienteRetido !== 'sim') return;
+    alert('2');
+    const motivo = document.getElementById('motivo').value.trim();
+    alert('3');
+    const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
+    const ofertas = Array.from(ofertasInputs)
+        .map((input, index) => `${index + 1} - ${input.value.trim()}`)
+        .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
+    alert('4');
+    // Garante pelo menos 2 ofertas
+    while (ofertas.length < 2) {
+        ofertas.push(`${ofertas.length + 1} - `);
+    }
+    alert('5');
+    const protocoloTexto =
+        `MOTIVO: ${motivo}
+        OFERTAS PASSADAS:   (Mínimo 2 ofertas)
+        ${ofertas.join('\n')}
+        CANCELADO: (X )NÃO`;
+    alert('6');
+    document.getElementById('protocolo').value = protocoloTexto;
+    alert('7');
+}
