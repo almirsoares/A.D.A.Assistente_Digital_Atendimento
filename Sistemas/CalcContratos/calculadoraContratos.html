@@ -1,87 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<!-- A.D.A. - Assistente Digital de Atendimento 
+  <!-- A.D.A. - Assistente Digital de Atendimento 
      Desenvolvedores: 
      - Almir Soares -- github.com/almirsoares
      - Arthur Joaquim -- github.com/arthurjoaquim7
 -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:description" content="A.D.A. - Assistente Digital de Atendimento">
-    <meta property="og:image" content="image/robo.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:description" content="A.D.A. - Assistente Digital de Atendimento" />
+    <meta property="og:image" content="image/robo.png" />
     <title>Calcular Contratos</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="../../img/robo.png">
-</head>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="../../img/robo.png" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="box">
-            <h1 style="color: #fff;">Calcular Contratos</h1>
-            <form id="formContratos">
-                <fieldset class="fieldset info center">
-                    <legend>Contrato de Adesão / Termo Combo Residencial</legend>
-                    <div class="flex left">
-                        <div class="column">
-                            <label for="valorOriginal">Valor Original</label>
-                            <input type="number" id="valorOriginal" name="valorOriginal" step="0.01" required>
-                        </div>
-                        <div class="column">
-                            <label for="beneficio">Benefício</label>
-                            <input type="number" id="beneficio" name="beneficio" step="0.01" required>
-                        </div>
-                        <div class="column">
-                            <label for="totalPagarSimples">Total a Pagar</label>
-                            <input type="text" id="totalPagarSimples" name="totalPagarSimples" readonly>
-                        </div>
-                    </div>
-                </fieldset>
+      <div class="box">
+        <h1 style="color: #fff">Calcular Contratos</h1>
+        <form id="formContratos">
+          <fieldset class="fieldset info center">
+            <legend>Contrato de Adesão / Termo Combo Residencial</legend>
+            <div class="flex left">
+              <div class="column">
+                <label for="valorOriginal">Valor Original</label>
+                <input type="number" id="valorOriginal" name="valorOriginal" step="0.01" required />
+              </div>
+              <div class="column">
+                <label for="beneficio">Benefício</label>
+                <input type="number" id="beneficio" name="beneficio" step="0.01" required />
+              </div>
+              <div class="column">
+                <label for="totalPagarSimples">Total a Pagar</label>
+                <input type="text" id="totalPagarSimples" name="totalPagarSimples" readonly />
+              </div>
+            </div>
+          </fieldset>
 
-                <fieldset class="fieldset">
-                    <legend>Comodato / Instalação</legend>
-                    <div class="flex left">
-                        <div class="column">
-                            <label for="taxaInstalacao">Taxa de Instalação</label>
-                            <input type="number" id="taxaInstalacao" name="taxaInstalacao" step="0.01" value="150">
-                        </div>
-                        <div class="column">
-                            <label for="equipamentoComodato">Equipamento em Comodato</label>
-                            <input type="number" id="equipamentoComodato" name="equipamentoComodato" step="0.01" value="500">
-                        </div>
-                    </div>
-                    <div class="flex left">
-                        <div class="column">
-                            <label for="valorOriginal12">Valor Original (12 meses)</label>
-                            <input type="text" id="valorOriginal12" name="valorOriginal12" readonly>
-                        </div>
-                        <div class="column">
-                            <label for="beneficio12">Benefício (12 meses)</label>
-                            <input type="text" id="beneficio12" name="beneficio12" readonly>
-                        </div>
-                        <div class="column">
-                            <label for="totalPagarComodato">Total a Pagar</label>
-                            <input type="text" id="totalPagarComodato" name="totalPagarComodato" readonly>
-                        </div>
-                    </div>
-                    <div class="flex left">
-                        <div class="column">
-                            <label for="totalBeneficios">Total de Benefícios</label>
-                            <input type="text" id="totalBeneficios" name="totalBeneficios" readonly>
-                        </div>
-                    </div> 
-                </fieldset>
+          <fieldset class="fieldset">
+            <legend>Comodato / Instalação</legend>
+            <div class="flex left">
+              <div class="column">
+                <label for="taxaInstalacao">Taxa de Instalação</label>
+                <input type="number" id="taxaInstalacao" name="taxaInstalacao" step="0.01" value="150" />
+              </div>
+              <div class="column">
+                <label for="equipamentoComodato">Equipamento em Comodato</label>
+                <input type="number" id="equipamentoComodato" name="equipamentoComodato" step="0.01" value="500" />
+              </div>
+            </div>
+            <div class="flex left">
+              <div class="column">
+                <label for="valorOriginal12">Valor Original (12 meses)</label>
+                <input type="text" id="valorOriginal12" name="valorOriginal12" readonly />
+              </div>
+              <div class="column">
+                <label for="beneficio12">Benefício (12 meses)</label>
+                <input type="text" id="beneficio12" name="beneficio12" readonly />
+              </div>
+              <div class="column">
+                <label for="totalPagarComodato">Total a Pagar</label>
+                <input type="text" id="totalPagarComodato" name="totalPagarComodato" readonly />
+              </div>
+            </div>
+            <div class="flex left">
+              <div class="column">
+                <label for="totalBeneficios">Total de Benefícios</label>
+                <input type="text" id="totalBeneficios" name="totalBeneficios" readonly />
+              </div>
+            </div>
+          </fieldset>
 
-                <div class="footer">
-                    <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
-                    <button type="button" class="menu-item" onclick="calcularContrato()">Calcular</button>
-                </div>
-            </form>
-        </div>
+          <div class="footer">
+            <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
+            <button type="button" class="menu-item" onclick="calcularContrato()">Calcular</button>
+          </div>
+        </form>
+      </div>
     </div>
     <script src="calculadoraContratos.js"></script>
-</body>
-
+  </body>
 </html>
