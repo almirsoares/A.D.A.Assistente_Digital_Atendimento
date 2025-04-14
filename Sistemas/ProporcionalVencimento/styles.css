@@ -72,11 +72,11 @@ input:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
 }
 
-/* .form {
+.form {
   display: flex;
   align-items: center;
   justify-content: center;
-} */
+}
 
 /* === BOTÕES === */
 
@@ -205,6 +205,17 @@ textarea {
 
 /* ===== RESPONSIVO ===== */
 @media screen and (max-width: 795px) {
+  .container {
+    height: auto;
+    padding: 20px 0;
+  }
+  .informacoes {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
   .flex {
     flex-direction: column;
   }
@@ -212,19 +223,20 @@ textarea {
   .resultado {
     width: 100%;
   }
-
-  .informacoes {
-    width: 100%;
-    display: flex;
-  }
 }
 
 @media screen and (max-width: 610px) {
-  .container {
-    height: auto;
-  }
-
   .box {
     width: 90%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .informacoes {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .right {
+    padding-right: 15px;
   }
 }
