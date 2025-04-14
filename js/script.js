@@ -93,7 +93,7 @@ function calcularDesativacao() {
     const multaEquipamento = parseFloat(document.getElementById('multaEquipamento').value);
     const meses = parseInt(document.getElementById('meses').value);
 
-    if (isNaN(valorPlano) || !dataVencimento || !dataUltimoAcesso || isNaN(valorMultaDigitado) || isNaN(meses)) {
+    if (isNaN(valorPlano) || isNaN(dataVencimento.getTime()) || isNaN(dataUltimoAcesso.getTime()) || isNaN(valorMultaDigitado) || isNaN(meses)) {
         alert('Por favor, preencha todos os campos corretamente.');
         return;
     }
@@ -245,29 +245,61 @@ function calcularJurosMulta() {
 
 
 function protocoloRetencao() {
-    alert('função chamada');
+
+    // Obtenção de valores dos campos de entrada   new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
+    const valorPlano = parseFloat(document.getElementById('valorPlano').value);
+    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
+    const dataCancelamento = new Date(document.getElementById('dataCancelamento').value + 'T00:00:00');
+    const valorMultaDigitado = parseFloat(document.getElementById('valorMulta').value);
+    const multaEquipamento = parseFloat(document.getElementById('multaEquipamento').value);
+    const meses = parseInt(document.getElementById('meses').value);
 
     const clienteRetido = document.getElementById('cliente-retido').value;
-    if (clienteRetido !== 'sim') return;
-    alert('2');
-    const motivo = document.getElementById('motivo').value.trim();
-    alert('3');
-    const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
-    const ofertas = Array.from(ofertasInputs)
-        .map((input, index) => `${index + 1} - ${input.value.trim()}`)
-        .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
-    alert('4');
-    // Garante pelo menos 2 ofertas
-    while (ofertas.length < 2) {
-        ofertas.push(`${ofertas.length + 1} - `);
+    if (clienteRetido == 'sim'){
+
+        const motivo = document.getElementById('motivo').value.trim();
+        
+        const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
+        const ofertas = Array.from(ofertasInputs)
+            .map((input, index) => `${index + 1} - ${input.value.trim()}`)
+            .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
+        
+        // Garante pelo menos 2 ofertas
+        while (ofertas.length < 2) {
+            ofertas.push(`${ofertas.length + 1} - `);
+        }
+        
+        const protocoloTexto =
+            `MOTIVO: ${motivo}
+            OFERTAS PASSADAS:   (Mínimo 2 ofertas)
+            ${ofertas.join('\n')}
+            CANCELADO: (X )NÃO`;
+        
+        document.getElementById('protocolo').value = protocoloTexto;
+    } else{
+        if (isNaN(valorPlano) || isNaN(dataVencimento.getTime()) || isNaN(dataCancelamento.getTime()) || isNaN(valorMultaDigitado)|| isNaN(multaEquipamento) || isNaN(meses)) {
+            alert('Por favor, preencha todos os campos corretamente.');
+            return;
+        }
+
+        const motivo = document.getElementById('motivo').value.trim();
+        
+        const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
+        const ofertas = Array.from(ofertasInputs)
+            .map((input, index) => `          ${index + 1} - ${input.value.trim()}`)
+            .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
+        
+        // Garante pelo menos 2 ofertas
+        while (ofertas.length < 2) {
+            ofertas.push(`${ofertas.length + 1} - `);
+        }
+        
+        const protocoloTexto =
+            `CANCELADO: (X )SIM
+            MOTIVO: ${motivo}
+            OFERTAS PASSADAS:   (Mínimo 2 ofertas)
+                ${ofertas.join('\n')}`;
+        
+        document.getElementById('protocolo').value = protocoloTexto;
     }
-    alert('5');
-    const protocoloTexto =
-        `MOTIVO: ${motivo}
-        OFERTAS PASSADAS:   (Mínimo 2 ofertas)
-        ${ofertas.join('\n')}
-        CANCELADO: (X )NÃO`;
-    alert('6');
-    document.getElementById('protocolo').value = protocoloTexto;
-    alert('7');
 }
