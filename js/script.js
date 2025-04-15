@@ -197,18 +197,23 @@ function calcularProporcionalPlanos() {
     const valorDescontoTotal = propDescontoPlanoAnterior + propDescontoPlanoNovo;
     const valorFinalCobrado = valorFaturaTotal - valorDescontoTotal;
 
-    // Atualiza os campos do resumo
-    document.getElementById('valorFaturaTotal').value = valorFaturaTotal.toFixed(2);
-    document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2);
-
-    // Exibe os campos de desconto apenas se aplicável
+    // Exibe os campos de desconto e valor total da fatura apenas se aplicável
     const descontoCampos = document.querySelectorAll('.desconto-campo');
+    const valorFaturaTotalCampo = document.querySelectorAll('.fatura-campo');
+
     if (valorDescontoTotal > 0) {
         descontoCampos.forEach(campo => campo.style.display = 'block');
+        valorFaturaTotalCampo.forEach(campo => campo.style.display = 'block');
+
         document.getElementById('valorDescontoTotal').value = valorDescontoTotal.toFixed(2);
+        document.getElementById('valorFaturaTotal').value = valorFaturaTotal.toFixed(2);
     } else {
         descontoCampos.forEach(campo => campo.style.display = 'none');
+        document.getElementById('valorFaturaTotal').style.display = 'none';
     }
+
+    // Atualiza o campo do valor final cobrado
+    document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2);
 }
 
 
