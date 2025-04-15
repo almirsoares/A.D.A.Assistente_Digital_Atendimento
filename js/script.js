@@ -20,6 +20,9 @@ function calcularProporcional(valorPlano, dataAntiga, dataNova) {
 }
 
 
+
+//-----------------------------------------------------------------------------------------
+// FUNÇÃO PARA ALTERAÇÃO DE PLANO
 // Função auxiliar que chama calcularProporcional e cuida das atribuições adicionais
 function calcularProporcionalVencimento() {
 
@@ -82,8 +85,74 @@ Atendimento finalizado.`;
 }
 
 
+// Função que calcula os valores proporcionais entre dois planos
+function calcularProporcionalPlanos() {
+    // Obtém os valores dos campos
+    const valorPlanoAnterior = parseFloat(document.getElementById('valorPlanoAnterior').value);
+    const descontoPlanoAnterior = parseFloat(document.getElementById('descontoPlanoAnterior').value);
+    const valorPlanoNovo = parseFloat(document.getElementById('valorPlanoNovo').value);
+    const descontoPlanoNovo = parseFloat(document.getElementById('descontoPlanoNovo').value);
 
+    // Obtém as datas
+    const dataInicioPlano = new Date(document.getElementById('inicioPlano').value + 'T00:00:00');
+    const dataTroca = new Date(document.getElementById('dataTroca').value + 'T00:00:00');
+    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
+
+    if (isNaN(valorPlanoAnterior) || isNaN(valorPlanoNovo) || isNaN(dataInicioPlano) || isNaN(dataTroca) || isNaN(dataVencimento)) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
+    }
+
+    // Calcula o valor proporcional do plano anterior até a data de troca
+    const resultadoAnterior = calcularProporcional(valorPlanoAnterior, dataInicioPlano, dataTroca);
+    const proporcionalAnterior = resultadoAnterior.valorTotal;
+
+    // Calcula o valor proporcional do novo plano da data de troca até o vencimento
+    const resultadoNovo = calcularProporcional(valorPlanoNovo, dataTroca, dataVencimento);
+    const proporcionalNovo = resultadoNovo.valorTotal;
+
+    // Verifica se os dias são menores ou iguais a 5 e emite alerta
+    if (resultadoAnterior.totalDias <= 5) {
+        alert("A quantidade de dias para o plano anterior é menor ou igual a 5. Nesta caso o proporcional de troca de plano é dispensada.");
+    }
+    if (resultadoNovo.totalDias <= 5) {
+        alert("A quantidade de dias para o novo plano é menor ou igual a 5. Nesta caso o proporcional de troca de plano é dispensada.");
+    }
+
+    // Calcula os descontos proporcionais
+    const propDescontoPlanoAnterior = (descontoPlanoAnterior / 30) * resultadoAnterior.totalDias;
+    const propDescontoPlanoNovo = (descontoPlanoNovo / 30) * resultadoNovo.totalDias;
+
+    // Soma os valores
+    const valorFaturaTotal = proporcionalAnterior + proporcionalNovo;
+    const valorDescontoTotal = propDescontoPlanoAnterior + propDescontoPlanoNovo;
+    const valorFinalCobrado = valorFaturaTotal - valorDescontoTotal;
+
+    // Exibe os campos de desconto e valor total da fatura apenas se aplicável
+    const descontoCampos = document.querySelectorAll('.desconto-campo');
+    const valorFaturaTotalCampo = document.querySelectorAll('.fatura-campo');
+
+    if (valorDescontoTotal > 0) {
+        descontoCampos.forEach(campo => campo.style.display = 'block');
+        valorFaturaTotalCampo.forEach(campo => campo.style.display = 'block');
+
+        document.getElementById('valorDescontoTotal').value = valorDescontoTotal.toFixed(2);
+        document.getElementById('valorFaturaTotal').value = valorFaturaTotal.toFixed(2);
+    } else {
+        descontoCampos.forEach(campo => campo.style.display = 'none');
+        document.getElementById('valorFaturaTotal').style.display = 'none';
+    }
+
+    // Atualiza o campo do valor final cobrado
+    document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2);
+}
+
+
+
+//-------------------------------------------------------------------------------------
+// FUNÇÃO PARA DESATIVAÇÃO DE CLIENTES
 // Função que calcula os valores proporcionais de desativação e inputa as faturas anteriores como prevenção
+
 function calcularDesativacao() {
     // Obtenção de valores dos campos de entrada   new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
@@ -154,100 +223,9 @@ function calcularDesativacao() {
 
 
 
-// Função que calcula os valores proporcionais entre dois planos
-function calcularProporcionalPlanos() {
-    // Obtém os valores dos campos
-    const valorPlanoAnterior = parseFloat(document.getElementById('valorPlanoAnterior').value);
-    const descontoPlanoAnterior = parseFloat(document.getElementById('descontoPlanoAnterior').value);
-    const valorPlanoNovo = parseFloat(document.getElementById('valorPlanoNovo').value);
-    const descontoPlanoNovo = parseFloat(document.getElementById('descontoPlanoNovo').value);
-
-    // Obtém as datas
-    const dataInicioPlano = new Date(document.getElementById('inicioPlano').value + 'T00:00:00');
-    const dataTroca = new Date(document.getElementById('dataTroca').value + 'T00:00:00');
-    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
-
-    if (isNaN(valorPlanoAnterior) || isNaN(valorPlanoNovo) || isNaN(dataInicioPlano) || isNaN(dataTroca) || isNaN(dataVencimento)) {
-        alert("Por favor, preencha todos os campos corretamente.");
-        return;
-    }
-
-    // Calcula o valor proporcional do plano anterior até a data de troca
-    const resultadoAnterior = calcularProporcional(valorPlanoAnterior, dataInicioPlano, dataTroca);
-    const proporcionalAnterior = resultadoAnterior.valorTotal;
-
-    // Calcula o valor proporcional do novo plano da data de troca até o vencimento
-    const resultadoNovo = calcularProporcional(valorPlanoNovo, dataTroca, dataVencimento);
-    const proporcionalNovo = resultadoNovo.valorTotal;
-
-    // Verifica se os dias são menores ou iguais a 5 e emite alerta
-    if (resultadoAnterior.totalDias <= 5) {
-        alert("A quantidade de dias para o plano anterior é menor ou igual a 5. Nesta caso o proporcional de troca de plano é dispensada.");
-    }
-    if (resultadoNovo.totalDias <= 5) {
-        alert("A quantidade de dias para o novo plano é menor ou igual a 5. Nesta caso o proporcional de troca de plano é dispensada.");
-    }
-
-    // Calcula os descontos proporcionais
-    const propDescontoPlanoAnterior = (descontoPlanoAnterior / 30) * resultadoAnterior.totalDias;
-    const propDescontoPlanoNovo = (descontoPlanoNovo / 30) * resultadoNovo.totalDias;
-
-    // Soma os valores
-    const valorFaturaTotal = proporcionalAnterior + proporcionalNovo;
-    const valorDescontoTotal = propDescontoPlanoAnterior + propDescontoPlanoNovo;
-    const valorFinalCobrado = valorFaturaTotal - valorDescontoTotal;
-
-    // Exibe os campos de desconto e valor total da fatura apenas se aplicável
-    const descontoCampos = document.querySelectorAll('.desconto-campo');
-    const valorFaturaTotalCampo = document.querySelectorAll('.fatura-campo');
-
-    if (valorDescontoTotal > 0) {
-        descontoCampos.forEach(campo => campo.style.display = 'block');
-        valorFaturaTotalCampo.forEach(campo => campo.style.display = 'block');
-
-        document.getElementById('valorDescontoTotal').value = valorDescontoTotal.toFixed(2);
-        document.getElementById('valorFaturaTotal').value = valorFaturaTotal.toFixed(2);
-    } else {
-        descontoCampos.forEach(campo => campo.style.display = 'none');
-        document.getElementById('valorFaturaTotal').style.display = 'none';
-    }
-
-    // Atualiza o campo do valor final cobrado
-    document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2);
-}
-
-
-// Função para calcular Juros e Multa utilizando calcularProporcional
-function calcularJurosMulta() {
-    const valorFatura = parseFloat(document.getElementById('valorFatura').value);
-    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
-    const dataAtualizada = new Date(document.getElementById('dataAtualizada').value + 'T00:00:00');
-    const multa = parseFloat(document.getElementById('multa').value) / 100;
-    const juros = parseFloat(document.getElementById('juros').value) / 100;
-
-    if (isNaN(valorFatura) || isNaN(multa) || isNaN(juros) || isNaN(dataVencimento) || isNaN(dataAtualizada)) {
-        alert("Por favor, preencha todos os campos corretamente.");
-        return;
-    }
-
-    // Usa a função calcularProporcional para obter o total de dias de atraso
-    const resultado = calcularProporcional(valorFatura, dataVencimento, dataAtualizada);
-    const totalDias = resultado.totalDias;
-
-    // Calcula multa fixa
-    const valorMulta = valorFatura * multa;
-
-    // Calcula juros compostos
-    const valorJuros = valorFatura * Math.pow(1 + juros, totalDias) - valorFatura;
-
-    // Calcula o valor final com multa e juros
-    const valorFinal = valorFatura + valorMulta + valorJuros;
-
-    // Atualiza os campos com os resultados
-    document.getElementById('valorFinal').value = valorFinal.toFixed(2);
-}
-
-
+//---------------------------------------------------------------------------
+// FUNÇÃO PARA RETENÇÃO DE CLIENTES
+// Função que calcula os valores proporcionais de retenção e inputa as faturas anteriores como prevenção
 
 function protocoloRetencao() {
 
@@ -270,10 +248,10 @@ function protocoloRetencao() {
             .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
         
         // Garante pelo menos 2 ofertas
-        while (ofertas.length < 2) {
+        /*while (ofertas.length < 2) {
             ofertas.push(`${ofertas.length + 1} - `);
         }
-        
+        */
         const protocoloTexto =
             `MOTIVO: ${motivo}
             OFERTAS PASSADAS:   (Mínimo 2 ofertas)
@@ -307,12 +285,9 @@ function protocoloRetencao() {
             textoMulta = "MULTA:   (   )  APLICÁVEL    (  X ) NÃO APLICÁVEL - sem fidelidade ativa";
 
         } else {
-            alert("multa 1");
             valorMulta = ((valorMultaDigitado - multaEquipamento) * meses) / 12;
-            alert("multa 2");
             textoMulta = `MULTA: R$ ${valorMulta.toFixed(2)}  (  x )  APLICÁVEL    (   ) NÃO APLICÁVEL - sem fidelidade ativa
                          Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}`;
-            alert ("multa 3");
         }
 
 
@@ -334,7 +309,6 @@ function protocoloRetencao() {
             MOTIVO: ${motivo}
             OFERTAS PASSADAS:   (Mínimo 2 ofertas)
                 ${ofertas.join('\n')}`;
-        alert("1 ");
         if(valorProporcional >0 || valorMulta >0){
 
             let valores= valorProporcional + valorMulta;
@@ -345,13 +319,9 @@ function protocoloRetencao() {
                 Valor Proporcional: R$ ${valorProporcional.toFixed(2)} - ${resultado.totalDias} dias
                 Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}\n`;
                 
-                alert("3 ");
             } catch (err) {
                 alert("Erro ao montar protocoloTexto: " + err.message);
             }
-            
-            alert("3 ");
-
             
         } else{
             protocoloTexto += `VALORES (X ) NÃO
@@ -362,4 +332,68 @@ function protocoloRetencao() {
 
         document.getElementById('protocolo').value = protocoloTexto;
     }
+}
+
+
+
+//-------------------------------------------------------------------------------------
+// FUNÇÕES PARA CALCULO DE JUROS E MULTA
+
+// Função para atualizar os valores de juros e multa com base na seleção do usuário
+function atualizarJurosMulta() {
+    const tipo = document.getElementById('tipoJurosMulta').value;
+    const multaInput = document.getElementById('multa');
+    const jurosInput = document.getElementById('juros');
+
+    if (tipo === "10") {
+        multaInput.value = 10;
+        jurosInput.value = 0.08333;
+        multaInput.readOnly = true;
+        jurosInput.readOnly = true;
+    } else if (tipo === "2.5") {
+        multaInput.value = 2.5;
+        jurosInput.value = 0.033;
+        multaInput.readOnly = true;
+        jurosInput.readOnly = true;
+    } else {
+        multaInput.value = "";
+        jurosInput.value = "";
+        multaInput.readOnly = false;
+        jurosInput.readOnly = false;
+    }
+}
+
+// Define os valores padrão ao carregar a página com base na opção selecionada
+document.addEventListener("DOMContentLoaded", function () {
+    atualizarJurosMulta(); // Chama a função para definir os valores iniciais corretamente
+});
+
+// Função para calcular Juros e Multa utilizando calcularProporcional
+function calcularJurosMulta() {
+    const valorFatura = parseFloat(document.getElementById('valorFatura').value);
+    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
+    const dataAtualizada = new Date(document.getElementById('dataAtualizada').value + 'T00:00:00');
+    const multa = parseFloat(document.getElementById('multa').value) / 100;
+    const juros = parseFloat(document.getElementById('juros').value) / 100;
+
+    if (isNaN(valorFatura) || isNaN(multa) || isNaN(juros) || isNaN(dataVencimento) || isNaN(dataAtualizada)) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
+    }
+
+    // Usa a função calcularProporcional para obter o total de dias de atraso
+    const resultado = calcularProporcional(valorFatura, dataVencimento, dataAtualizada);
+    const totalDias = resultado.totalDias;
+
+    // Calcula multa fixa
+    const valorMulta = valorFatura * multa;
+
+    // Calcula juros compostos
+    const valorJuros = valorFatura * Math.pow(1 + juros, totalDias) - valorFatura;
+
+    // Calcula o valor final com multa e juros
+    const valorFinal = valorFatura + valorMulta + valorJuros;
+
+    // Atualiza os campos com os resultados
+    document.getElementById('valorFinal').value = valorFinal.toFixed(2);
 }
