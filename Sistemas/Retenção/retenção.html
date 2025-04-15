@@ -37,32 +37,29 @@
                             </select>
                         </div>
                     </div>
-                        <div class="gap">
-                            <div class="flexResp">
-                                <div class="column matriz-wrapper">
-                                    <label for="matriz-ofertas">Matriz de Ofertas:</label>
-                                    <div id="matriz-container">
-                                        <div id="matriz-container">
-                                            <input type="text" name="matriz-ofertas[]" placeholder="1 - " class="matriz-ofertas">
-                                        </div>
-                                        <button type="button" onclick="adicionarOferta()" class="btn-adicionar">+</button>                                    </div>
-                                    <script>
-                                        let ofertaCount = 1;
-
-                                        function adicionarOferta() {
-                                            ofertaCount++;
-                                            const container = document.getElementById('matriz-container');
-                                            const novoInput = document.createElement('input');
-                                            novoInput.type = 'text';
-                                            novoInput.name = 'matriz-ofertas[]';
-                                            novoInput.placeholder = `${ofertaCount} - `;
-                                            novoInput.className = 'matriz-ofertas';
-                                            container.appendChild(novoInput);
-                                        }
-                                    </script>
-                                </div>
+                    <div class="matriz">
+                        <div class="flex">
+                            <label for="matriz-ofertas">Matriz de Ofertas:</label>
+                            <div id="matriz-container">
+                                <input type="text" name="matriz-ofertas[]" placeholder="1 - " class="matriz-ofertas">
                             </div>
+                            <button type="button" onclick="adicionarOferta()" class="btn-adicionar">+</button>      
                         </div>
+                        
+                        <script>
+                            let ofertaCount = 1;
+                            function adicionarOferta() {
+                                ofertaCount++;
+                                const container = document.getElementById('matriz-container');
+                                const novoInput = document.createElement('input');
+                                novoInput.type = 'text';
+                                novoInput.name = 'matriz-ofertas[]';
+                                novoInput.placeholder = `${ofertaCount} - `;
+                                novoInput.className = 'matriz-ofertas';
+                                container.appendChild(novoInput);
+                            }
+                        </script>
+                    </div>
                 </fieldset>
                 <script>
                     document.getElementById('cliente-retido').addEventListener('change', function () {
