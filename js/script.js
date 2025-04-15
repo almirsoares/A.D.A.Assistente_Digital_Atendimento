@@ -287,8 +287,38 @@ function protocoloRetencao() {
             return;
         }
 
+        // Seta a data para o calculo ser referente ao dia do vencimento anterior para calcular o proporcional decorrendo daquele dia
+        const dataParaCalculo = new Date(dataVencimento);
+        dataParaCalculo.setMonth(dataParaCalculo.getMonth() - 1);
+        dataParaCalculo.setDate(dataParaCalculo.getDate() - 1);
+
+        // Chama a função calcularProporcional para obter os cálculos
+        const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataCancelamento);
+        const valorProporcional = resultado.valorTotal;
+
+        // Formatação das datas
+        const dataProporcionalFormatada = `${(dataVencimento.getDate()).toString().padStart(2, '0')}/${(dataVencimento.getMonth() + 1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()}`;
+
+
+        // Cálculo da multa
+        let textoMulta;
+        let valorMulta = 0;
+        if (meses === 0) {
+            textoMulta = "MULTA:   (   )  APLICÁVEL    (  X ) NÃO APLICÁVEL - sem fidelidade ativa";
+
+        } else {
+            alert("multa 1");
+            valorMulta = ((valorMultaDigitado - multaEquipamento) * meses) / 12;
+            alert("multa 2");
+            textoMulta = `MULTA: R$ ${valorMulta.toFixed(2)}  (  x )  APLICÁVEL    (   ) NÃO APLICÁVEL - sem fidelidade ativa
+                         Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}`;
+            alert ("multa 3");
+        }
+
+
+
         const motivo = document.getElementById('motivo').value.trim();
-        
+
         const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
         const ofertas = Array.from(ofertasInputs)
             .map((input, index) => `          ${index + 1} - ${input.value.trim()}`)
@@ -299,12 +329,37 @@ function protocoloRetencao() {
             ofertas.push(`${ofertas.length + 1} - `);
         }
         
-        const protocoloTexto =
+        let protocoloTexto =
             `CANCELADO: (X )SIM
             MOTIVO: ${motivo}
             OFERTAS PASSADAS:   (Mínimo 2 ofertas)
                 ${ofertas.join('\n')}`;
-        
+        alert("1 ");
+        if(valorProporcional >0 || valorMulta >0){
+
+            let valores= valorProporcional + valorMulta;
+
+            try {
+                protocoloTexto += `
+                VALORES: R$ ${valores.toFixed(2)} (  ) NÃO
+                Valor Proporcional: R$ ${valorProporcional.toFixed(2)} - ${resultado.totalDias} dias
+                Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}\n`;
+                
+                alert("3 ");
+            } catch (err) {
+                alert("Erro ao montar protocoloTexto: " + err.message);
+            }
+            
+            alert("3 ");
+
+            
+        } else{
+            protocoloTexto += `VALORES (X ) NÃO
+            Valor Proporcional: R$ 0,00 - 0 dias\n`;
+        }
+
+        protocoloTexto +=`${textoMulta}\n`;
+
         document.getElementById('protocolo').value = protocoloTexto;
     }
 }
