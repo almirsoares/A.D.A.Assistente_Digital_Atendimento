@@ -227,11 +227,14 @@ function calcularDesativacao() {
 // FUNÇÕES PARA RETENÇÃO DE CLIENTES
 
 document.getElementById('cliente-retido').addEventListener('change', function () {
-    const valorPlanoFieldset = document.querySelector('fieldset:nth-of-type(2)');
+    const fieldsetDesativação = document.getElementById('desativacao');
+    const fieldsetObsRetencao = document.getElementById('obsRetencao');
     if (this.value === 'sim') {
-        valorPlanoFieldset.style.display = 'none';
+        fieldsetDesativação.style.display = 'none';
+        fieldsetObsRetencao.style.display = 'block';
     } else {
-        valorPlanoFieldset.style.display = 'block';
+        fieldsetDesativação.style.display = 'block';
+        fieldsetObsRetencao.style.display = 'none';
     }
 });
 
