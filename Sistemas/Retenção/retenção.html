@@ -22,131 +22,144 @@
         <div class="box">
             <h1 style="color: #fff;">Retenção</h1>
             <form id="retenção">
-                <fieldset class="fieldset info center">
-                    <legend>Informações</legend>
-                    <div class="flex left">
-                        <div class="column">
-                            <label for="motivo">Motivo:</label>
-                            <input type="text" id="motivo" name="motivo" placeholder="Digite o motivo">
-                        </div>
-                        <div class="column">
-                            <label for="cliente-retido">Cliente Retido?</label>
-                            <select id="cliente-retido" name="cliente-retido" class="taxas" required>
-                                <option value="sim">Sim</option>
-                                <option value="nao">Não</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="matriz">
-                        <div class="flex">
-                            <label for="matriz-ofertas">Matriz de Ofertas:</label>
-                            <div id="matriz-container">
-                                <input type="text" name="matriz-ofertas[]" placeholder="1 - " class="matriz-ofertas">
+                <div class="flex2">
+                <div class="leftBox">
+                    <div class="column">
+                        <!-- INFORMACOES -->
+                        <fieldset class="fieldset info center">
+                            <legend>Informações</legend>
+                            <div class="flex left">
+                                <div class="column">
+                                    <label for="motivo">Motivo:</label>
+                                    <input type="text" id="motivo" name="motivo" placeholder="Digite o motivo">
+                                </div>
+                                <div class="column">
+                                    <label for="cliente-retido">Cliente Retido?</label>
+                                    <select id="cliente-retido" name="cliente-retido" class="taxas" required>
+                                        <option value="sim">Sim</option>
+                                        <option value="nao">Não</option>
+                                    </select>
+                                </div>
                             </div>
-                            <button type="button" onclick="adicionarOferta()" class="btn-adicionar">+</button>      
-                        </div>
+                            <div class="matriz">
+                                <div class="padding">
+                                <button type="button" onclick="adicionarOferta()" class="btnAdd">+</button>      
+                                <label for="matriz-ofertas">Matriz de Ofertas:</label>
+                                </div>
+                                <div class="column">
+                                    <div id="matriz-container" class="grid">
+                                        <input type="text" name="matriz-ofertas[]" placeholder="1 - " class="matriz">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                         <!-- OBSERVACOES -->
+                    <fieldset id="obsRetencao" class="fieldset info retido">
+                        <legend>Observações</legend>
+                            <div class="flex obs">
+                                <div class="column">
+                                    <label for="oferta">Qual oferta aceita:</label>
+                                    <input type="number" id="oferta" name="oferta" placeholder="Digite o N° da oferta">
+                                </div>
+        
+                                <div class="column">
+                                    <label for="obs">Observação:</label>
+                                    <input type="text" id="obs" name="obs" placeholder="Digite a observação">
+                                </div>
+        
+                            </div>
+        
+                            <div class="flex valor desconto">
+                                <div class="column">
+                                    <label for="valorDesconto">Valor ou desconto?</label>
+                                    <select id="valorDesconto" name="valorDesconto" class="taxas" >
+                                        <option value="nao">Não</option>
+                                        <option value="sim">Sim</option>
+                                    </select>                        
+                                </div>
+        
+                                <div class="column">
+                                    <label for="valor">Qual oferta aceita:</label>
+                                    <input type="number" id="valor" name="valor" placeholder="Digite o valor ou desconto">
+                                </div>
+                            </div>
+        
+                            <div class="flex prazo">
+                                <div class="column">
+                                    <label for="prazo">Informado prazo?</label>
+                                    <select id="prazo" name="prazo" class="taxas" >
+                                        <option value="nao">Não</option>
+                                        <option value="sim">Sim</option>
+                                    </select>                        
+                                </div>
+        
+                                <div class="column">
+                                    <label for="infoPrazo">Qual oferta aceita:</label>
+                                    <input type="number" id="infoPrazo" name="infoPrazo" placeholder="Digite o prazo">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!-- DESATIVACAO -->
+                        <fieldset id="desativacao" class="fieldset" style="display: none;">
+                            <legend>Desativação</legend>
+                            <div class="column">
+                                <label for="valorPlano">Valor do Plano</label>
+                                <input type="number" id="valorPlano" name="valorPlano" required>
+                            </div>
+                            <div class="flex">
+                                <div class="column">
+                                    <label for="dataVencimento">Data de Vencimento</label>
+                                    <input type="date" id="dataVencimento" name="dataVencimento" required>
+                                </div>
+                                <div class="column">
+                                    <label for="dataCancelamento">Data de Cancelamento</label>
+                                    <input type="date" id="dataCancelamento" name="dataCancelamento" required>
+                                </div>
+                            </div>
+                            <div>
+                          <div class="flex">
+                            <div class="column">
+                                <label for="valorMulta">Valor da Multa</label>
+                                <input type="number" id="valorMulta" name="valorMulta" step="0.01" value="0">
+                            </div>
+                            <div class="column">
+                                <label for="meses">Meses não utilizados</label>
+                                <select id="meses" class="status" name="meses" class="select">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                          </div>
+                            <div class="flexResp">
+                                <div class="column">
+                                    <label for="multaEquipamento">Equipamento</label>
+                                    <input type="number" id="multaEquipamento" name="multaEquipamento" step="0.01" value="0"
+                                        style="width: 100px">
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
-                </fieldset>
-
-                <fieldset id="obsRetencao" class="fieldset obs retido">
-                <legend>Observações</legend>
-                    <div class="flex obs">
-                        <div class="column">
-                            <label for="oferta">Qual oferta aceita:</label>
-                            <input type="number" id="oferta" name="oferta" placeholder="Digite o N° da oferta">
-                        </div>
-
-                        <div class="column">
-                            <label for="obs">Observação:</label>
-                            <input type="text" id="obs" name="obs" placeholder="Digite a observação">
-                        </div>
-
-                    </div>
-
-                    <div class="flex valor desconto">
-                        <div class="column">
-                            <label for="valorDesconto">Valor ou desconto?</label>
-                            <select id="valorDesconto" name="valorDesconto" class="taxas" >
-                                <option value="nao">Não</option>
-                                <option value="sim">Sim</option>
-                            </select>                        
-                        </div>
-
-                        <div class="column">
-                            <label for="valor">Qual oferta aceita:</label>
-                            <input type="number" id="valor" name="valor" placeholder="Digite o valor ou desconto">
-                        </div>
-                    </div>
-
-                    <div class="flex prazo">
-                        <div class="column">
-                            <label for="prazo">Informado prazo?</label>
-                            <select id="prazo" name="prazo" class="taxas" >
-                                <option value="nao">Não</option>
-                                <option value="sim">Sim</option>
-                            </select>                        
-                        </div>
-
-                        <div class="column">
-                            <label for="infoPrazo">Qual oferta aceita:</label>
-                            <input type="number" id="infoPrazo" name="infoPrazo" placeholder="Digite o prazo">
-                        </div>
-                    </div>
-                </fieldset>
-
-                <fieldset id="desativacao" class="fieldset" style="display: none;">
-                    <legend>Desativação</legend>
-                    <div class="column">
-                        <label for="valorPlano">Valor do Plano</label>
-                        <input type="number" id="valorPlano" name="valorPlano" required>
-                    </div>
-                    <div class="column">
-                        <label for="dataVencimento">Data de Vencimento</label>
-                        <input type="date" id="dataVencimento" name="dataVencimento" required>
-                    </div>
-                    <div class="column">
-                        <label for="dataCancelamento">Data de Cancelamento</label>
-                        <input type="date" id="dataCancelamento" name="dataCancelamento" required>
-                    </div>
-                    <div>
-                    <div class="column">
-                        <label for="valorMulta">Valor da Multa</label>
-                        <input type="number" id="valorMulta" name="valorMulta" step="0.01" value="0">
-                    </div>
-                    <div class="column">
-                        <label for="meses">Meses não utilizados</label>
-                        <select id="meses" class="status" name="meses">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                        </select>
-                    </div>
-                    <div class="flexResp">
-                        <div class="column">
-                            <label for="multaEquipamento">Equipamento</label>
-                            <input type="number" id="multaEquipamento" name="multaEquipamento" step="0.01" value="0"
-                                style="width: 100px">
-                        </div>
-                    </div>
-                </fieldset>
-                <!-- RESULTADO -->
-                <fieldset class="resultado">
-                    <legend>Resultado</legend>
-                    <div class="output-container">
-                    <h2>Protocolo</h2>
-                    <textarea id="protocolo" readonly class="textarea"></textarea>
-                    </div>
-                </fieldset>
+                </div>
+                   <div class="rightBox">
+                    <!-- Protocolo -->
+                    <fieldset class="resultado">
+                        <legend>Protocolo</legend>
+                        <textarea id="protocolo" readonly class="textarea"></textarea>
+                    </fieldset>
+                   </div>
+                </div>
+                <!-- FOOTER -->
                 <div class="footer">
                     <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
                     <button type="button" class="menu-item" onclick="protocoloRetencao()">Gerar protocolo</button>
