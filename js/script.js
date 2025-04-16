@@ -247,16 +247,16 @@ function protocoloRetencao() {
             .map((input, index) => `${index + 1} - ${input.value.trim()}`)
             .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
         
-        // Garante pelo menos 2 ofertas
-        /*while (ofertas.length < 2) {
-            ofertas.push(`${ofertas.length + 1} - `);
-        }
-        */
-        const protocoloTexto =
-            `MOTIVO: ${motivo}
+        const protocoloTexto =`MOTIVO: ${motivo}
             OFERTAS PASSADAS:   (Mínimo 2 ofertas)
             ${ofertas.join('\n')}
             CANCELADO: (X )NÃO`;
+        
+        protocoloTexto += `QUAL OFERTA ACEITA: `;	
+        
+        for (let i = 1; i <= ofertas.length; i++) {
+            protocoloTexto += `(${i}) `;
+        }
         
         document.getElementById('protocolo').value = protocoloTexto;
     } else{
@@ -299,16 +299,11 @@ function protocoloRetencao() {
             .map((input, index) => `          ${index + 1} - ${input.value.trim()}`)
             .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
         
-        // Garante pelo menos 2 ofertas
-        while (ofertas.length < 2) {
-            ofertas.push(`${ofertas.length + 1} - `);
-        }
-        
         let protocoloTexto =
             `CANCELADO: (X )SIM
             MOTIVO: ${motivo}
             OFERTAS PASSADAS:   (Mínimo 2 ofertas)
-                ${ofertas.join('\n')}`;
+            ${ofertas.join('\n')}`;
         if(valorProporcional >0 || valorMulta >0){
 
             let valores= valorProporcional + valorMulta;
@@ -329,7 +324,8 @@ function protocoloRetencao() {
         }
 
         protocoloTexto +=`${textoMulta}\n`;
-
+        protocoloTexto += `- CLIENTE CIENTE QUE É NECESSÁRIO TER ALGUÉM  MAIOR DE 18 ANOS NA RESIDÊNCIA, COM O DOCUMENTO RG EM MÃOS PARA ACOMPANHAR A VISITA DOS TÉCNICOS
+                           - CIENTE DA ABERTURA DE O.S. PARA RETIRADA DE EQUIPAMENTO. PRAZO INFORMADO DE: 3 DIAS ÚTEIS.`;
         document.getElementById('protocolo').value = protocoloTexto;
     }
 }
