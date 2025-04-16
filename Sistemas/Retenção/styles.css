@@ -22,7 +22,8 @@ body {
 }
 
 .box {
-  width: 650px;
+  width: 800px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,13 +41,23 @@ body {
   gap: 10px;
 }
 
+.flex2 {
+  display: flex;
+  gap: 30px;
+}
 .column {
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 5px;
+  gap: 10px;
+  padding: 2px 0;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
 .center {
   align-items: center;
   text-align: center;
@@ -70,16 +81,25 @@ input:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
 }
 
-textarea {
-  width: 90%;
-  height: 100px;
+.resultado {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
-  padding: 5px;
+  padding-bottom: 10px;
+  padding: 10px 0;
 }
 
-.resultado {
-  flex-direction: column;
-  text-align: center;
+.textarea {
+  width: 90%;
+  height: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  resize: none;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -89,8 +109,8 @@ h2 {
 
 form {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   flex-direction: column;
   gap: 10px;
   width: 100%;
@@ -141,19 +161,26 @@ form {
 .fieldset {
   width: 100%;
   display: flex;
+  align-items: start;
+  justify-content: start;
   flex-direction: column;
-  padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  gap: 10px;
   text-align: left;
-  align-items: center;
-  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  gap: 5px;
+  border: 1px solid #ccc;
 }
 
 .fieldset legend {
   align-items: start;
   text-align: start;
+}
+
+.leftBox {
+  width: 50%;
+}
+.rightBox {
+  width: 50%;
 }
 
 legend {
@@ -174,6 +201,33 @@ legend {
   justify-content: center;
 }
 
+.matriz {
+  margin: 0;
+}
+.padding {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.status {
+  padding: 4px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  border: 2px solid transparent;
+}
+.btnAdd {
+  background-color: #ffd712;
+  font-weight: bold;
+  border: none;
+  border: 2px solid transparent;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 .taxas {
   padding: 5px 60px;
   border: none;
