@@ -45,32 +45,9 @@
                             </div>
                             <button type="button" onclick="adicionarOferta()" class="btn-adicionar">+</button>      
                         </div>
-                        
-                        <script>
-                            let ofertaCount = 1;
-                            function adicionarOferta() {
-                                ofertaCount++;
-                                const container = document.getElementById('matriz-container');
-                                const novoInput = document.createElement('input');
-                                novoInput.type = 'text';
-                                novoInput.name = 'matriz-ofertas[]';
-                                novoInput.placeholder = `${ofertaCount} - `;
-                                novoInput.className = 'matriz-ofertas';
-                                container.appendChild(novoInput);
-                            }
-                        </script>
                     </div>
                 </fieldset>
-                <script>
-                    document.getElementById('cliente-retido').addEventListener('change', function () {
-                        const valorPlanoFieldset = document.querySelector('fieldset:nth-of-type(2)');
-                        if (this.value === 'sim') {
-                            valorPlanoFieldset.style.display = 'none';
-                        } else {
-                            valorPlanoFieldset.style.display = 'block';
-                        }
-                    });
-                </script>
+
                 <fieldset class="fieldset" style="display: none;">
                     <legend>Valor do plano</legend>
                     <div class="column">

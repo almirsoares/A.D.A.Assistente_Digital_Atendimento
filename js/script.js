@@ -224,11 +224,34 @@ function calcularDesativacao() {
 
 
 //---------------------------------------------------------------------------
-// FUNÇÃO PARA RETENÇÃO DE CLIENTES
+// FUNÇÕES PARA RETENÇÃO DE CLIENTES
+
+document.getElementById('cliente-retido').addEventListener('change', function () {
+    const valorPlanoFieldset = document.querySelector('fieldset:nth-of-type(2)');
+    if (this.value === 'sim') {
+        valorPlanoFieldset.style.display = 'none';
+    } else {
+        valorPlanoFieldset.style.display = 'block';
+    }
+});
+
+
+//Função para adicionar novos campos de ofertas
+let ofertaCount = 1;
+function adicionarOferta() {
+    ofertaCount++;
+    const container = document.getElementById('matriz-container');
+    const novoInput = document.createElement('input');
+    novoInput.type = 'text';
+    novoInput.name = 'matriz-ofertas[]';
+    novoInput.placeholder = `${ofertaCount} - `;
+    novoInput.className = 'matriz-ofertas';
+    container.appendChild(novoInput);
+}
+
+
 // Função que calcula os valores proporcionais de retenção e inputa as faturas anteriores como prevenção
-
 function protocoloRetencao() {
-
     // Obtenção de valores dos campos de entrada   new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
     const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
@@ -244,20 +267,27 @@ function protocoloRetencao() {
         
         const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
         const ofertas = Array.from(ofertasInputs)
-            .map((input, index) => `${index + 1} - ${input.value.trim()}`)
+            .map((input, index) => `                ${index + 1} - ${input.value.trim()}`)
             .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
         
-        const protocoloTexto =`MOTIVO: ${motivo}
-            OFERTAS PASSADAS:   (Mínimo 2 ofertas)
-            ${ofertas.join('\n')}
-            CANCELADO: (X )NÃO`;
-        
+
+        let protocoloTexto =`MOTIVO: ${motivo}
+OFERTAS PASSADAS:   (Mínimo 2 ofertas)
+${ofertas.join('\n')}
+CANCELADO: (X )NÃO\n`;
+
+
         protocoloTexto += `QUAL OFERTA ACEITA: `;	
         
         for (let i = 1; i <= ofertas.length; i++) {
-            protocoloTexto += `(${i}) `;
+            protocoloTexto += `${i}(  ) `;
         }
-        
+        protocoloTexto += `\nOBSERVAÇÕES> (detalhe aqui)
+FOI INFORMADO ALGUM VALOR OU DESCONTO? ( SIM) R$ XX,XX   / (NÃO)
+SE (SIM), QUAIS FATURAS: 
+FOI INFORMADO ALGUM PRAZO? QUAL?:   
+*CLIENTE CIENTE DAS INFORMAÇÕES, ACEITOU OFERTA PASSADA E ESTÁ VIGENTE A PARTIR DE HOJE.`;
+
         document.getElementById('protocolo').value = protocoloTexto;
     } else{
         if (isNaN(valorPlano) || isNaN(dataVencimento.getTime()) || isNaN(dataCancelamento.getTime()) || isNaN(valorMultaDigitado)|| isNaN(multaEquipamento) || isNaN(meses)) {
@@ -296,14 +326,14 @@ function protocoloRetencao() {
 
         const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
         const ofertas = Array.from(ofertasInputs)
-            .map((input, index) => `          ${index + 1} - ${input.value.trim()}`)
+            .map((input, index) => `                ${index + 1} - ${input.value.trim()}`)
             .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
         
         let protocoloTexto =
-            `CANCELADO: (X )SIM
-            MOTIVO: ${motivo}
-            OFERTAS PASSADAS:   (Mínimo 2 ofertas)
-            ${ofertas.join('\n')}`;
+`CANCELADO: (X )SIM
+MOTIVO: ${motivo}
+OFERTAS PASSADAS:   (Mínimo 2 ofertas)
+${ofertas.join('\n')}`;
         if(valorProporcional >0 || valorMulta >0){
 
             let valores= valorProporcional + valorMulta;
