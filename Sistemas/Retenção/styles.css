@@ -13,7 +13,7 @@ body {
 
 .container {
   width: 100%;
-  height: auto;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +23,7 @@ body {
 
 .box {
   width: 800px;
-  height: 100%;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,7 +242,42 @@ legend {
 }
 
 /* ===== RESPONSIVO ===== */
+@media screen and (max-width: 815px) {
+  .fieldset legend {
+    text-align: center;
+  }
+  .box {
+    width: 90%;
+  }
 
+  .flex2 {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  form {
+    width: 100%;
+    align-items: center;
+  }
+  .leftBox {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .rightBox {
+    width: 100%;
+    height: 200px;
+  }
+  .fieldset {
+    align-items: center;
+  }
+
+  .column {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+}
 @media screen and (max-width: 610px) {
   .box {
     width: 90%;
@@ -253,7 +288,7 @@ legend {
   }
 }
 
-@media screen and (max-width: 495px) {
+@media screen and (max-width: 490px) {
   .container {
     height: auto;
   }
@@ -265,5 +300,8 @@ legend {
   .fieldset {
     text-align: center;
     align-items: center;
+  }
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
