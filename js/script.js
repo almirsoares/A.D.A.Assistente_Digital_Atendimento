@@ -255,63 +255,62 @@ function adicionarOferta() {
 
 // Função que calcula os valores proporcionais de retenção e inputa as faturas anteriores como prevenção
 function protocoloRetencao() {
-    alert("clienteRetido");
 
     // Obtenção de valores dos campos de entrada   new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
-    alert(`valorPlano: ${valorPlano}`);
-
     const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
-    alert(`dataVencimento: ${dataVencimento}`);
-
     const dataCancelamento = new Date(document.getElementById('dataCancelamento').value + 'T00:00:00');
-    alert(`dataCancelamento: ${dataCancelamento}`);
-
     const valorMultaDigitado = parseFloat(document.getElementById('valorMulta').value);
-    alert(`valorMultaDigitado: ${valorMultaDigitado}`);
-
     const multaEquipamento = parseFloat(document.getElementById('multaEquipamento').value);
-    alert(`multaEquipamento: ${multaEquipamento}`);
-
     const meses = parseInt(document.getElementById('meses').value);
-    alert(`meses: ${meses}`);
-
     const numeroOferta = parseInt(document.getElementById('oferta').value);
-    alert(`numeroOferta: ${numeroOferta}`);
-
     const observacao = document.getElementById('obs').value.trim();
-    alert(`observacao: ${observacao}`);
-
     const verificaValor = document.getElementById('verificaValor').value;
-    alert(`verificaValor: ${verificaValor}`);
-
     const valorOuDesconto = parseFloat(document.getElementById('valorOuDesconto').value);
-    alert(`valorOuDesconto: ${valorOuDesconto}`);
-
     const verificaPrazo = document.getElementById('verificaPrazo').value.trim();
-    alert(`verificaPrazo: ${verificaPrazo}`);
-
     const infoPrazo = document.getElementById('infoPrazo').value.trim();
-    alert(`infoPrazo: ${infoPrazo}`);
-
     
     const clienteRetido = document.getElementById('cliente-retido').value;
+    const motivo = document.getElementById('motivo').value.trim();
+    const ofertasInputs = document.querySelectorAll('[name="matriz-ofertas[]"]');
+
+    if (motivo === '') {
+        alert('Por favor, preencha o campo "motivo".');
+        return;
+    }
+    
     if (clienteRetido == 'sim'){
 
-        const motivo = document.getElementById('motivo').value.trim();
+        if (isNaN(numeroOferta) || observacao === '') {
+            alert('Por favor, preencha ps campos de observações necessários.');
+            return;
+        }
+        if (verificaValor === "sim" && isNaN(valorOuDesconto)) {
+            alert('Por favor, preencha o campo de valor ou desconto.');
+            return;
+        }
+
+        if (verificaPrazo === "sim" && infoPrazo === '') {
+            alert('Por favor, preencha o campo de informações sobre o prazo.');
+            return;
+        }
         
-        const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
         const ofertas = Array.from(ofertasInputs)
             .map((input, index) => `                ${index + 1} - ${input.value.trim()}`)
             .filter(texto => texto.length > 4); 
-        
+
+        // Se nenhuma oferta for considerada válida
+        if (ofertas.length === 0) {
+            alert('Por favor, preencha ao menos um campo da Matriz de Ofertas.');
+            return;
+        }
+  
 
         let protocoloTexto =`MOTIVO: ${motivo}
 OFERTAS PASSADAS:   (Mínimo 2 ofertas)
 ${ofertas.join('\n')}
 CANCELADO: (X )NÃO\n`;
 
-alert("Protocolo de Retenção gerado com sucesso! pre for");
         protocoloTexto += `QUAL OFERTA ACEITA: `;	
         
         for (let i = 1; i <= ofertas.length; i++) {
@@ -321,11 +320,9 @@ alert("Protocolo de Retenção gerado com sucesso! pre for");
                 protocoloTexto += `${i}(  ) `;
             }
         }
-        alert("Protocolo de Retenção gerado com sucesso! pos for");
 
         protocoloTexto += `\nOBSERVAÇÕES> ${observacao}
     FOI INFORMADO ALGUM VALOR OU DESCONTO? `;
-    alert( "pre if verifca valor");
         if (verificaValor === "sim") {
             protocoloTexto += `SIM - R$ ${valorOuDesconto.toFixed(2)}\n`;
         } else {
@@ -368,7 +365,6 @@ alert("Protocolo de Retenção gerado com sucesso! pre for");
         }
 
 
-
         const motivo = document.getElementById('motivo').value.trim();
 
         const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
@@ -385,24 +381,19 @@ ${ofertas.join('\n')}`;
 
             let valores= valorProporcional + valorMulta;
 
-            try {
-                protocoloTexto += `
-                VALORES: R$ ${valores.toFixed(2)} (  ) NÃO
-                Valor Proporcional: R$ ${valorProporcional.toFixed(2)} - ${resultado.totalDias} dias
-                Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}\n`;
+            protocoloTexto += `VALORES: R$ ${valores.toFixed(2)} (  ) NÃO
+Valor Proporcional: R$ ${valorProporcional.toFixed(2)} - ${resultado.totalDias} dias
+Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}\n`;
                 
-            } catch (err) {
-                alert("Erro ao montar protocoloTexto: " + err.message);
-            }
             
         } else{
             protocoloTexto += `VALORES (X ) NÃO
-            Valor Proporcional: R$ 0,00 - 0 dias\n`;
+Valor Proporcional: R$ 0,00 - 0 dias\n`;
         }
 
         protocoloTexto +=`${textoMulta}\n`;
         protocoloTexto += `- CLIENTE CIENTE QUE É NECESSÁRIO TER ALGUÉM  MAIOR DE 18 ANOS NA RESIDÊNCIA, COM O DOCUMENTO RG EM MÃOS PARA ACOMPANHAR A VISITA DOS TÉCNICOS
-                           - CIENTE DA ABERTURA DE O.S. PARA RETIRADA DE EQUIPAMENTO. PRAZO INFORMADO DE: 3 DIAS ÚTEIS.`;
+- CIENTE DA ABERTURA DE O.S. PARA RETIRADA DE EQUIPAMENTO. PRAZO INFORMADO DE: 3 DIAS ÚTEIS.`;
         document.getElementById('protocolo').value = protocoloTexto;
     }
 }
