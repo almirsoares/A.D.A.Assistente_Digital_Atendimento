@@ -255,14 +255,46 @@ function adicionarOferta() {
 
 // Função que calcula os valores proporcionais de retenção e inputa as faturas anteriores como prevenção
 function protocoloRetencao() {
+    alert("clienteRetido");
+
     // Obtenção de valores dos campos de entrada   new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
-    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
-    const dataCancelamento = new Date(document.getElementById('dataCancelamento').value + 'T00:00:00');
-    const valorMultaDigitado = parseFloat(document.getElementById('valorMulta').value);
-    const multaEquipamento = parseFloat(document.getElementById('multaEquipamento').value);
-    const meses = parseInt(document.getElementById('meses').value);
+    alert(`valorPlano: ${valorPlano}`);
 
+    const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
+    alert(`dataVencimento: ${dataVencimento}`);
+
+    const dataCancelamento = new Date(document.getElementById('dataCancelamento').value + 'T00:00:00');
+    alert(`dataCancelamento: ${dataCancelamento}`);
+
+    const valorMultaDigitado = parseFloat(document.getElementById('valorMulta').value);
+    alert(`valorMultaDigitado: ${valorMultaDigitado}`);
+
+    const multaEquipamento = parseFloat(document.getElementById('multaEquipamento').value);
+    alert(`multaEquipamento: ${multaEquipamento}`);
+
+    const meses = parseInt(document.getElementById('meses').value);
+    alert(`meses: ${meses}`);
+
+    const numeroOferta = parseInt(document.getElementById('oferta').value);
+    alert(`numeroOferta: ${numeroOferta}`);
+
+    const observacao = document.getElementById('obs').value.trim();
+    alert(`observacao: ${observacao}`);
+
+    const verificaValor = document.getElementById('verificaValor').value;
+    alert(`verificaValor: ${verificaValor}`);
+
+    const valorOuDesconto = parseFloat(document.getElementById('valorOuDesconto').value);
+    alert(`valorOuDesconto: ${valorOuDesconto}`);
+
+    const verificaPrazo = document.getElementById('verificaPrazo').value.trim();
+    alert(`verificaPrazo: ${verificaPrazo}`);
+
+    const infoPrazo = document.getElementById('infoPrazo').value.trim();
+    alert(`infoPrazo: ${infoPrazo}`);
+
+    
     const clienteRetido = document.getElementById('cliente-retido').value;
     if (clienteRetido == 'sim'){
 
@@ -271,7 +303,7 @@ function protocoloRetencao() {
         const ofertasInputs = document.querySelectorAll('.matriz-ofertas');
         const ofertas = Array.from(ofertasInputs)
             .map((input, index) => `                ${index + 1} - ${input.value.trim()}`)
-            .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
+            .filter(texto => texto.length > 4); 
         
 
         let protocoloTexto =`MOTIVO: ${motivo}
@@ -279,17 +311,29 @@ OFERTAS PASSADAS:   (Mínimo 2 ofertas)
 ${ofertas.join('\n')}
 CANCELADO: (X )NÃO\n`;
 
-
+alert("Protocolo de Retenção gerado com sucesso! pre for");
         protocoloTexto += `QUAL OFERTA ACEITA: `;	
         
         for (let i = 1; i <= ofertas.length; i++) {
-            protocoloTexto += `${i}(  ) `;
+            if (i === numeroOferta) {
+                protocoloTexto += `${i}(X) `;
+            }else{
+                protocoloTexto += `${i}(  ) `;
+            }
         }
-        protocoloTexto += `\nOBSERVAÇÕES> (detalhe aqui)
-FOI INFORMADO ALGUM VALOR OU DESCONTO? ( SIM) R$ XX,XX   / (NÃO)
-SE (SIM), QUAIS FATURAS: 
-FOI INFORMADO ALGUM PRAZO? QUAL?:   
-*CLIENTE CIENTE DAS INFORMAÇÕES, ACEITOU OFERTA PASSADA E ESTÁ VIGENTE A PARTIR DE HOJE.`;
+        alert("Protocolo de Retenção gerado com sucesso! pos for");
+
+        protocoloTexto += `\nOBSERVAÇÕES> ${observacao}
+    FOI INFORMADO ALGUM VALOR OU DESCONTO? `;
+    alert( "pre if verifca valor");
+        if (verificaValor === "sim") {
+            protocoloTexto += `SIM - R$ ${valorOuDesconto.toFixed(2)}\n`;
+        } else {
+            protocoloTexto += `NÃO\n`;
+        }
+        protocoloTexto += `SE (SIM), QUAIS FATURAS: 
+    FOI INFORMADO ALGUM PRAZO? QUAL?: ${verificaPrazo} ${infoPrazo}
+    *CLIENTE CIENTE DAS INFORMAÇÕES, ACEITOU OFERTA PASSADA E ESTÁ VIGENTE A PARTIR DE HOJE.`;
 
         document.getElementById('protocolo').value = protocoloTexto;
     } else{

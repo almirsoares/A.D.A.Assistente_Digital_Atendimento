@@ -71,31 +71,31 @@
         
                             <div class="flex valor desconto">
                                 <div class="column">
-                                    <label for="valorDesconto">Valor ou desconto?</label>
-                                    <select id="valorDesconto" name="valorDesconto" class="taxas" >
+                                    <label for="verificaValor">Valor ou desconto?</label>
+                                    <select id="verificaValor" name="verificaValor" class="taxas" >
                                         <option value="nao">Não</option>
                                         <option value="sim">Sim</option>
                                     </select>                        
                                 </div>
         
                                 <div class="column">
-                                    <label for="valor">Qual oferta aceita:</label>
-                                    <input type="number" id="valor" name="valor" placeholder="Digite o valor ou desconto">
+                                    <label for="valorOuDesconto">Valor informado</label>
+                                    <input type="number" id="valorOuDesconto" name="valorOuDesconto" placeholder="Digite o valor ou desconto">
                                 </div>
                             </div>
         
                             <div class="flex prazo">
                                 <div class="column">
-                                    <label for="prazo">Informado prazo?</label>
-                                    <select id="prazo" name="prazo" class="taxas" >
+                                    <label for="verificaPrazo">Informado prazo?</label>
+                                    <select id="verificaPrazo" name="verificaPrazo" class="taxas" >
                                         <option value="nao">Não</option>
                                         <option value="sim">Sim</option>
                                     </select>                        
                                 </div>
         
                                 <div class="column">
-                                    <label for="infoPrazo">Qual oferta aceita:</label>
-                                    <input type="number" id="infoPrazo" name="infoPrazo" placeholder="Digite o prazo">
+                                    <label for="infoPrazo">Prazo informado</label>
+                                    <input type="text" id="infoPrazo" name="infoPrazo" placeholder="Digite o prazo">
                                 </div>
                             </div>
                         </fieldset>
@@ -119,7 +119,7 @@
                             <div>
                           <div class="flex">
                             <div class="column">
-                                <label for="valorMulta">Valor da Multa</label>
+                                <label for="valorMulta">Valor da Multa contratual</label>
                                 <input type="number" id="valorMulta" name="valorMulta" step="0.01" value="0">
                             </div>
                             <div class="column">
@@ -143,7 +143,7 @@
                           </div>
                             <div class="flexResp">
                                 <div class="column">
-                                    <label for="multaEquipamento">Equipamento</label>
+                                    <label for="multaEquipamento">Valor equipamento</label>
                                     <input type="number" id="multaEquipamento" name="multaEquipamento" step="0.01" value="0"
                                         style="width: 100px">
                                 </div>
