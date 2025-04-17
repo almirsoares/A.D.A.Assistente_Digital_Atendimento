@@ -10,15 +10,22 @@ function calcularContrato() {
     }
 
     const totalSimples = valorOriginal - beneficio;
-    document.getElementById('totalPagarSimples').value = totalSimples.toFixed(2);
+    document.getElementById('totalPagarSimples').value = totalSimples.toFixed(2).replace('.', ',');
 
     const valorOriginal12 = valorOriginal * 12;
     const beneficio12 = beneficio * 12;
     const totalPagarComodato = valorOriginal12 - beneficio12;
     const totalBeneficios = beneficio12 + taxaInstalacao + equipamento;
 
-    document.getElementById('valorOriginal12').value = valorOriginal12.toFixed(2);
-    document.getElementById('beneficio12').value = beneficio12.toFixed(2);
-    document.getElementById('totalPagarComodato').value = totalPagarComodato.toFixed(2);
-    document.getElementById('totalBeneficios').value = totalBeneficios.toFixed(2);
+    document.getElementById('valorOriginal12').value = valorOriginal12.toFixed(2).replace('.', ',');
+    document.getElementById('beneficio12').value = beneficio12.toFixed(2).replace('.', ',');
+    document.getElementById('totalPagarComodato').value = totalPagarComodato.toFixed(2).replace('.', ',');
+    document.getElementById('totalBeneficios').value = totalBeneficios.toFixed(2).replace('.', ',');
 }
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // 🔥 impede o comportamento padrão (submit)
+      calcularContrato();
+    }
+  });

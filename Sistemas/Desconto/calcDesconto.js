@@ -61,3 +61,11 @@ function calcularDesconto() {
     // Exibe os campos de desconto
     document.querySelectorAll('.desconto-campo').forEach(campo => campo.style.display = 'block');
 }
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // 🔥 impede o comportamento padrão (submit)
+      calcularDesconto();
+    }
+  });
