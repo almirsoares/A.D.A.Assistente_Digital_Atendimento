@@ -97,15 +97,15 @@ CANCELADO: (X )NÃO\n`;
         }
 
         protocoloTexto += `\nOBSERVAÇÕES> ${observacao}
-    FOI INFORMADO ALGUM VALOR OU DESCONTO? `;
+FOI INFORMADO ALGUM VALOR OU DESCONTO? `;
         if (verificaValor === "sim") {
             protocoloTexto += `SIM - R$ ${valorOuDesconto.toFixed(2)}\n`;
         } else {
             protocoloTexto += `NÃO\n`;
         }
         protocoloTexto += `SE (SIM), QUAIS FATURAS: 
-    FOI INFORMADO ALGUM PRAZO? QUAL?: ${verificaPrazo} ${infoPrazo}
-    *CLIENTE CIENTE DAS INFORMAÇÕES, ACEITOU OFERTA PASSADA E ESTÁ VIGENTE A PARTIR DE HOJE.`;
+FOI INFORMADO ALGUM PRAZO? QUAL?: ${verificaPrazo} ${infoPrazo}
+*CLIENTE CIENTE DAS INFORMAÇÕES, ACEITOU OFERTA PASSADA E ESTÁ VIGENTE A PARTIR DE HOJE.`;
 
         document.getElementById('protocolo').value = protocoloTexto;
     } else{
@@ -136,7 +136,7 @@ CANCELADO: (X )NÃO\n`;
         } else {
             valorMulta = ((valorMultaDigitado - multaEquipamento) * meses) / 12;
             textoMulta = `MULTA: R$ ${valorMulta.toFixed(2)}  (  x )  APLICÁVEL    (   ) NÃO APLICÁVEL - sem fidelidade ativa
-                         Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}`;
+Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}`;
         }
 
 
@@ -151,7 +151,7 @@ CANCELADO: (X )NÃO\n`;
 `CANCELADO: (X )SIM
 MOTIVO: ${motivo}
 OFERTAS PASSADAS:   (Mínimo 2 ofertas)
-${ofertas.join('\n')}`;
+${ofertas.join('\n')}\n`;
         if(valorProporcional >0 || valorMulta >0){
 
             let valores= valorProporcional + valorMulta;
