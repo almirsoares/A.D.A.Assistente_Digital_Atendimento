@@ -18,3 +18,29 @@ function calcularProporcional(valorPlano, dataAntiga, dataNova) {
         mesNovo: dataNova.getMonth() + 1
     };
 }
+
+// Função para calcular o proporcional de datas considerando um ciclo de 360 dias (ano comercial)
+function calcularProporcional30(valorPlano, dataAntiga, dataNova) {
+    const diaAntigo = dataAntiga.getDate();
+    const mesAntigo = dataAntiga.getMonth() + 1;
+    const anoAntigo = dataAntiga.getFullYear();
+
+    const diaNovo = dataNova.getDate();
+    const mesNovo = dataNova.getMonth() + 1;
+    const anoNovo = dataNova.getFullYear();
+
+    // Cálculo com base em 360 dias por ano (12 meses de 30 dias)
+    const totalDias = ((anoNovo - anoAntigo) * 360) + ((mesNovo - mesAntigo) * 30) + (diaNovo - diaAntigo);
+
+    const valorTotal = (valorPlano / 30) * totalDias;
+
+    return {
+        valorTotal,
+        totalDias,
+        diaAntigo,
+        mesAntigo,
+        diaNovo,
+        mesNovo
+    };
+}
+
