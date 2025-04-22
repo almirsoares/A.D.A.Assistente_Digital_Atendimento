@@ -50,7 +50,16 @@ h1 {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
 }
+.menu2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 
+}
+.line{
+  width: 90%;
+  border: 2px solid #fff;
+  margin: 20px 0;
+}
 p {
   color: #fff;
   font-weight: bold;
@@ -94,12 +103,11 @@ p {
   width: 100%;
 }
 @media screen and (max-width: 845px) {
-  .box{
+  .box {
     width: 90%;
   }
 }
 @media screen and (max-width: 615px) {
-
   .menu {
     grid-template-columns: repeat(3, 1fr);
   }
