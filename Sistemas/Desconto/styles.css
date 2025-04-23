@@ -156,7 +156,8 @@ legend {
 }
 
 .taxas {
-    padding: 5px 50px;
+    padding: 4px;
+    padding-right: 100px;
     border: none;
     border-radius: 3px;
     outline: none;
@@ -164,7 +165,6 @@ legend {
 }
 
 .taxas option {
-    color: red;
     
 }
 
