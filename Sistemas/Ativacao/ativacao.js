@@ -12,18 +12,47 @@ function calcularAtivacao() {
     const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
 
     // Chama a função calcularProporcional para obter os cálculos
-    const prop1 = calcularProporcional(valorPlanoAnterior, dataInicio, dataDesativacao);
-    const desc1 = calcularProporcional(descontoPlanoAnterior, dataInicio, dataDesativacao);
-    const proporcional1 = prop1.valorTotal;
-    const proporcionalDesc1 = desc1.valorTotal;
+    let prop1 = calcularProporcional(valorPlanoAnterior, dataInicio, dataDesativacao);
+    let desc1 = calcularProporcional(descontoPlanoAnterior, dataInicio, dataDesativacao);
+    let proporcional1 = prop1.valorTotal;
+    let proporcionalDesc1 = desc1.valorTotal;
 
 
     // Chama a função calcularProporcional para obter os cálculos
-    const prop2 = calcularProporcional(valorPlanoNovo, dataAtivacao, dataVencimento);
-    const desc2 = calcularProporcional(descontoPlanoNovo, dataAtivacao, dataVencimento);
-    const proporcional2 = prop2.valorTotal;
-    const proporcionalDesc2 = desc2.valorTotal;
+    let prop2 = calcularProporcional(valorPlanoNovo, dataAtivacao, dataVencimento);
+    let desc2 = calcularProporcional(descontoPlanoNovo, dataAtivacao, dataVencimento);
+    let proporcional2 = prop2.valorTotal;
+    let proporcionalDesc2 = desc2.valorTotal;
     
+
+    // Verifica se pelo menos um dos campos do Plano Antigo foi preenchido
+    const camposPlanoAntigoPreenchidos = valorPlanoAnterior || !isNaN(dataInicio.getTime()) || !isNaN(dataDesativacao.getTime());
+
+    // Se algum campo foi preenchido, verifica se todos os campos estão preenchidos
+    if (camposPlanoAntigoPreenchidos) {
+        if (!valorPlanoAnterior || isNaN(dataInicio.getTime()) || isNaN(dataDesativacao.getTime())) {
+            alert("Preencha todos os campos válidos do Plano Antigo.");
+            return;
+        }
+    } else{
+        // Se nenhum campo do plano antigo foi preenchido, zera os valores proporcionais
+        proporcional1 = 0;
+        proporcionalDesc1 = 0;
+    }
+    
+    // Verifica se pelo menos um dos campos do Plano Novo foi preenchido
+    const camposPlanoNovoPreenchidos = valorPlanoNovo || !isNaN(dataAtivacao.getTime()) || !isNaN(dataVencimento.getTime());
+    // Se algum campo foi preenchido, verifica se todos os campos estão preenchidos
+    if (camposPlanoNovoPreenchidos) {
+        if (!valorPlanoNovo || isNaN(dataAtivacao.getTime()) || isNaN(dataVencimento.getTime())) {
+            alert("Preencha todos os campos válidos do Plano Novo.");
+            return;
+        }
+    } else{
+        // Se nenhum campo do plano novo foi preenchido, zera os valores proporcionais
+        proporcional2 = 0;
+        proporcionalDesc2 = 0;
+    }
 
     const valorTotal = proporcional1 + proporcional2;
     const descontoTotal = proporcionalDesc1 + proporcionalDesc2;
@@ -41,7 +70,7 @@ function calcularAtivacao() {
         document.getElementById('valorFaturaTotal').value = valorTotal.toFixed(2);
     } else {
         descontoCampos.forEach(campo => campo.style.display = 'none');
-        document.getElementById('valorFaturaTotal').style.display = 'none';
+        valorFaturaTotalCampo.forEach(campo => campo.style.display = 'none');
     }
 
     // Atualiza o campo do valor final cobrado

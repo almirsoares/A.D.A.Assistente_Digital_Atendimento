@@ -53,7 +53,7 @@ function calcularProporcionalPlanos() {
         document.getElementById('valorFaturaTotal').value = valorFaturaTotal.toFixed(2);
     } else {
         descontoCampos.forEach(campo => campo.style.display = 'none');
-        document.getElementById('valorFaturaTotal').style.display = 'none';
+        valorFaturaTotalCampo.forEach(campo => campo.style.display = 'none');
     }
 
     // Atualiza o campo do valor final cobrado
