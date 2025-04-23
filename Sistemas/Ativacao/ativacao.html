@@ -1,114 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<!-- A.D.A. - Assistente Digital de Atendimento 
+  <!-- A.D.A. - Assistente Digital de Atendimento 
      Desenvolvedores: 
      - Almir Soares -- github.com/almirsoares
      - Arthur Joaquim -- github.com/arthurjoaquim7
 -->
-     
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:description" content="A.D.A. - Assistente Digital de Atendimento">
-    <meta property="og:image" content="https://almirsoares.github.io/A.D.A.Assistente_Digital_Atendimento/img/robo_amarelo.png">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:description" content="A.D.A. - Assistente Digital de Atendimento" />
+    <meta
+      property="og:image"
+      content="https://almirsoares.github.io/A.D.A.Assistente_Digital_Atendimento/img/robo_amarelo.png" />
     <title>A.D.A. - Calcular Proporcional - Ativação de Cadastro</title>
-<link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="../../img/robo.png">
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="../../img/robo.png" />
+  </head>
 
-
-<body>
+  <body>
     <div class="container">
-        <div class="box">
-            <h1 style="color: #fff;">Calcular Proporcional - Ativação de Cadastro </h1>
-            <form id="calculoProporcional">
-                <!-- Campos de data acima das seções de plano -->
-                <div class="campo-data">
-                    <p>Plano antigo</p>
-                    <br/>
-                    <div class="column">
-                        <label for="inicioPlano">Início do Plano</label>
-                        <input type="date" class="inputDate" id="inicioPlano" name="inicioPlano" required>
-                    </div>
-                    <div class="column">
-                        <label for="dataDesativacao">Data de desativação</label>
-                        <input type="date" class="inputDate" id="dataDesativacao" name="dataDesativacao" required>
-                    </div>
+      <div class="box">
+        <h1 style="color: #fff">Calcular Proporcional - Ativação de Cadastro</h1>
+        <br />
+        <form id="calculoProporcional">
+          <div class="flexData">
+            <!-- Campos de data acima das seções de plano -->
+            <fieldset class="fieldset">
+              <legend>Plano antigo</legend>
+              <div class="flex">
+                <div class="column">
+                  <label for="inicioPlano">Início do Plano</label>
+                  <input type="date" class="inputDate" id="inicioPlano" name="inicioPlano" required />
                 </div>
-                <div class="campo-data">
-                    <p>Plano novo</p>
-                    <br/>
-                    <div class="column">
-                        <label for="dataAtivacao">Data de ativação</label>
-                        <input type="date" class="inputDate" id="dataAtivacao" name="dataAtivacao" required>
-                    </div>
-                    <div class="column">
-                        <label for="dataVencimento">Vencimento</label>
-                        <input type="date" class="inputDate" id="dataVencimento" name="dataVencimento" required>
-                    </div>
+                <div class="column">
+                  <label for="dataDesativacao">Data de desativação</label>
+                  <input type="date" class="inputDate" id="dataDesativacao" name="dataDesativacao" required />
                 </div>
-                <div class="flex">
-                    <fieldset class="fieldset anterior">
-                        <legend>Plano Anterior</legend>
-                        <div class="column">
-                            <label for="valorPlanoAnterior">Valor do Plano</label>
-                            <input type="number" id="valorPlanoAnterior" name="valorPlanoAnterior" step="0.01" required>
-                        </div>
-                        <div class="column">
-                            <label for="descontoPlanoAnterior">Desconto(Se houver)</label>
-                            <input type="number" id="descontoPlanoAnterior" name="descontoPlanoAnterior" step="0.01"
-                                value="0">
-                        </div>
-                    </fieldset>
-
-                    <fieldset class="fieldset novo">
-                        <legend>Plano Novo</legend>
-                        <div class="column">
-                            <label for="valorPlanoNovo">Valor do Plano</label>
-                            <input type="number" id="valorPlanoNovo" name="valorPlanoNovo" step="0.01" required>
-                        </div>
-
-                        <div class="column">
-                            <label for="descontoPlanoNovo">Desconto(Se houver)</label>
-                            <input type="number" id="descontoPlanoNovo" name="descontoPlanoNovo" step="0.01" value="0">
-                        </div>
-                    </fieldset>
-
+              </div>
+              <!-- === -->
+              <div class="column">
+                <div class="column">
+                  <label for="valorPlanoAnterior">Valor do Plano</label>
+                  <input type="number" id="valorPlanoAnterior" name="valorPlanoAnterior" step="0.01" required />
                 </div>
-
-                <fieldset class="fieldset resultado">
-                    <legend>Resultado</legend>
-                    <div class="column">
-                        <label for="valorFaturaTotal" class="fatura-campo" style="display: none;">Valor da Fatura Total</label>
-                        <input type="text" id="valorFaturaTotal" name="valorFaturaTotal" readonly 
-                            class="fatura-campo" style="display: none;">
-                    </div>
-
-                    <div class="column">
-                        <label for="valorDescontoTotal" class="desconto-campo" style="display: none;">Valor Total de
-                            Desconto:</label>
-                        <input type="text" id="valorDescontoTotal" name="valorDescontoTotal" readonly
-                            class="desconto-campo" style="display: none;">
-                    </div>
-
-                    <div class="column">
-                        <label for="valorFinalCobrado">Valor Final Cobrado</label>
-                        <input type="text" id="valorFinalCobrado" name="valorFinalCobrado" readonly >
-                    </div>
-                </fieldset>
-
-                <div class="footer">
-                    <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
-                    <button type="button" class="menu-item" onclick="calcularAtivacao()">Calcular</button>
-                    <button type="reset" class="menu-item">Limpar</button>
+                <div class="column">
+                  <label for="descontoPlanoAnterior">Desconto(Se houver)</label>
+                  <input type="number" id="descontoPlanoAnterior" name="descontoPlanoAnterior" step="0.01" value="0" />
                 </div>
+              </div>
+            </fieldset>
+            <!-- === -->
+            <fieldset class="fieldset">
+              <legend>Plano novo</legend>
+              <div class="flex">
+                <div class="column">
+                  <label for="dataAtivacao">Data de ativação</label>
+                  <input type="date" class="inputDate" id="dataAtivacao" name="dataAtivacao" required />
+                </div>
+                <div class="column">
+                  <label for="dataVencimento">Vencimento</label>
+                  <input type="date" class="inputDate" id="dataVencimento" name="dataVencimento" required />
+                </div>
+              </div>
+              <!-- === -->
+              <div class="column">
+                <div class="column">
+                  <label for="valorPlanoNovo">Valor do Plano</label>
+                  <input type="number" id="valorPlanoNovo" name="valorPlanoNovo" step="0.01" required />
+                </div>
+                <div class="column">
+                  <label for="descontoPlanoNovo">Desconto(Se houver)</label>
+                  <input type="number" id="descontoPlanoNovo" name="descontoPlanoNovo" step="0.01" value="0" />
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <!-- RESULTADO -->
+          <fieldset class="fieldset resultado">
+            <legend>Resultado</legend>
+            <div class="column">
+              <label for="valorFaturaTotal" class="fatura-campo" style="display: none">Valor da Fatura Total</label>
+              <input
+                type="text"
+                id="valorFaturaTotal"
+                name="valorFaturaTotal"
+                readonly
+                class="fatura-campo"
+                style="display: none" />
+            </div>
 
-            </form>
-        </div>
+            <div class="column">
+              <label for="valorDescontoTotal" class="desconto-campo" style="display: none">
+                Valor Total de Desconto:
+              </label>
+              <input
+                type="text"
+                id="valorDescontoTotal"
+                name="valorDescontoTotal"
+                readonly
+                class="desconto-campo"
+                style="display: none" />
+            </div>
+
+            <div class="column">
+              <label for="valorFinalCobrado">Valor Final Cobrado</label>
+              <input type="text" id="valorFinalCobrado" name="valorFinalCobrado" readonly />
+            </div>
+          </fieldset>
+
+          <div class="footer">
+            <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
+            <button type="button" class="menu-item" onclick="calcularAtivacao()">Calcular</button>
+            <button type="reset" class="menu-item">Limpar</button>
+          </div>
+        </form>
+      </div>
     </div>
     <script src="ativacao.js"></script>
     <script src="../../script.js"></script>
-</body>
-
+  </body>
 </html>
