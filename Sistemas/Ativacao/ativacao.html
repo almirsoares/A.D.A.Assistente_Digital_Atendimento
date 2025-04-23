@@ -26,13 +26,23 @@
             <form id="calculoProporcional">
                 <!-- Campos de data acima das seções de plano -->
                 <div class="campo-data">
+                    <p>Plano antigo</p>
+                    <br/>
                     <div class="column">
                         <label for="inicioPlano">Início do Plano</label>
                         <input type="date" class="inputDate" id="inicioPlano" name="inicioPlano" required>
                     </div>
                     <div class="column">
-                        <label for="dataTroca">Data de Troca</label>
-                        <input type="date" class="inputDate" id="dataTroca" name="dataTroca" required>
+                        <label for="dataDesativacao">Data de desativação</label>
+                        <input type="date" class="inputDate" id="dataDesativacao" name="dataDesativacao" required>
+                    </div>
+                </div>
+                <div class="campo-data">
+                    <p>Plano novo</p>
+                    <br/>
+                    <div class="column">
+                        <label for="dataAtivacao">Data de ativação</label>
+                        <input type="date" class="inputDate" id="dataAtivacao" name="dataAtivacao" required>
                     </div>
                     <div class="column">
                         <label for="dataVencimento">Vencimento</label>
@@ -91,7 +101,7 @@
 
                 <div class="footer">
                     <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
-                    <button type="button" class="menu-item" onclick="calcularProporcionalPlanos()">Calcular</button>
+                    <button type="button" class="menu-item" onclick="calcularAtivacao()">Calcular</button>
                     <button type="reset" class="menu-item">Limpar</button>
                 </div>
 
