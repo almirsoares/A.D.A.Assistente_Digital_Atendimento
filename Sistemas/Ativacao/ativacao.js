@@ -66,15 +66,15 @@ function calcularAtivacao() {
         descontoCampos.forEach(campo => campo.style.display = 'block');
         valorFaturaTotalCampo.forEach(campo => campo.style.display = 'block');
 
-        document.getElementById('valorDescontoTotal').value = descontoTotal.toFixed(2);
-        document.getElementById('valorFaturaTotal').value = valorTotal.toFixed(2);
+        document.getElementById('valorDescontoTotal').value = descontoTotal.toFixed(2).replace('.', ',');
+        document.getElementById('valorFaturaTotal').value = valorTotal.toFixed(2).replace('.', ',');
     } else {
         descontoCampos.forEach(campo => campo.style.display = 'none');
         valorFaturaTotalCampo.forEach(campo => campo.style.display = 'none');
     }
 
     // Atualiza o campo do valor final cobrado
-    document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2);
+    document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2).replace('.', ',');
   
 }
 
@@ -84,3 +84,24 @@ document.addEventListener('keydown', function(event) {
       calcularAtivacao();
     }
   });
+
+
+// Adiciona o evento de clique dos resultadis para copiar o texto do textarea para a área de transferência
+document.getElementById('valorDescontoTotal').addEventListener('click', function() {
+    this.select();  // Seleciona todo o conteúdo do textarea
+    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    alert('Desconto copiado!');  // Exibe um alerta (opcional)
+  });
+
+
+  document.getElementById('valorFaturaTotal').addEventListener('click', function() {
+    this.select();  // Seleciona todo o conteúdo do textarea
+    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    alert('Valor total copiado!');  // Exibe um alerta (opcional)
+  });
+
+document.getElementById('valorFinalCobrado').addEventListener('click', function() {
+    this.select();  // Seleciona todo o conteúdo do textarea
+    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    alert('Valor final copiado!');  // Exibe um alerta (opcional)
+  } );

@@ -29,3 +29,35 @@ document.addEventListener('keydown', function(event) {
       calcularContrato();
     }
   });
+
+// Adiciona o evento de clique dos resultados para copiar o texto do textarea para a área de transferência
+document.getElementById('totalPagarSimples').addEventListener('click', function() {
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Total a Pagar copiado!');  // Exibe um alerta (opcional)
+});
+
+
+document.getElementById('valorOriginal12').addEventListener('click', function() {
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Valor Original 12x copiado!');  // Exibe um alerta (opcional)
+});
+
+document.getElementById('beneficio12').addEventListener('click', function() {
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Benefício 12x copiado!');  // Exibe um alerta (opcional)
+});
+
+document.getElementById('totalPagarComodato').addEventListener('click', function() {
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Total a Pagar 12x copiado!');  // Exibe um alerta (opcional)
+});
+
+document.getElementById('totalBeneficios').addEventListener('click', function() { 
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Total de Benefícios copiado!');  // Exibe um alerta (opcional)
+});

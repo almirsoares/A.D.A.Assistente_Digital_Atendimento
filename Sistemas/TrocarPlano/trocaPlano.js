@@ -49,15 +49,15 @@ function calcularProporcionalPlanos() {
         descontoCampos.forEach(campo => campo.style.display = 'block');
         valorFaturaTotalCampo.forEach(campo => campo.style.display = 'block');
 
-        document.getElementById('valorDescontoTotal').value = valorDescontoTotal.toFixed(2);
-        document.getElementById('valorFaturaTotal').value = valorFaturaTotal.toFixed(2);
+        document.getElementById('valorDescontoTotal').value = valorDescontoTotal.toFixed(2).replace('.', ',');
+        document.getElementById('valorFaturaTotal').value = valorFaturaTotal.toFixed(2).replace('.', ',');
     } else {
         descontoCampos.forEach(campo => campo.style.display = 'none');
         valorFaturaTotalCampo.forEach(campo => campo.style.display = 'none');
     }
 
     // Atualiza o campo do valor final cobrado
-    document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2);
+    document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2).replace('.', ',');
 }
 
 
@@ -67,3 +67,22 @@ document.addEventListener('keydown', function(event) {
       calcularProporcionalPlanos();
     }
   });
+
+// Adiciona o evento de clique dos resultados para copiar o texto do textarea para a área de transferência
+document.getElementById('valorFaturaTotal').addEventListener('click', function() {
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Valor Fatura Total copiado!');  // Exibe um alerta (opcional)
+});
+
+document.getElementById('valorDescontoTotal').addEventListener('click', function() {
+    this.select();  // Seleciona todo o conteúdo do textarea
+    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    alert('Valor Desconto Total copiado!');  // Exibe um alerta (opcional)
+});
+
+document.getElementById('valorFinalCobrado').addEventListener('click', function() {
+    this.select();  // Seleciona todo o conteúdo do textarea
+    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    alert('Valor Final Cobrado copiado!');  // Exibe um alerta (opcional)
+});

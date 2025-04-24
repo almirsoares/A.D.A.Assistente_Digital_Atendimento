@@ -58,9 +58,26 @@ Atendimento finalizado.`;
 }
 
 
+// Adiciona o evento onde clicar no botão enter no campo de texto chama a função calcularProporcionalVencimento
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
       event.preventDefault(); // 🔥 impede o comportamento padrão (submit)
       calcularProporcionalVencimento();
     }
+  });
+
+
+// Adiciona o evento de clique output protocolo para copiar o texto do textarea para a área de transferência
+document.getElementById('protocolo').addEventListener('click', function() {
+    this.select();  // Seleciona todo o conteúdo do textarea
+    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    alert('Protocolo copiado!');  // Exibe um alerta (opcional)
+  });
+
+
+// Adiciona o evento de clique output mensagem cliente para copiar o texto do textarea para a área de transferência
+document.getElementById('mensagemCliente').addEventListener('click', function() {
+    this.select();  // Seleciona todo o conteúdo do textarea
+    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    alert('Texto copiado!');  // Exibe um alerta (opcional)
   });

@@ -21,13 +21,13 @@
         <h1 style="color: #fff;">Localizar Base</h1>
         <br>
         <form id="localizarBaseForm">
+            <label for="cidade">Selecione a Cidade:</label>
             <div>
-                <label for="cidade">Selecione a Cidade:</label>
                 <select id="cidade" name="cidade">
                     <!-- Cidades serão adicionadas dinamicamente pelo JavaScript -->
                 </select>
+                <button type="button" onclick="localizarBase()">Localizar</button>
             </div>
-            <button type="button" onclick="localizarBase()">Localizar</button>
         </form>
         <div id="informacoesBase">
             <h2>Informações da Base</h2>

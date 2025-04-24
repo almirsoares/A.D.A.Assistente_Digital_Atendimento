@@ -179,3 +179,11 @@ document.addEventListener('keydown', function(event) {
       protocoloRetencao();
     }
   });
+
+
+// Adiciona o evento de clique dos resultados para copiar o texto do textarea para a área de transferência
+document.getElementById('protocolo').addEventListener('click', function() {
+    this.select();  // Seleciona todo o conteúdo do textarea
+    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    alert('Protocolo copiado!');  // Exibe um alerta (opcional)
+  });

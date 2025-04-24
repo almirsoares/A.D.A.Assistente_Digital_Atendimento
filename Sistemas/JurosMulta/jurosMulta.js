@@ -67,3 +67,10 @@ document.addEventListener('keydown', function(event) {
       calcularJurosMulta();
     }
   });
+
+// Adiciona o evento de clique dos resultados para copiar o texto do textarea para a área de transferência
+document.getElementById('valorFinal').addEventListener('click', function() {
+    this.select();  // Seleciona todo o conteúdo do textarea
+    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    alert('Valor final copiado!');  // Exibe um alerta (opcional)
+});
