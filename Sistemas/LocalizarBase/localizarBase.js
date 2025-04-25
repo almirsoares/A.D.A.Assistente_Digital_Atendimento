@@ -12,9 +12,10 @@ async function carregarCidadesDoCSV() {
         return {
             cidade: valores[0]?.trim(),
             nomeBase: valores[1]?.trim(),
-            nomeVerdadeiro: valores[2]?.trim(),
-            ddd: valores[3]?.trim(),
-            plataforma: valores[4]?.trim(),
+            estado: valores[2]?.trim(), 
+            nomeVerdadeiro: valores[3]?.trim(),
+            ddd: valores[4]?.trim(),
+            plataforma: valores[5]?.trim(),
         };
     });
 
@@ -28,7 +29,11 @@ async function carregarCidadesDoCSV() {
             cidadeSelect.appendChild(option);
         }
     });
+
+    // Chama localizarBase automaticamente ao mudar a cidade
+    cidadeSelect.addEventListener('change', localizarBase);
 }
+
 
 function localizarBase() {
     const cidadeSelecionada = document.getElementById('cidade').value;
@@ -36,11 +41,13 @@ function localizarBase() {
     
     if (info) {
         document.getElementById('nomeBase').textContent = `Nome da Base: ${info.nomeBase}`;
-        document.getElementById('nomeVerdadeiro').textContent = `Nome Verdadeiro: ${info.nomeVerdadeiro}`;
+        document.getElementById('estado').textContent = `Estado: ${info.estado}`;
+        document.getElementById('nomeVerdadeiro').textContent = `Nome da cidade: ${info.nomeVerdadeiro}`;
         document.getElementById('ddd').textContent = `DDD: ${info.ddd}`;
         document.getElementById('plataforma').textContent = `Plataforma: ${info.plataforma}`;
     } else {
         document.getElementById('nomeBase').textContent = '';
+        document.getElementById('estado').textContent = '';
         document.getElementById('nomeVerdadeiro').textContent = '';
         document.getElementById('ddd').textContent = '';
         document.getElementById('plataforma').textContent = '';
