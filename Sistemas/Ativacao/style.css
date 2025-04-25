@@ -54,6 +54,9 @@ body {
   gap: 5px;
 }
 
+.columnResult {
+  margin: 0 5px;
+}
 label {
   color: #fff;
 }
@@ -113,7 +116,13 @@ legend {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  gap: 0;
+  margin: 0 10px;
 }
+
+/* .resultado input{
+  margin: 0 10px;
+} */
 
 .resultado legend {
   text-align: center;
@@ -201,6 +210,12 @@ form {
     align-items: start;
     justify-content: start;
   }
+  .flex {
+    flex-direction: column;
+  }
+  .marginTop {
+    margin-top: 10px;
+  }
 }
 @media screen and (max-width: 610px) {
   .container {
@@ -220,9 +235,13 @@ form {
     width: 100%;
     flex-wrap: wrap;
   }
+
 }
 
-@media screen and (max-width: 515px) {
+@media screen and (max-width: 540px) {
+  .flexData {
+    flex-direction: column;
+  }
   .flex {
     width: 100%;
     flex-direction: column;
@@ -231,8 +250,13 @@ form {
   .fieldset {
     width: 100%;
     align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
+  .column {
+    align-items: center;
+  }
   .resultado {
     flex-direction: column;
   }

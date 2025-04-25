@@ -234,6 +234,9 @@ legend {
 } */
 
 @media screen and (max-width: 740px) {
+  .box {
+    width: 90%;
+  }
   .container {
     height: auto;
   }
@@ -248,7 +251,7 @@ legend {
   }
 
   .fieldset {
-    width: 80vw;
+    width: auto;
     display: flex;
     text-align: center;
     align-items: center;
