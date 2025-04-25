@@ -3,13 +3,14 @@
 function calcularDesativacao() {
     // Obtenção de valores dos campos de entrada   new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const valorPlano = parseFloat(document.getElementById('valorPlano').value);
+    const mesesFaturas = parseInt(document.getElementById('mesesFaturas').value);
     const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const dataUltimoAcesso = new Date(document.getElementById('dataUltimoAcesso').value + 'T00:00:00');
     const valorMultaDigitado = parseFloat(document.getElementById('valorMulta').value);
     const multaEquipamento = parseFloat(document.getElementById('multaEquipamento').value);
     const meses = parseInt(document.getElementById('meses').value);
 
-    if (isNaN(valorPlano) || isNaN(dataVencimento.getTime()) || isNaN(dataUltimoAcesso.getTime()) || isNaN(valorMultaDigitado) || isNaN(meses)) {
+    if (isNaN(valorPlano) || isNaN(mesesFaturas) || isNaN(dataVencimento.getTime()) || isNaN(dataUltimoAcesso.getTime()) || isNaN(valorMultaDigitado) || isNaN(meses)) {
         alert('Por favor, preencha todos os campos corretamente.');
         return;
     }
@@ -22,19 +23,35 @@ function calcularDesativacao() {
     // Chama a função calcularProporcional para obter os cálculos
     const resultado = calcularProporcional30(valorPlano, dataParaCalculo, dataUltimoAcesso);
 
-    // Cálculo dos valores das faturas anteriores e proporcional
-    const dataMes1 = new Date(dataVencimento);
-    dataMes1.setMonth(dataMes1.getMonth() - 2);
-    const dataMes2 = new Date(dataVencimento);
-    dataMes2.setMonth(dataMes2.getMonth() - 1);
+
+    
+    // Cálculo dos valores das faturas anteriores e proporcional considerando os meses de faturas
+    const datasFaturas = [];
+    for (let i = mesesFaturas; i > 0; i--) {
+        const dataFatura = new Date(dataVencimento);
+        if(dataFatura.getDate() == 30 && dataFatura.getMonth() - i == 1) {
+            dataFatura.setDate(28);
+            dataFatura.setMonth(dataFatura.getMonth() - i);
+            const dataFaturaFormatada = `${(dataFatura.getDate()).toString().padStart(2, '0')}/${(dataFatura.getMonth() + 1).toString().padStart(2, '0')}/${dataFatura.getFullYear()}`;
+            datasFaturas.push(dataFaturaFormatada);
+            dataFatura.setDate(30);
+        } else{
+            dataFatura.setMonth(dataFatura.getMonth() - i);
+            const dataFaturaFormatada = `${(dataFatura.getDate()).toString().padStart(2, '0')}/${(dataFatura.getMonth() + 1).toString().padStart(2, '0')}/${dataFatura.getFullYear()}`;
+            datasFaturas.push(dataFaturaFormatada);
+        }
+    }
+
+    // Formatação das datas para exibição
+    let faturasTexto = '';
+    datasFaturas.forEach((data, index) => {
+        faturasTexto += `${data} - R$ ${valorPlano.toFixed(2)}\n`;
+    });
+    
+    const dataProporcionalFormatada = `${(dataVencimento.getDate()).toString().padStart(2, '0')}/${(dataVencimento.getMonth() + 1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()}`;
 
     const valorProporcionalMes = resultado.valorTotal.toFixed(2);
     const valorFatura = valorPlano.toFixed(2);
-
-    // Formatação das datas
-    const dataMes1Formatada = `${(dataMes1.getDate()).toString().padStart(2, '0')}/${(dataMes1.getMonth() + 1).toString().padStart(2, '0')}/${dataMes1.getFullYear()}`;
-    const dataMes2Formatada = `${(dataMes2.getDate()).toString().padStart(2, '0')}/${(dataMes2.getMonth() + 1).toString().padStart(2, '0')}/${dataMes2.getFullYear()}`;
-    const dataProporcionalFormatada = `${(dataVencimento.getDate()).toString().padStart(2, '0')}/${(dataVencimento.getMonth() + 1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()}`;
 
     // Cálculo da multa
     let textoMulta;
@@ -54,8 +71,7 @@ function calcularDesativacao() {
     // Mensagem de protocolo
     let protocoloTexto = `CONTRATO DESATIVADO\n` +
         `Ajustado Faturas Referente aos dias utilizados :\n\n` +
-        `${dataMes1Formatada} - R$ ${valorFatura}\n` +
-        `${dataMes2Formatada} - R$ ${valorFatura}\n` +
+        `${faturasTexto}`+
         `${dataProporcionalFormatada} - R$ ${valorProporcionalMes}\n\n` +
         `${textoMulta}\n` +
         `VALOR DA MULTA: R$ ${valorMulta.toFixed(2)}\n`;
