@@ -20,7 +20,7 @@ function calcularDesativacao() {
     dataParaCalculo.setDate(dataParaCalculo.getDate() - 1);
 
     // Chama a função calcularProporcional para obter os cálculos
-    const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataUltimoAcesso);
+    const resultado = calcularProporcional30(valorPlano, dataParaCalculo, dataUltimoAcesso);
 
     // Cálculo dos valores das faturas anteriores e proporcional
     const dataMes1 = new Date(dataVencimento);
