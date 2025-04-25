@@ -107,6 +107,13 @@ p {
   }
 }
 @media screen and (max-width: 615px) {
+  .container{
+    height: auto;
+    padding: 20px 0;
+  }
+  .box{
+    padding: 10px 20px;
+  }
   .menu {
     grid-template-columns: repeat(3, 1fr);
   }
