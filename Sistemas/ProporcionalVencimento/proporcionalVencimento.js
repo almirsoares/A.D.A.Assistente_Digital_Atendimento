@@ -11,7 +11,7 @@ function calcularProporcionalVencimento() {
     dataParaCalculo.setMonth(dataParaCalculo.getMonth() - 1);
 
     // Chama a função principal para obter os cálculos
-    const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataNova);
+    const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataNova, '360dias');
 
     let valorProporcional;
     let proporcionalDias;
@@ -46,7 +46,7 @@ function calcularProporcionalVencimento() {
         mensagemApp = "";
     }
 
-    const mensagemProtocolo = `Solicitou troca de vencimento de: ${resultado.diaAntigo.toString().padStart(2, '0')}/${resultado.mesAntigo.toString().padStart(2, '0')} para ${resultado.diaNovo.toString().padStart(2, '0')}/${resultado.mesNovo.toString().padStart(2, '0')}
+    const mensagemProtocolo = `Solicitou troca de vencimento de: ${dataAntiga.getDate().toString().padStart(2, '0')}/${dataAntiga.getMonth().toString().padStart(2, '0')} para ${dataNova.getDate().toString().padStart(2, '0')}/${dataNova.getMonth().toString().padStart(2, '0')}
 Motivo: Cliente solicitou alteração
 Gerou Proporcional? ( X )SIM ( )NÃO
 Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)}

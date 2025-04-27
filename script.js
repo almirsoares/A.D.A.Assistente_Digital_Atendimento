@@ -1,5 +1,5 @@
 // Função principal que calcula os valores proporcionais e retorna o resultado
-function calcularProporcional(valorPlano, dataAntiga, dataNova) {
+function calcularProporcional365(valorPlano, dataAntiga, dataNova) {
     // Calcula a diferença em milissegundos entre as datas
     const diferencaMilissegundos = dataNova - dataAntiga;
 
@@ -20,7 +20,7 @@ function calcularProporcional(valorPlano, dataAntiga, dataNova) {
 }
 
 // Função para calcular o proporcional de datas considerando um ciclo de 360 dias (ano comercial)
-function calcularProporcional30(valorPlano, dataAntiga, dataNova) {
+function calcularProporcional360(valorPlano, dataAntiga, dataNova) {
     const diaAntigo = dataAntiga.getDate();
     const mesAntigo = dataAntiga.getMonth() + 1;
     const anoAntigo = dataAntiga.getFullYear();
@@ -43,4 +43,33 @@ function calcularProporcional30(valorPlano, dataAntiga, dataNova) {
         mesNovo
     };
 }
+
+function calcularProporcional(valorPlano, dataAntiga, dataNova, modoCalculo){
+
+    if (modoCalculo = "360dias"){
+        const resultado = calcularProporcional360(valorPlano, dataAntiga, dataNova);
+        return{
+            valorTotal : resultado.valorTotal,
+            totalDias : resultado.totalDias,
+            diaAntigo : resultado.diaAntigo,
+            mesAntigo : resultado.mesAntigo,
+            diaNovo : resultado.diaNovo,
+            mesNovo : resultado.mesNovo
+        };
+    } else if(modoCalculo = "365dias"){
+        const resultado = calcularProporcional365(valorPlano, dataAntiga, dataNova);
+        return{
+            valorTotal : resultado.valorTotal,
+            totalDias : resultado.totalDias,
+            diaAntigo : resultado.diaAntigo,
+            mesAntigo : resultado.mesAntigo,
+            diaNovo : resultado.diaNovo,
+            mesNovo : resultado.mesNovo
+        };
+    } else {
+        alert ("ERROR : modo de operação invalido!!!! \n preencher formulario de feedback!")
+        return
+    }
+}
+
 

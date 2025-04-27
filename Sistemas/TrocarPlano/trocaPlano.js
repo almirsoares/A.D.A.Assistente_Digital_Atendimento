@@ -17,11 +17,11 @@ function calcularProporcionalPlanos() {
     }
 
     // Calcula o valor proporcional do plano anterior até a data de troca
-    const resultadoAnterior = calcularProporcional(valorPlanoAnterior, dataInicioPlano, dataTroca);
+    const resultadoAnterior = calcularProporcional(valorPlanoAnterior, dataInicioPlano, dataTroca, '360dias');
     const proporcionalAnterior = resultadoAnterior.valorTotal;
 
     // Calcula o valor proporcional do novo plano da data de troca até o vencimento
-    const resultadoNovo = calcularProporcional(valorPlanoNovo, dataTroca, dataVencimento);
+    const resultadoNovo = calcularProporcional(valorPlanoNovo, dataTroca, dataVencimento, '360dias');
     const proporcionalNovo = resultadoNovo.valorTotal;
 
     // Verifica se os dias são menores ou iguais a 5 e emite alerta

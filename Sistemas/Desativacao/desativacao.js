@@ -21,7 +21,7 @@ function calcularDesativacao() {
     dataParaCalculo.setDate(dataParaCalculo.getDate() - 1);
 
     // Chama a função calcularProporcional para obter os cálculos
-    const resultado = calcularProporcional30(valorPlano, dataParaCalculo, dataUltimoAcesso);
+    const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataUltimoAcesso, '360dias');
 
 
     

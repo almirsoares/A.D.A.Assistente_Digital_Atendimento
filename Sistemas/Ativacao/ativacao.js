@@ -12,15 +12,15 @@ function calcularAtivacao() {
     const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
 
     // Chama a função calcularProporcional para obter os cálculos
-    let prop1 = calcularProporcional(valorPlanoAnterior, dataInicio, dataDesativacao);
-    let desc1 = calcularProporcional(descontoPlanoAnterior, dataInicio, dataDesativacao);
+    let prop1 = calcularProporcional(valorPlanoAnterior, dataInicio, dataDesativacao, '360dias');
+    let desc1 = calcularProporcional(descontoPlanoAnterior, dataInicio, dataDesativacao, '360dias');
     let proporcional1 = prop1.valorTotal;
     let proporcionalDesc1 = desc1.valorTotal;
 
 
     // Chama a função calcularProporcional para obter os cálculos
-    let prop2 = calcularProporcional(valorPlanoNovo, dataAtivacao, dataVencimento);
-    let desc2 = calcularProporcional(descontoPlanoNovo, dataAtivacao, dataVencimento);
+    let prop2 = calcularProporcional(valorPlanoNovo, dataAtivacao, dataVencimento, '360dias');
+    let desc2 = calcularProporcional(descontoPlanoNovo, dataAtivacao, dataVencimento, '360dias');
     let proporcional2 = prop2.valorTotal;
     let proporcionalDesc2 = desc2.valorTotal;
     

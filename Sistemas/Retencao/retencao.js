@@ -120,7 +120,7 @@ FOI INFORMADO ALGUM PRAZO? QUAL?: ${verificaPrazo} ${infoPrazo}
         dataParaCalculo.setDate(dataParaCalculo.getDate() - 1);
 
         // Chama a função calcularProporcional para obter os cálculos
-        const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataCancelamento);
+        const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataCancelamento, '360dias');
         const valorProporcional = resultado.valorTotal;
 
         // Formatação das datas

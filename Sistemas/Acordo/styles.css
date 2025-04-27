@@ -1,0 +1,257 @@
+/* ====== STYLOS GERIAS ====== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.box {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  background-color: #10772a;
+  padding: 20px;
+  gap: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.flex {
+  display: flex;
+  gap: 10px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5px;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+label {
+  color: #fff;
+}
+
+input {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  border: 2px solid transparent;
+}
+
+input:focus {
+  border-color: red;
+  box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
+}
+
+.input {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  border: 2px solid transparent;
+}
+
+.input:focus {
+  border-color: red;
+  box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
+}
+
+textarea {
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  border: 2px solid transparent;
+}
+
+textarea:focus {
+  border-color: red;
+  box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
+}
+
+.textarea {
+  padding: 5px;
+}
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.h2 {
+  color: #fff;
+}
+
+.bottom {
+  height: 30px;
+  width: 150px;
+}
+
+/* === BOTÕES === */
+.footer {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: #fff;
+}
+
+#usoTotal {
+  overflow: hidden;
+  resize: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-item {
+  width: 100%;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffd712;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background-color: #e6b800;
+}
+
+/* ========= DESCRIÇÕES ========= */
+
+.fieldset {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  gap: 10px;
+  text-align: left;
+}
+
+.fieldset legend {
+  align-items: start;
+  text-align: start;
+}
+
+legend {
+  color: #000;
+  background-color: #ffd712;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+}
+
+/* ==================================== */
+
+.resultado legend {
+  align-items: center;
+  text-align: center;
+}
+
+.resultado {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.status {
+  padding: 4px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  border: 2px solid transparent;
+}
+
+.status:focus {
+  border-color: red;
+  box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
+}
+
+.flexResp {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media screen and (max-width: 610px) {
+  .box {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .container {
+    height: auto;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  .column {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fieldset {
+    width: 80vw;
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+
+  .fieldset legend {
+    text-align: center;
+  }
+
+  .flexResp {
+    display: flex;
+  }
+
+  .textarea {
+    width: 90%;
+  }
+}

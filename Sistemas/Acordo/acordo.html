@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!-- A.D.A. - Assistente Digital de Atendimento 
+     Desenvolvedores: 
+     - Almir Soares -- github.com/almirsoares
+     - Arthur Joaquim -- github.com/arthurjoaquim7
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="A.D.A. - Assistente Digital de Atendimento">
+    <meta property="og:image" content="https://almirsoares.github.io/A.D.A.Assistente_Digital_Atendimento/img/robo_amarelo.png">
+    <title>A.D.A. - Desativação</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../../img/robo.png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1 style="color: #fff;">Calcular Proporcional de Desativação</h1>
+            <form id="desativacaoForm">
+                <div class="flex">
+                    <fieldset class="fieldset">
+                        <legend>Valor do plano</legend>
+                        <div class="column">
+                            <label for="valorPlano">Valor do Plano</label>
+                            <input type="number" id="valorPlano" name="valorPlano" required>
+                        </div>
+                        <div class="column">
+                            <label for="dataVencimento">Data de Vencimento</label>
+                            <input type="date" id="dataVencimento" name="dataVencimento" required>
+                        </div>
+                        <div class="column">
+                            <label for="dataUltimoAcesso">Data de Último Acesso</label>
+                            <input type="date" id="dataUltimoAcesso" name="dataUltimoAcesso" required>
+                        </div>
+                        <div class="column">
+                            <label for="mesesAtrasados">Meses atrasados</label>
+                            <input type="number" id="mesesAtrasados" name="mesesAtrasados" required>
+                        </div>                    
+                    </fieldset>
+                </div>
+            </form>
+            <!-- ===RESULTADO=== -->
+            <fieldset class="fieldset resultado">
+                <div class="output-container">
+                    <h2 class="h2">Texto</h2>
+                    <textarea id="texto" cols="60" rows="10" class="textarea" readonly></textarea>
+                </div>
+            </fieldset>
+            <div class="footer">
+                    <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
+                    <button type="button" class="menu-item" onclick="calcularAcordo()">Calcular</button>
+                    <button type="reset" class="menu-item">Limpar</button>
+                </div>
+        </div>
+    </div>
+    <script src="acordo.js"></script>
+    <script src="../../script.js"></script>
+</body>
+
+</html>
