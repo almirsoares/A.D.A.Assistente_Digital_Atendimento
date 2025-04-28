@@ -47,19 +47,13 @@ function calcularJurosMulta() {
     const resultado = calcularProporcional(valorFatura, dataVencimento, dataAtualizada, '365dias');
     const totalDias = resultado.totalDias;
 
-    // Calcula multa fixa
-    const valorMulta = valorFatura * multa;
-
-    // Calcula juros compostos
-    const valorJuros = valorFatura * Math.pow(1 + juros, totalDias) - valorFatura;
-
     // Calcula o valor final com multa e juros
-    const valorFinal = valorFatura + valorMulta + valorJuros;
+    const valorFinal = calcularJurosMultaPorDia(valorFatura, multa, juros, totalDias);
+    console.log("Valor Final: ", valorFinal);
 
     // Atualiza os campos com os resultados
-    document.getElementById('valorFinal').value = valorFinal.toFixed(2);
+    document.getElementById('valorFinal').value = valorFinal.toFixed(2).replace('.', ',');
 }
-
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {

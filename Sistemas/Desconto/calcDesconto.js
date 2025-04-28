@@ -16,7 +16,7 @@ function calcularDesconto() {
     switch (tipoDesconto) {
         case 'porDias':
             const dias = parseInt(descontoSolicitado);
-            if (isNaN(dias)) {
+            if (isNaN(dias) || dias < 0 || dias > 30) {
                 alert("Por favor, insira um número válido de dias.");
                 return;
             }
