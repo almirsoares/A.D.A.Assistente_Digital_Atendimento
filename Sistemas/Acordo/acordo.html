@@ -1,106 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<!-- A.D.A. - Assistente Digital de Atendimento 
+  <!-- A.D.A. - Assistente Digital de Atendimento 
      Desenvolvedores: 
      - Almir Soares -- github.com/almirsoares
      - Arthur Joaquim -- github.com/arthurjoaquim7
 -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:description" content="A.D.A. - Assistente Digital de Atendimento">
-    <meta property="og:image" content="https://almirsoares.github.io/A.D.A.Assistente_Digital_Atendimento/img/robo_amarelo.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:description" content="A.D.A. - Assistente Digital de Atendimento" />
+    <meta property="og:image" content="https://almirsoares.github.io/A.D.A.Assistente_Digital_Atendimento/img/robo_amarelo.png" />
     <title>A.D.A. - Acordo</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="../../img/robo.png">
-</head>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="../../img/robo.png" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="box">
-            <h1 style="color: #fff;">Calcular Proporcional de Desativação</h1>
+      <div class="box">
+        <h1 style="color: #fff">Calcular Proporcional de Desativação</h1>
+        <div class="flex2">
+          <div class="left">
             <form id="vericaDesForm">
-                <div class="flex">
-                    <fieldset class="fieldsetAnsDesa">
-                        <legend>Verificar Ans desa</legend>
-                        <div class="flex">
-                            <label for="ansDesaConcluida">Ans desa concluída?</label>
-                            <select id="ansDesaConcluida" name="ansDesaConcluida" required>
-                                <option value="sim">Sim</option>
-                                <option value="nao">Não</option>
-                            </select>
-                                <label for="dataVencimentoAcordo">Data de Vencimento do Acordo</label>
-                                <input type="date" id="dataVencimentoAcordo" name="dataVencimentoAcordo" required>
-                        </div>
-                    </fieldset>
-                </div>
+              <div class="flex">
+                <fieldset class="fieldset">
+                  <legend>Verificar Ans desa</legend>
+                  <div class="flex">
+                    <div class="column">
+                      <label for="ansDesaConcluida">Ans desa concluída?</label>
+                      <select id="ansDesaConcluida" name="ansDesaConcluida" class="status" required>
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                      </select>
+                    </div>
+                    <div class="column">
+                      <label for="dataVencimentoAcordo">Data de Vencimento do Acordo</label>
+                      <input type="date" id="dataVencimentoAcordo" name="dataVencimentoAcordo" required />
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
             </form>
             <form id="desativacaoForm">
-                <div class="flex">
-                    <fieldset id="fieldsetDesativacao" class="fieldsetDesativacao" style="display: none;">
-                        <legend>Analise de desativação</legend>
-                        <div class="column">
-                            <label for="valorPlano">Valor do Plano</label>
-                            <input type="number" id="valorPlano" name="valorPlano" required>
-                        </div>
-                        <div class="column">
-                            <label for="dataVencimento">Data de Vencimento</label>
-                            <input type="date" id="dataVencimento" name="dataVencimento" required>
-                        </div>
-                        <div class="column">
-                            <label for="dataUltimoAcesso">Data de Último Acesso</label>
-                            <input type="date" id="dataUltimoAcesso" name="dataUltimoAcesso" required>
-                        </div>
-                        <div class="column">
-                            <label for="mesesAtrasados">Meses atrasados</label>
-                            <input type="number" id="mesesAtrasados" name="mesesAtrasados" required>
-                        </div>                    
-                    </fieldset>
-                </div>
+              <div class="flex">
+                <fieldset id="fieldsetDesativacao" class="fieldset" style="display: none">
+                  <legend>Analise de desativação</legend>
+                  <div class="flex">
+                    <div class="column">
+                      <label for="valorPlano">Valor do Plano</label>
+                      <input type="number" id="valorPlano" name="valorPlano" required />
+                    </div>
+                    <div class="column">
+                      <label for="mesesAtrasados">Meses atrasados</label>
+                      <input type="number" id="mesesAtrasados" name="mesesAtrasados" required />
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <div class="column" style="margin-top: 10px">
+                      <label for="dataVencimento">Data de Vencimento</label>
+                      <input type="date" id="dataVencimento" name="dataVencimento" required />
+                    </div>
+                    <div class="column" style="margin-top: 10px">
+                      <label for="dataUltimoAcesso">Data de Último Acesso</label>
+                      <input type="date" id="dataUltimoAcesso" name="dataUltimoAcesso" required />
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
             </form>
-            <form id="acordoForm" >
-                <div class="flex">
-                    <fieldset class="fieldsetAcordo">
-                        <legend>Acordo</legend>
-                        <div class="column">
-                            <label for="valorAberto">Valor em aberto</label>
-                            <input type="number" id="valorAberto" name="valorAberto" required>
-                            <label for="valorMulta">Valor com Multa</label>
-                            <input type="number" id="valorMulta" name="valorMulta" step="0.01">
-                        </div>
-                        <div class="column">
-                            <label for="valorDesconto">Valor de desconto (%)</label>
-                            <input type="number" id="valorAcordo" name="valorAcordo" step="0.01" value="0" required>
-                        </div>
-                        <div class="column">
-                            <label for="modo">Selecione o tipo de acordo</label>,
-                            <select id="modo" class="status" name="modo" required>
-                                <option value="comMulta">Com multa</option>
-                                <option value="semMulta">Sem multa</option>
-                                <option value="comDesconto">Com desconto</option>
-                            </select>
-                        </div>
-                    </fieldset>
-                </div>
+            <form id="acordoForm">
+              <div class="flex">
+                <fieldset class="fieldset">
+                  <legend>Acordo</legend>
+                  <div class="flex">
+                    <div class="column">
+                      <label for="valorAberto">Valor em aberto</label>
+                      <input type="number" id="valorAberto" name="valorAberto" required />
+                    </div>
+                    <div class="column">
+                      <label for="valorMulta">Valor com Multa</label>
+                      <input type="number" id="valorMulta" name="valorMulta" step="0.01" />
+                    </div>
+                  </div>
+                  <!-- === -->
+                  <div class="flex">
+                    <div class="column">
+                      <label for="valorDesconto">Valor de desconto (%)</label>
+                      <input type="number" id="valorAcordo" name="valorAcordo" step="0.01" value="0" required />
+                    </div>
+                    <div class="column">
+                      <label for="modo">Selecione o tipo de acordo</label>
+                      <select id="modo" class="status" name="modo" required>
+                        <option value="comMulta">Com multa</option>
+                        <option value="semMulta">Sem multa</option>
+                        <option value="comDesconto">Com desconto</option>
+                      </select>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
             </form>
+          </div>
+          <div class="right">
             <!-- ===RESULTADO=== -->
-            <fieldset class="fieldset resultado">
-                <div class="output-container">
-                    <h2 class="h2">Texto</h2>
-                    <textarea id="texto" cols="60" rows="10" class="textarea" readonly></textarea>
-                </div>
+            <fieldset class="resultado">
+              <legend>Texto</legend>
+              <textarea id="texto" cols="60" rows="10" class="textarea" readonly></textarea>
             </fieldset>
-            <div class="footer">
-                    <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
-                    <button type="button" class="menu-item" onclick="calcularAcordo()">Calcular</button>
-                    <button type="reset" class="menu-item">Limpar</button>
-                </div>
+          </div>
         </div>
+        <!-- ===FOOTER=== -->
+        <div class="footer">
+          <button onclick="location.href='../../index.html';" class="menu-item">Voltar</button>
+          <button type="button" class="menu-item" onclick="calcularAcordo()">Calcular</button>
+          <button type="reset" class="menu-item">Limpar</button>
+        </div>
+      </div>
     </div>
     <script src="acordo.js"></script>
     <script src="../../script.js"></script>
-</body>
-
+  </body>
 </html>
