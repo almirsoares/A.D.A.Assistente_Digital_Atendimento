@@ -9,6 +9,7 @@ function calcularAcordo() {
     console.log(mesesAtrasados);
     const dataVencimento = new Date(document.getElementById('dataVencimento').value + 'T00:00:00');
     const dataUltimoAcesso = new Date(document.getElementById('dataUltimoAcesso').value + 'T00:00:00');
+    
 
     if (isNaN(valorPlano) || isNaN(mesesAtrasados) || isNaN(dataVencimento.getTime()) || isNaN(dataUltimoAcesso.getTime())) {
         alert('Por favor, preencha todos os campos corretamente.');
@@ -73,3 +74,14 @@ document.addEventListener('keydown', function(event) {
       calcularAcordo();
     }
   });
+
+document.getElementById('ansDesaConcluida').addEventListener('change', function () {
+    const fieldsetDesativacao = document.getElementById('fieldsetDesativacao');
+    if (this.value === 'sim') {
+      fieldsetDesativacao.style.display = 'none';
+    }
+    else {
+      fieldsetDesativacao.style.display = 'block';
+    }
+});
+
