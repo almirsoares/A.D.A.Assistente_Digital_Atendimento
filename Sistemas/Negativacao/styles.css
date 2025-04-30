@@ -1,0 +1,308 @@
+/* ====== STYLOS GERIAS ====== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #ffffff;
+  }
+  
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .box {
+    width: 800px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: #10772a;
+    padding: 20px;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .flex {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .flex2 {
+    display: flex;
+    gap: 30px;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    padding: 2px 0;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .center {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  label {
+    color: #fff;
+  }
+  
+  input {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    border: 2px solid transparent;
+  }
+  
+  input:focus {
+    border-color: red;
+    box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
+  }
+  
+  .resultado {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    padding: 10px 0;
+  }
+  
+  .textarea {
+    width: 90%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
+    box-sizing: border-box;
+  }
+  
+  h2 {
+    color: #fff;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  /* === BOTÕES === */
+  .footer {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    color: #fff;
+  }
+  
+  #usoTotal {
+    height: 20px;
+    overflow: hidden;
+    resize: none;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .menu-item {
+    width: 100%;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffd712;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .menu-item:hover {
+    background-color: #e6b800;
+  }
+  
+  /* ========= DESCRIÇÕES ========= */
+  
+  .fieldset {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    gap: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .fieldset legend {
+    align-items: start;
+    text-align: start;
+  }
+  
+  .leftBox {
+    width: 50%;
+  }
+  .rightBox {
+    width: 50%;
+  }
+  
+  legend {
+    color: #000;
+    background-color: #ffd712;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+  }
+  
+  /* ==================================== */
+  
+  .gap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .matriz {
+    margin: 0;
+  }
+  .padding {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .status {
+    padding: 4px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    border: 2px solid transparent;
+  }
+  .btnAdd {
+    background-color: #ffd712;
+    font-weight: bold;
+    border: none;
+    border: 2px solid transparent;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .taxas {
+    padding: 5px 60px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    border: 2px solid transparent;
+  }
+  
+  .taxas:focus {
+    border-color: red;
+    box-shadow: 0 0 0 0.2rem rgba(255, 38, 0, 0.25);
+  }
+  
+  /* ===== RESPONSIVO ===== */
+  @media screen and (max-width: 815px) {
+    .fieldset legend {
+      text-align: center;
+    }
+    .box {
+      width: 90%;
+    }
+  
+    .flex2 {
+      width: 100%;
+      flex-direction: column;
+    }
+  
+    form {
+      width: 100%;
+      align-items: center;
+    }
+    .leftBox {
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+    .rightBox {
+      width: 100%;
+      height: 200px;
+    }
+    .fieldset {
+      align-items: center;
+    }
+  
+    .column {
+      width: 100%;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  @media screen and (max-width: 610px) {
+    .box {
+      width: 90%;
+    }
+    .respons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  @media screen and (max-width: 490px) {
+    .container {
+      height: auto;
+    }
+  
+    .flex {
+      flex-direction: column;
+    }
+  
+    .fieldset {
+      text-align: center;
+      align-items: center;
+    }
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  

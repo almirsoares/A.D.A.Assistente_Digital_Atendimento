@@ -28,7 +28,7 @@ body {
 }
 
 .box {
-  width: 700px;
+  width: 900px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +48,7 @@ h1 {
 
 .menu {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 /* .menu2 {
   display: grid;
@@ -101,9 +101,16 @@ p {
   margin-top: 10px;
   width: 100%;
 }
-@media screen and (max-width: 845px) {
+@media screen and (max-width: 900px) {
   .box {
     width: 90%;
+  }
+  .menu {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .container{
+    height: auto;
+    padding: 20px 0;
   }
 }
 @media screen and (max-width: 615px) {

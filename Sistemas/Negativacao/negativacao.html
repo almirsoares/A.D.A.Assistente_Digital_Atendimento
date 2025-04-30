@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <!-- A.D.A. - Assistente Digital de Atendimento 
+     Desenvolvedores: 
+     - Almir Soares -- github.com/almirsoares
+     - Arthur Joaquim -- github.com/arthurjoaquim7
+-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:description" content="A.D.A. - Assistente Digital de Atendimento" />
+    <meta property="og:image" content="https://almirsoares.github.io/A.D.A.Assistente_Digital_Atendimento/img/robo_amarelo.png" />
+    <title>A.D.A. - Negativação</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="../../img/robo.png" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1 style="color: #fff;">Negativação</h1>
+            <form id="retenção">
+                <div class="flex2">
+                <div class="leftBox">
+                    <div class="column">
+                        <!-- INFORMACOES -->
+                        <fieldset class="fieldset info center">
+                            <legend>Informações</legend>
+                            <div class="flex left">
+                                <div class="column">
+                                    <label for="cep">CEP:</label>
+                                    <input type="number" id="cep" name="cep" placeholder="Digite o CEP">
+                                </div>
+                                <div class="column">
+                                    <label for="plataforma">Plataforma</label>
+                                    <select id="plataforma" name="plataforma" class="taxas" required>
+                                        <option value="SPC">SPC</option>
+                                        <option value="SERASA 6">SERASA 6</option>
+                                        <option value="SERASA 7">SERASA 7</option>
+                                        <option value="SERASA">SERASA</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                                    <label for="operador">Operador triagem</label>
+                                    <input type="text" id="operador" name="operador" placeholder="Digite o operador da triagem">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!-- Botões de texto -->
+                         <fieldset class="fieldset">
+                            <legend>Botões de texto prontos</legend>
+                            <div class="flex left">
+                                <div class="column">
+                                    <button type="button" class="menu-item" onclick="copiarTextoAlef()">Texto retirada aberta</button>
+                                    <button type="button" class="menu-item" onclick="alertaNegativacao()">Texto alerta negativação</button>
+                                    <button type="button" class="menu-item" onclick="copiarCEP()">Copiar CEP</button>>
+                                </div>
+                                <div class="column">
+                                    <label for="texto">Texto Médio:</label>
+                                    <textarea id="texto" name="texto" placeholder="Digite um texto médio" maxlength="600" style="width: 300px; height: 120px;"></textarea>
+                                </div>
+                                <div class="column">
+                                    <button type="button" class="menu-item" onclick="copiarNegativacao()">Copiar Negativação</button>
+                                </div>
+                                <div class="column"></div>
+                                    <button type="button" class="menu-item" onclick="copiarProtocoloRetirada()">Abrir Retirada</button>
+                                    <button type="button" class="menu-item" onclick="copiarMultaONU()">Multa ONU</button>
+                                    <button type="button" class="menu-item" onclick="copiarAcordoNaoPago()">Acordo Não Pago</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                </div>
+            </form>
+        </div>    
+    </div>   
+    <script src="negativacao.js"></script>
+</body>
+</html>
+
