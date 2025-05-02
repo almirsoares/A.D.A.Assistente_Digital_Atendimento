@@ -122,6 +122,8 @@ textarea:focus {
 #usoTotal {
   overflow: hidden;
   resize: none;
+  width: 200px;
+  height: 50px;
 }
 
 .footer {

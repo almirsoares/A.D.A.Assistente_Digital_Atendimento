@@ -44,8 +44,9 @@ function calcularJurosMulta() {
     }
 
     // Usa a função calcularProporcional para obter o total de dias de atraso
-    const resultado = calcularProporcional(valorFatura, dataVencimento, dataAtualizada, '365dias');
+    const resultado = calcularProporcional(valorFatura, dataVencimento, dataAtualizada, '360dias');
     const totalDias = resultado.totalDias;
+    console.log("Total de Dias: ", totalDias);
 
     // Calcula o valor final com multa e juros
     const valorFinal = calcularJurosMultaPorDia(valorFatura, multa, juros, totalDias);
