@@ -23,6 +23,70 @@ function calcularContrato() {
     document.getElementById('totalBeneficios').value = totalBeneficios.toFixed(2).replace('.', ',');
 }
 
+// Adiciona o botão para iniciar o tutorial
+function tutorial(){
+  console.log('Iniciando o tutorial...');
+  const intro = introJs();
+  intro.setOptions({
+    steps: [
+      {
+        intro: "Bem-vindo ao tutorial! Vamos guiá-lo pelos principais elementos da página."
+      },
+      {
+        element: '#valorOriginal',
+        intro: "Aqui você insere o valor original do contrato."
+      },
+      {
+        element: '#beneficio',
+        intro: "Insira o valor do benefício aqui."
+      },
+      {
+        element: '#taxaInstalacao',
+        intro: "Este campo é para a taxa de instalação."
+      },
+      {
+        element: '#equipamentoComodato',
+        intro: "Informe o valor do equipamento em comodato."
+      },
+      {
+        element: '#btnCalcular',
+        intro: "Clique neste botão para calcular os valores."
+      },
+      {
+        element: '#totalPagarSimples',
+        intro: "Este campo mostra o total a pagar no cálculo simples. Clique para copiar o valor."
+      },
+      {
+        element: '#valorOriginal12',
+        intro: "Aqui está o valor original multiplicado por 12. Clique para copiar."
+      },
+      {
+        element: '#beneficio12',
+        intro: "Este campo exibe o benefício multiplicado por 12. Clique para copiar."
+      },
+      {
+        element: '#totalPagarComodato',
+        intro: "Aqui está o total a pagar com comodato. Clique para copiar."
+      },
+      {
+        element: '#totalBeneficios',
+        intro: "Este campo mostra o total de benefícios. Clique para copiar."
+      },
+      {
+        intro: "Isso conclui o tutorial. Agora você pode usar a calculadora com confiança!"
+      }
+    ],
+    showProgress: true,
+    showBullets: true,
+    exitOnOverlayClick: false,
+    nextLabel: 'Próximo',
+    prevLabel: 'Anterior',
+    skipLabel: 'Pular',
+    doneLabel: 'Concluir'
+  });
+  intro.start();
+}
+
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
       event.preventDefault(); // 🔥 impede o comportamento padrão (submit)
