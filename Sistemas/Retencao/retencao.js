@@ -173,6 +173,153 @@ Valor Proporcional: R$ 0,00 - 0 dias\n`;
     }
 }
 
+function tutorial() {
+    const intro = introJs();
+    const introSequence = introJs();
+    intro.setOptions({
+        steps: [
+            {
+                intro: "Bem-vindo ao tutorial! Vamos guiá-lo pelos principais elementos da página."
+            },
+            {
+                element: '#motivo',
+                intro: "Aqui você o motivo pelo qual o cliente deseja cancelar o plano.",
+            },
+            {
+                element: '#matriz-container',
+                intro: "Insira as ofertas passadas aqui.",
+            },
+            {
+                element: '#btnAdd',
+                intro: "Clique aqui para adicionar mais campos de ofertas passadas.",
+            },
+            {
+                element: '#oferta',
+                intro: "Informe o número da oferta aceita pelo cliente.",
+            },
+            {
+                element: '#obs',
+                intro: "Adicione observações relevantes sobre a retenção ou cancelamento.",
+            },
+            {
+                element: '#verificaValor',
+                intro: "Selecione se foi informado algum valor ou desconto ao cliente.",
+            },
+            {
+                element: '#valorOuDesconto',
+                intro: "Digite o valor ou desconto informado ao cliente, caso aplicável.",
+            },
+            {
+                element: '#verificaPrazo',
+                intro: "Selecione se foi informado algum prazo ao cliente.",
+            },
+            {
+                element: '#infoPrazo',
+                intro: "Digite o prazo informado ao cliente, caso aplicável.",
+            },
+            {
+                element: '#cliente-retido',
+                intro: "Selecione se o cliente foi retido ou não. Caso tenha sido, o sistema irá gerar um protocolo de retenção com base nas observaçoes abaixo",
+            },
+            {
+                element: '#cliente-retido',
+                intro: "caso o cliente não tenha sido retido, o sistema irá gerar um protocolo com base na desativação do seu cadastro.",
+            }
+        ],
+        showProgress: true,
+        showBullets: true,
+        exitOnOverlayClick: false,
+        nextLabel: 'Próximo',
+        prevLabel: 'Anterior',
+        skipLabel: 'Pular',
+        doneLabel: 'Concluir'
+    });
+
+    introSequence.setOptions({
+        steps: [
+            {
+                element: '#valorPlano',
+                intro: "Aqui você insere o valor do plano."
+            },
+            {
+                element: '#dataVencimento',
+                intro: "Selecione a data de vencimento da fatura proporcional. O sistema retorna automaticamante até o vencimento anterior para calcular os dias proporcionais de uso."
+            },
+            {
+                element: '#dataCancelamento',
+                intro: "Selecione a data do cancelamento do cliente"
+            },
+            {
+                element: '#valorMulta',
+                intro: "Insira o valor da multa total de contrato."
+            },
+            {
+                element: '#multaEquipamento',
+                intro: "Insira o valor do equipamento em comodato. É necessário inserir o valor mesmo abridno retirada para fins de calculo"
+            },
+            {
+                element: '#meses',
+                intro: "Insira o número de meses não pagos pelo cliente considerando a ativação do contrato."
+            },
+            {
+                element: '#btnGerarProtocolo',
+                intro: "Clique no botão 'Gerar protocolo' ou pressione Enter para gerar o protocolo correspondente."
+            },
+            {
+                element: '#protocolo',
+                intro: "Este campo mostra o protocolo de retenção. Clique para copiar."
+            },
+            {
+                intro: "Caso permaneça com alguma dúvida entre em contato ou preencha o formulário de feedback."
+            }
+        ],
+        howProgress: true,
+        showBullets: true,
+        exitOnOverlayClick: false,
+        nextLabel: 'Próximo',
+        prevLabel: 'Anterior',
+        skipLabel: 'Pular',
+        doneLabel: 'Concluir'
+    });
+
+    intro.oncomplete(function () {
+        alterarClienteRetido('não');
+    });
+
+    intro.onexit(function () {
+        alterarClienteRetido('não');
+        console.log('Tutorial encerrado sem conclusão. Nenhuma alteração feita.');
+        introSequence.start();
+    });
+
+    intro.start();
+}
+
+function alterarClienteRetido(valor) {
+    console.log('Função alterarClienteRetido chamada com valor:', valor);
+    const selectClienteRetido = document.getElementById('cliente-retido');
+    if (valor === 'sim' || valor === 'não') {
+        console.log('Valor válido recebido. Atualizando select...');
+        selectClienteRetido.value = valor;
+        console.log('Valor do select atualizado para:', selectClienteRetido.value);
+    } else {
+        console.log('Valor inválido recebido:', valor);
+        alert('Valor inválido! Use "sim" ou "não".');
+        return; // Sai da função se o valor for inválido
+    }
+
+    // Atualiza a exibição dos fieldsets com base no valor do select
+    const fieldsetDesativacao = document.getElementById('desativacao');
+    const fieldsetObsRetencao = document.getElementById('obsRetencao');
+    if (valor === 'sim') {
+        fieldsetDesativacao.style.display = 'none';
+        fieldsetObsRetencao.style.display = 'block';
+    } else {
+        fieldsetDesativacao.style.display = 'block';
+        fieldsetObsRetencao.style.display = 'none';
+    }
+}
+
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
       event.preventDefault(); // 🔥 impede o comportamento padrão (submit)
@@ -187,3 +334,4 @@ document.getElementById('protocolo').addEventListener('click', function() {
     document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
     alert('Protocolo copiado!');  // Exibe um alerta (opcional)
   });
+

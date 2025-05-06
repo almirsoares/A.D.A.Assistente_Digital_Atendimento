@@ -104,3 +104,69 @@ document.getElementById('usoTotal').addEventListener('click', function() {
     document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
     alert('Uso Total copiado!');  // Exibe um alerta (opcional)
   });
+
+function startTutorial() {
+    const intro = introJs();
+    intro.setOptions({
+        steps: [
+            {
+                intro: "Bem-vindo ao tutorial de assistência de desativação! Todos os campos são obrigatórios para o cálculo correto."
+            },
+            {
+                element: '#valorPlano',
+                intro: "Aqui você insere o valor do plano."
+            },
+            {
+                element: '#mesesFaturas',
+                intro: "Insira o número de meses de faturas em aberto desconsiderando a fatura proporcional a ser calculada."
+            },
+            {
+                element: '#dataVencimento',
+                intro: "Selecione a data de vencimento da fatura proporcional. O sistema retorna automaticamante até o vencimento anterior para calcular os dias proporcionais de uso."
+            },
+            {
+                element: '#dataUltimoAcesso',
+                intro: "Selecione a data do último acesso do cliente. Geralmente é a data que o cliente recebeu bloqueio total"
+            },
+            {
+                element: '#valorMulta',
+                intro: "Insira o valor da multa total de contrato."
+            },
+            {
+                element: '#multaEquipamento',
+                intro: "Insira o valor do equipamento em comodato. É necessário inserir o valor mesmo que o equipamento tenha sido devolvido, pois o valor da multa é sempre subtraido pelo equipamento."
+            },
+            {
+                element: '#meses',
+                intro: "Insira o número de meses não pagos pelo cliente considerando a ativação do contrato."
+            },
+            {
+                element: '#statusEquipamento',
+                intro: "Selecione o status do equipamento. Em caso de extravio irá aparecer a mensagem de multa do equipamento."
+            },
+            {
+                element: '#btnCalcular',
+                intro: "Clique no botão 'Calcular' ou pressione Enter para calcular os valores."
+            },
+            {
+                element: '#usoTotal',
+                intro: "Este campo mostra o total de dias utilizados. Clique para copiar."
+            },
+            {
+                element: '#protocolo',
+                intro: "Este campo mostra o protocolo de desativação. Clique para copiar."
+            },
+            {
+                intro: "Caso permaneça alguma duvida entre em contato ou preencha o formulario de feedback"
+            }
+        ],
+        showProgress: true,
+        showBullets: true,
+        exitOnOverlayClick: false,
+        nextLabel: 'Próximo',
+        prevLabel: 'Anterior',
+        skipLabel: 'Pular',
+        doneLabel: 'Concluir'
+    });
+    intro.start();
+}

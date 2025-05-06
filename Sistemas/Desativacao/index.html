@@ -15,6 +15,10 @@
     <title>A.D.A. - Desativação</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="../../img/robo.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@5.1.0/minified/introjs.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@5.1.0/minified/intro.min.js"></script>
+
 </head>
 
 <body>
@@ -110,7 +114,8 @@
             </div>
             <div class="footer">
                     <button onclick="location.href='../../';" class="menu-item">Voltar</button>
-                    <button type="button" class="menu-item" onclick="calcularDesativacao()">Calcular</button>
+                    <button id="btnCalcular" type="button" class="menu-item" onclick="calcularDesativacao()">Calcular</button>
+                    <button type="button" class="menu-item" onclick="startTutorial()">Tutorial</button>
                     <button type="reset" class="menu-item">Limpar</button>
                 </div>
         </div>

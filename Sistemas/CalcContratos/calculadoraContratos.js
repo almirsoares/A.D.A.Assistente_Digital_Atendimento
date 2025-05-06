@@ -25,7 +25,6 @@ function calcularContrato() {
 
 // Adiciona o botão para iniciar o tutorial
 function tutorial(){
-  console.log('Iniciando o tutorial...');
   const intro = introJs();
   intro.setOptions({
     steps: [
@@ -34,11 +33,15 @@ function tutorial(){
       },
       {
         element: '#valorOriginal',
-        intro: "Aqui você insere o valor original do contrato."
+        intro: "Aqui você insere o valor original do contrato termo combo residencial.",
+      },
+      {
+        element: '#valorOriginal',
+        intro: "Este campo é preenchido de acordo com o campo valor no serviço do topsapp."
       },
       {
         element: '#beneficio',
-        intro: "Insira o valor do benefício aqui."
+        intro: "Insira o valor do benefício aqui. Corresponde ao valor do desconto no serviço do topsapp."
       },
       {
         element: '#taxaInstalacao',
@@ -50,27 +53,27 @@ function tutorial(){
       },
       {
         element: '#btnCalcular',
-        intro: "Clique neste botão para calcular os valores."
+        intro: "Clique neste botão para calcular os valores, ou pressione Enter."
       },
       {
         element: '#totalPagarSimples',
-        intro: "Este campo mostra o total a pagar no cálculo simples. Clique para copiar o valor."
+        intro: "Este campo mostra o total a pagar. No contrato é preenchido automaticamente de acordo com os valores anteriores."
       },
       {
         element: '#valorOriginal12',
-        intro: "Aqui está o valor original multiplicado por 12. Clique para copiar."
+        intro: "Aqui está o valor original do preenchido no beneficio 'DESCONTO FIDELIDADE'. Clique para copiar."
       },
       {
         element: '#beneficio12',
-        intro: "Este campo exibe o benefício multiplicado por 12. Clique para copiar."
+        intro: "Este campo exibe o benefício do mesmo campo. Clique para copiar."
       },
       {
         element: '#totalPagarComodato',
-        intro: "Aqui está o total a pagar com comodato. Clique para copiar."
+        intro: "Aqui está o anual pago pleo cliente. Ele também é preenchido automaticamente pelo topsapp. Use para conferir as informações."
       },
       {
         element: '#totalBeneficios',
-        intro: "Este campo mostra o total de benefícios. Clique para copiar."
+        intro: "Este campo mostra o total de benefícios. Lembre de preencher este valor em valor origial e beneficios. Clique para copiar."
       },
       {
         intro: "Isso conclui o tutorial. Agora você pode usar a calculadora com confiança!"
