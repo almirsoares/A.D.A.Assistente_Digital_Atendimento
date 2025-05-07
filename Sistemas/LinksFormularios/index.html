@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!-- A.D.A. - Assistente Digital de Atendimento 
+     Desenvolvedores: 
+     - Almir Soares -- github.com/almirsoares
+     - Arthur Joaquim -- github.com/arthurjoaquim7
+-->
+     
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="A.D.A. - Assistente Digital de Atendimento">
+    <meta property="og:image" content="https://almirsoares.github.io/A.D.A.Assistente_Digital_Atendimento/img/robo_amarelo.png">
+    <title>Links e formularios</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../../img/robo.png">
+</head>
+<body>
+    <div class="container" style="text-align: center; padding: 20px;">
+        <h1 style="color: #fff;">VOCÊ SERÁ REDIRECIONADO PARA UMA NOVA PAGINA EM: </h1>
+        <p id="timer" style="color: #fff; font-size: 30px;">10 SEGUNDOS</p>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                let countdown = 10;
+                const timerElement = document.getElementById('timer');
+                const redirectButton = document.getElementById('redirectButton');
+
+                const interval = setInterval(() => {
+                    countdown--;
+                    timerElement.textContent = countdown + ' SEGUNDOS';
+                    if (countdown <= 0) {
+                        clearInterval(interval);
+                        redirectButton.style.display = 'block';
+                        redirectButton.click();
+                    }
+                }, 1000);
+
+                redirectButton.onclick = () => {
+                    window.open('https://sites.google.com/view/ada-links/in%C3%ADcio', '_blank');
+                };
+            });
+        </script>
+        <h2 style="color: #fff;">CASO NÃO TENHA ACESSO, SOLICITE ATRAVÉS DO FORMULARIO DE FEEDBACK</h2>
+        <button id="redirectButton" onclick="location.href='../../';" class="menu-item" style="display: none;">Caso não tenha aberto automaticamente, clique aqui!</button>
+        <button onclick="location.href='../../';" class="menu-item">Voltar</button>
+    </div>
+</body>
+</html>
+
