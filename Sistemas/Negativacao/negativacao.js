@@ -35,6 +35,14 @@ async function carregarCidadesDoCSV() {
         
 }
 
+const campoMedio = document.getElementById("texto");
+campoMedio.addEventListener("input", function () {
+    if (campoMedio.value.length > 100) {
+        campoMedio.value += '\n\n';
+        console.log(campoMedio.value.length);
+    }
+});
+
 carregarCidadesDoCSV();
 
 
