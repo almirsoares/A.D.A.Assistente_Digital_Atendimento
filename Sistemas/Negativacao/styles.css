@@ -52,10 +52,14 @@ body {
   gap: 5px;
   padding: 2px 0;
 }
-.column2{
+.column2 {
   display: flex;
   flex-direction: column;
-  gap:  5px;
+  justify-content: space-between;
+  gap: 5px;
+}
+.red {
+  background-color: red;
 }
 .grid {
   display: grid;
@@ -166,6 +170,17 @@ form {
   height: 35px;
 }
 
+.btnDel {
+  width: auto;
+  padding: 0 10px;
+  height: 35px;
+  color: #fff;
+  background-color: black;
+}
+
+.btnDel:hover {
+  background-color: red;
+}
 .flexBtn {
   width: 100%;
   display: flex;
@@ -333,3 +348,4 @@ legend {
     grid-template-columns: 1fr;
   }
 }
+
