@@ -231,7 +231,7 @@ function tutorial() {
         exitOnOverlayClick: false,
         nextLabel: 'Próximo',
         prevLabel: 'Anterior',
-        skipLabel: 'Pular',
+        skipLabel: 'Fechar',
         doneLabel: 'Concluir'
     });
 

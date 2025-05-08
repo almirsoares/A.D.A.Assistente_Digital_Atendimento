@@ -16,6 +16,9 @@
     <title>A.D.A. - Calcular Proporcional - troca de plano e data de vencimento</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="../../img/robo.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@5.1.0/minified/introjs.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@5.1.0/minified/intro.min.js"></script>
 </head>
 
 <body>
@@ -90,7 +93,8 @@
 
                 <div class="footer">
                     <button onclick="location.href='../../';" class="menu-item">Voltar</button>
-                    <button type="button" class="menu-item" onclick="calcularProporcionalPlanos()">Calcular</button>
+                    <button id="btnCalcular" type="button" class="menu-item" onclick="calcularProporcionalPlanos()">Calcular</button>
+                    <button type="button" class="menu-item" onclick="tutorial()">Tutorial</button>
                     <button type="reset" class="menu-item">Limpar</button>
                 </div>
 

@@ -60,6 +60,72 @@ function calcularProporcionalPlanos() {
     document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2).replace('.', ',');
 }
 
+function tutorial() {
+    const intro = introJs()
+    intro.setOptions({
+        steps: [
+            {
+                intro: "Olá! Vamos aprender a calcular o valor proporcional entre dois planos."
+            },
+            {
+                element: '#valorPlanoAnterior',
+                intro: 'Insira o valor do plano anterior.'
+            },
+            {
+                element: '#descontoPlanoAnterior',
+                intro: 'Insira o desconto do plano anterior. Se não houver deixe com valor 0.'
+            },
+            {
+                element: '#valorPlanoNovo',
+                intro: 'Insira o valor do novo plano.'
+            },
+            {
+                element: '#descontoPlanoNovo',
+                intro: 'Insira o desconto do novo plano. Se não houver deixe com valor 0.'
+            },
+            {
+                element: '#inicioPlano',
+                intro: 'Selecione a data de início do plano anterior. Corresponde a data de vencimento do plano antes da troxa.'
+            },
+            {
+                element: '#dataTroca',
+                intro: 'Selecione a data de troca de plano. Geralmente hoje.'
+            },
+            {
+                element: '#dataVencimento',
+                intro: 'Selecione a data de vencimento do novo plano. Corresponde a próxima data de vencimento.'
+            },
+            {
+                element: '#valorFaturaTotal',
+                intro: 'Aqui está o valor integral da fatura, sem o desconto de um dos planos, se houver. Esse campo só aparece se houver desconto.'
+            },
+            {
+                element: '#valorDescontoTotal',
+                intro: 'Aqui está o valor total dos descontos proporcionais. Esse campo só aparece se houver desconto.'
+            },
+            {
+                element: '#valorFinalCobrado',
+                intro: 'Aqui está o valor final que será cobrado após aplicar os descontos.'
+            },
+            {
+                element: '#btnCalcular',
+                intro: 'Clique aqui para calcular o valor da fatura a ser gerada.'
+            },
+            {
+                intro: "Caso tenha alguma dúvida, entre em contato ou preencha o formulário de feedback."
+            }
+        ],
+        showProgress: true,
+        showBullets: true,
+        exitOnOverlayClick: false,
+        nextLabel: 'Próximo',
+        prevLabel: 'Anterior',
+        skipLabel: 'Fechar',
+        doneLabel: 'Concluir'
+    });
+    intro.start();
+}
+
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {

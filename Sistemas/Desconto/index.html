@@ -15,6 +15,9 @@
     <title>A.D.A. - Calcular Desconto</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="../../img/robo.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@5.1.0/minified/introjs.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@5.1.0/minified/intro.min.js"></script>
 </head>
 
 <body>
@@ -57,14 +60,13 @@
                     <legend>Resultado</legend>
                     <div class="flex center respons">
                         <div class="column">
-                            <label for="valorFaturaTotal">Valor da Fatura Total</label>
-                            <input type="text" id="valorFaturaTotal" name="valorFaturaTotal" readonly>
+                            <label for="valorFaturaTotal" class="valor-total-campo" style="display: none;">Valor da Fatura Total</label>
+                            <input type="text" id="valorFaturaTotal" class="valor-total-campo" name="valorFaturaTotal" readonly style="display: none;">
                         </div>
 
                         <div class="column">
-                            <label for="valorDescontoTotal" class="desconto-campo" style="display: none;">Valor Total de
-                                Desconto</label>
-                            <input type="text" id="valorDescontoTotal" name="valorDescontoTotal" readonly
+                            <label for="valorDescontoPlano" class="desconto-campo" style="display: none;">Desconto do plano</label>
+                            <input type="text" id="valorDescontoPlano" name="valorDescontoPlano" readonly
                                 class="desconto-campo" style="display: none;">
                         </div>
 
@@ -77,7 +79,8 @@
 
                 <div class="footer">
                     <button onclick="location.href='../../';" class="menu-item">Voltar</button>
-                    <button type="button" class="menu-item" onclick="calcularDesconto()">Calcular</button>
+                    <button id="btnCalcular" type="button" class="menu-item" onclick="calcularDesconto()">Calcular</button>
+                    <button type="button" class="menu-item" onclick="tutorial()">Tutorial</button>
                     <button type="reset" class="menu-item">Limpar</button>
                 </div>
             </form>

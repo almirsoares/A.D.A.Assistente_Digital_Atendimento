@@ -53,13 +53,73 @@ function calcularDesconto() {
         return;
     }
 
+    if (valorDescontoTotal > 0) {
+        // Exibe os campos de desconto e valor total da fatura
+        document.querySelectorAll('.desconto-campo').forEach(campo => campo.style.display = 'block');
+        document.querySelectorAll('.valor-total-campo').forEach(campo => campo.style.display = 'block');
+    }
+
     // Atualiza os campos de resultado
     document.getElementById('valorFaturaTotal').value = valorFaturaTotal.toFixed(2);
-    document.getElementById('valorDescontoTotal').value = valorDescontoTotal.toFixed(2);
+    document.getElementById('valorDescontoPlano').value = valorDescontoTotal.toFixed(2);
     document.getElementById('valorFinalCobrado').value = valorFinalCobrado.toFixed(2);
+}
 
-    // Exibe os campos de desconto
-    document.querySelectorAll('.desconto-campo').forEach(campo => campo.style.display = 'block');
+function tutorial() {
+    // Função que exibe um tutorial para o usuário
+    intro = introJs();
+    intro.setOptions({
+        steps: [
+            {
+                intro: "Olá! Vamos aprender a calcular um desconto extra para um cliente"
+            },
+            {
+                element: '#valorPlano',
+                intro: 'Insira o valor do plano.'
+            },
+            {
+                element: '#descontoPlano',
+                intro: 'Insira o desconto do plano. Se não houver deixe com valor 0.'
+            },
+            {
+                element: '#descontoSolicitado',
+                intro: 'Insira o valor, porcentagem ou dias para o desconto solicitado.'
+            },
+            {
+                element: '#tipoDesconto',
+                intro: 'Selecione o tipo de desconto desejado.'
+            },
+            {
+                element: '#calcularDesconto',
+                intro: 'Clique aqui para calcular o desconto ou pressione Enter.'
+            },
+            {
+                element: '#valorFaturaTotal',
+                intro: 'Aqui você verá o valor total da fatura após o desconto ofertado. Esse campo só aparece se houver desconto do plano.'
+            },
+            {
+                element: '#valorDescontoPlano',
+                intro: 'Aqui você verá o valor do desconto proporcional do plano. Esse campo só aparece se houver desconto do plano.'
+            },
+            {
+                element: '#valorFinalCobrado',
+                intro: 'Aqui você verá o valor final a ser cobrado ao cliente após inserir o desconto ofertado.'
+            },
+            {
+                intro: "Caso permaneça alguma dúvida, entre em contato ou preencha o formulário de feedback."
+            }
+        ],
+        showProgress: true,
+        showBullets: true,
+        exitOnOverlayClick: false,
+        exitOnEsc: true,
+        nextLabel: 'Próximo',
+        prevLabel: 'Voltar',
+        doneLabel: 'Fechar',
+        skipLabel: 'Sair',
+    });
+
+    intro.start();
 }
 
 
