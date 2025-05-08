@@ -106,6 +106,12 @@ function alertaNegativacao() {
     navigator.clipboard.writeText(mensagem).then(() => {});
 }
 
+// == LIMPAR TEXTAREA
+
+function limparTextarea(){
+    document.getElementById('texto').value = '';
+}
+
 function copiarMultaONU() {
     navigator.clipboard.writeText("MULTA ONU").then(() => {});
 }
