@@ -22,43 +22,44 @@
         <form id="retenção">
           <!-- INFORMACOES -->
           <fieldset class="fieldset info center">
-            <legend>Informações</legend>
+            <legend class="gray">Informações</legend>
             <div class="column">
               <div class="flex">
-                <div class="column">
-                  <label for="cidade">Cidade:</label>
-                  <select id="cidade" name="cidade" required>
+                <div class="column2">
+                  <select id="cidade" type="text" name="cidade" required="" class="input">
                       <!-- Cidades serão adicionadas dinamicamente pelo JavaScript -->
                   </select>
+                  <label for="cidade" class="label">Cidade</label>
                 </div>
               </div>
               <div class="flex">
                 <div id="pesquisacep" class="pesquisacep" style="display: block;">
-                  <div class="column" >
-                    <label for="rua">Rua:</label>
-                    <input type="text" id="rua" name="rua" placeholder="Digite a rua" />
+                  <div class="flex">
+                    <div class="column2" >
+                    <input type="text" required="" id="rua" name="rua"  class="input"/>
+                    <label for="rua" class="label">Rua</label>
                   </div>
-                  <div class="column" >
-                    <label for="inputCidade">Digite a cidade:</label>
-                    <input type="text" id="inputCidade" name="inputCidade" placeholder="Digite a cidade" />
+                  <div class="column2" >
+                    <input type="text" required="" id="inputCidade" name="inputCidade"  class="input"/>
+                    <label for="inputCidade" class="label">Digite a cidade</label>
                   </div>
-                  <div class="column">
-                    <label for="estado">Estado:</label>
-                    <select id="estado" name="estado" required>
-                      <option value="PE">Pernambuco (PE)</option>
-                      <option value="AL">Alagoas (AL)</option>
-                    </select>
                   </div>
-                  <div class="column">
-                    <button type="button" class="menu-item" id="buscarCep">Buscar</button>
+                  <div class="flex4">
+                    <div class="column4">
+                        <label for="estado">Estado</label>
+                        <select id="estado" name="estado" required>
+                              <option value="PE">Pernambuco (PE)</option>
+                              <option value="AL">Alagoas (AL)</option>
+                        </select>
+                    </div>
+                        <button type="button" class="menu-item" style="margin-top: 5px;" id="buscarCep">Buscar</button>
                   </div>
                 </div>
               </div>
               <div class="flex">
-                <div class="column"></div>
-                <div class="column left">
-                  <label for="cep">CEP:</label>
-                  <input type="text" id="cep" name="cep" placeholder="Digite o CEP" />
+                <div class="column2">
+                  <input type="text" required="" id="cep" name="cep"  class="input"/>
+                  <label for="cep" class="label">CEP</label>
                 </div>
                 <div class="column">
                   <label for="plataforma">Plataforma</label>
@@ -70,19 +71,19 @@
                   </select>
                 </div>
               </div>
-              <div class="column">
-                <label for="operador">Operador triagem</label>
-                <input type="text" id="operador" name="operador" placeholder="Digite o operador da triagem" />
+              <div class="column2">
+                <input type="text" required="" id="operador" name="operador" class="input"/>
+                <label for="operador" class="label">Operador triagem</label>
               </div>
             </div>
           </fieldset>
 
           <!-- Botões de texto -->
           <fieldset class="fieldset info center">
-            <legend>Botões de texto prontos</legend>
+            <legend class="gray">Botões de texto prontos</legend>
             <div class="flexBtn">
-              <button type="button" class="menu-item" onclick="copiarTextoAlef()">Texto retirada aberta</button>
-              <button type="button" class="menu-item" onclick="alertaNegativacao()">Texto alerta negativação</button>
+              <button type="button" class="menu-item" onclick="copiarTextoAlef()">Retirada aberta</button>
+              <button type="button" class="menu-item" onclick="alertaNegativacao()">Alerta negativação</button>
               <button type="button" class="menu-item" onclick="copiarCEP()">Copiar CEP</button>
             </div>
             <div class="flex">
