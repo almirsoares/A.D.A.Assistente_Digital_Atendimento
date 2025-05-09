@@ -35,11 +35,18 @@ async function carregarCidadesDoCSV() {
         
 }
 
+let qtdLetrasDigAgora = 0;
+let qtdLetrasDigAntes = 0;
+let qtdDiferencaLetras = 0;
+
 const campoMedio = document.getElementById("texto");
 campoMedio.addEventListener("input", function () {
-    if (campoMedio.value.length > 100) {
+    qtdLetrasDigAntes = qtdLetrasDigAgora;
+    qtdLetrasDigAgora = campoMedio.value.length;
+    qtdDiferencaLetras = qtdLetrasDigAgora - qtdLetrasDigAntes;
+
+    if (qtdDiferencaLetras > 100) {
         campoMedio.value += '\n\n';
-        console.log(campoMedio.value.length);
     }
 });
 
@@ -118,6 +125,7 @@ function alertaNegativacao() {
 
 function limparTextarea(){
     document.getElementById('texto').value = '';
+    qtdLetrasDigAgora = 0;
 }
 
 function copiarMultaONU() {
