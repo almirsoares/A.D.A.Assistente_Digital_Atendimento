@@ -26,7 +26,6 @@ function calcularAcordo() {
     if (ansDesaConcluida === 'sim') {
         if (modo === 'comMulta'){
             if (valorMulta > 0) {
-                console.log('valor multa ' + valorMulta);
                 texto += `O valor total devido com juros e multa é de R$ ${valorMulta.toFixed(2).replace('.',',')}`;
             } else {
                 alert("O valor em aberto com multa deve ser maior que 0.");
@@ -34,7 +33,6 @@ function calcularAcordo() {
             }
         } else if (modo === 'semMulta') {
             if (valorAberto > 0) {
-                console.log('valor aberto ' + valorAberto);
                 texto += `O valor total devido sem juros e multa é de R$ ${valorAberto.toFixed(2).replace('.',',')}`;
             } else {
                 alert("O valor em aberto deve ser maior que 0.");
@@ -43,7 +41,6 @@ function calcularAcordo() {
             if (valorDesconto > 0) {
                 if (valorAberto > 0) {
                     valorAberto = (valorAberto * (100 - valorDesconto)) / 100;
-                    console.log('valor aberto com desconto ' + valorAberto);
                     texto += `O valor total devido com desconto é de R$ ${valorAberto.toFixed(2).replace('.',',')}`;
                 }
                 else {
@@ -56,6 +53,7 @@ function calcularAcordo() {
             }
         }
         texto += ' para a data de vencimento ' + dataVencimentoAcordo.toLocaleDateString('pt-BR');
+
     } else {
 
         // Seta a data para o calculo ser referente ao dia do vencimento anterior para calcular o proporcional decorrendo daquele dia
@@ -67,14 +65,27 @@ function calcularAcordo() {
         const resultado = calcularProporcional(valorPlano, dataParaCalculo, dataUltimoAcesso, '360dias');
 
         const valorProporcionalMes = resultado.valorTotal.toFixed(2);
-        console.log('valor proporcional mes ' + valorProporcionalMes);
         const valorFatura = valorPlano.toFixed(2);
 
         let totalDiasProporcionais = 0;
-        let totalJurosMulta = 0;
 
-        const multa = 10/100;
-        const juros = 0.08333/100; 
+        let multa = 10/100;
+        let juros = 0.08333/100; 
+
+        if (document.getElementById('multaBase').value === '10') {
+            multa = 10/100;
+            juros = 0.08333/100;
+        } else if (document.getElementById('multaBase').value === '2') {
+            multa = 2/100;
+            juros = 0.03333/100;
+        } else{
+            alert("A multa deve ser 2 ou 10%.");
+            return;
+        }
+
+        console.log("a multa é: ", multa);
+        console.log("o juros é: ", juros);
+
         let valorTotalDevidoComJuros = 0;
         let  resultadoMes = 0;
         let  dataMesAtrasado = new Date(dataParaCalculo);
@@ -82,16 +93,12 @@ function calcularAcordo() {
 
         for (let i = 0; i < mesesAtrasados; i++) {
           dataMesAtrasado.setMonth(dataMesAtrasado.getMonth() - i);
-          console.log('data mes atrasado ' + dataMesAtrasado);
 
           resultadoMes = calcularProporcional(valorPlano, dataMesAtrasado, dataVencimentoAcordo, '360dias');
           totalDiasProporcionais = resultadoMes.totalDias;
-          console.log('total dias proporcionais ' + totalDiasProporcionais);
 
           jurosMultaMes = calcularJurosMultaPorDia(valorFatura, multa, juros, totalDiasProporcionais);
-          console.log('juros e multa mes ' + jurosMultaMes);
           valorTotalDevidoComJuros = parseFloat(jurosMultaMes) + parseFloat(valorTotalDevidoComJuros);
-          console.log('valor total devido com juros ' + valorTotalDevidoComJuros);
         }
 
         diasAtrasadosProporcional = calcularProporcional(valorPlano, dataVencimento, dataVencimentoAcordo, '360dias').totalDias;
@@ -101,10 +108,12 @@ function calcularAcordo() {
         let valorTotalDevido = parseFloat(mesesDevidosAnteriores) + parseFloat(valorProporcionalMes);
         valorTotalDevidoComJuros = parseFloat(valorTotalDevidoComJuros) + parseFloat(proprocionalComMulta);
 
+        document.getElementById('valorAberto').value = valorTotalDevido.toFixed(2);
+        document.getElementById('valorMulta').value = valorTotalDevidoComJuros.toFixed(2);
+
         // Mensagem de protocolo
         if (modo === 'comMulta'){
           if (valorTotalDevidoComJuros > 0) {
-              console.log('valor multa ' + valorTotalDevidoComJuros);
               texto += `O valor total devido com juros e multa é de R$ ${valorTotalDevidoComJuros.toFixed(2).replace('.',',')}`;
           } else {
               alert("O valor em aberto com multa deve ser maior que 0.");
@@ -112,7 +121,6 @@ function calcularAcordo() {
           }
       } else if (modo === 'semMulta') {
           if (valorTotalDevido > 0) {
-              console.log('valor aberto ' + valorTotalDevido);
               texto += `O valor total devido sem juros e multa é de R$ ${valorTotalDevido.toFixed(2).replace('.',',')}`;
           } else {
               alert("O valor em aberto deve ser maior que 0.");
@@ -121,7 +129,6 @@ function calcularAcordo() {
           if (valorDesconto > 0) {
               if (valorTotalDevido > 0) {
                   valorTotalDevido = (valorTotalDevido * (100 - valorDesconto)) / 100;
-                  console.log('valor aberto com desconto ' + valorTotalDevido);
                   texto += `O valor total devido com desconto é de R$ ${valorTotalDevido.toFixed(2).replace('.',',')}`;
               }
               else {
@@ -135,7 +142,18 @@ function calcularAcordo() {
       }
       texto += ' para a data de vencimento ' + dataVencimentoAcordo.toLocaleDateString('pt-BR');
 
+    console.log("o valor proporcional é: ", resultado.valorTotal);
+    console.log("o valor do proporcional com multa é: ", proprocionalComMulta);
+
+    console.log("o valor da fatura é: ", valorFatura);
+    console.log("o valor total devido é: ", valorTotalDevido);
+    console.log("o valor total devido com juros e multa é: ", valorTotalDevidoComJuros);
+    console.log("o valor da multa é: ", valorMulta);
+    console.log("o valor do desconto é: ", valorDesconto);
     }
+
+
+    
     document.getElementById('texto').value = texto;
 }
 

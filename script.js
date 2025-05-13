@@ -74,25 +74,18 @@ function calcularProporcional(valorPlano, dataAntiga, dataNova, modoCalculo){
 
 
 function calcularJurosMultaPorDia(valorFatura, multa, juros, totalDias) {
-    console.log("Valor Fatura: ", valorFatura);
-    console.log("Multa: ", multa);
-    console.log("Juros: ", juros);
-    console.log("Total Dias: ", totalDias);
 
     if (totalDias <= 0) {
         alert("Total de dias após o vencimento deve ser maior que 0.");
-        return 0;
+        return valorFatura;
     }
     // Calcula multa fixa
     const valorMulta = valorFatura * multa;
-    console.log("Valor Multa: ", valorMulta);
 
     // Calcula juros compostos
     const valorJuros = valorFatura * Math.pow(1 + juros, totalDias) - valorFatura;
-    console.log("Valor Juros: ", valorJuros);
 
     // Calcula o valor final com multa e juros
     const valorFinal = parseFloat(valorFatura) + parseFloat(valorMulta) + parseFloat(valorJuros);
-    console.log("Valor Final: ", valorFinal);
     return valorFinal;
 }

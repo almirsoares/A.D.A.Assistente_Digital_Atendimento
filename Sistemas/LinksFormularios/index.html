@@ -31,7 +31,6 @@
                     timerElement.textContent = countdown + ' SEGUNDOS';
                     if (countdown <= 0) {
                         clearInterval(interval);
-                        redirectButton.style.display = 'block';
                         redirectButton.click();
                     }
                 }, 1000);
@@ -42,7 +41,7 @@
             });
         </script>
         <h2 style="color: #fff;">CASO NÃO TENHA ACESSO, SOLICITE ATRAVÉS DO FORMULARIO DE FEEDBACK</h2>
-        <button id="redirectButton" onclick="location.href='../../';" class="menu-item" style="display: none;">Caso não tenha aberto automaticamente, clique aqui!</button>
+        <button id="redirectButton" onclick="location.href='../../';" class="menu-item">Caso não seja aberto automaticamente, clique aqui!</button>
         <button onclick="location.href='../../';" class="menu-item">Voltar</button>
     </div>
 </body>

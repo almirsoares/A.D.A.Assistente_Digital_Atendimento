@@ -44,7 +44,8 @@
                     <label for="inputCidade" class="label">Digite a cidade</label>
                   </div>
                   </div>
-                  <div class="flex4">
+                  <div class="flex">
+                    
                     <div class="column4">
                         <label for="estado">Estado</label>
                         <select id="estado" name="estado" required>
@@ -52,7 +53,9 @@
                               <option value="AL">Alagoas (AL)</option>
                         </select>
                     </div>
-                        <button type="button" class="menu-item" style="margin-top: 5px;" id="buscarCep">Buscar</button>
+                    <div class="column2">
+                      <button type="button" class="menu-item" style="margin-top: 5px;" id="buscarCep">Buscar</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -70,11 +73,12 @@
                     <option value="SERASA">SERASA</option>
                   </select>
                 </div>
+                <div class="column2">
+                  <input type="text" required="" id="operador" name="operador" class="input"/>
+                  <label for="operador" class="label">Operador</label>
+                </div>
               </div>
-              <div class="column2">
-                <input type="text" required="" id="operador" name="operador" class="input"/>
-                <label for="operador" class="label">Operador triagem</label>
-              </div>
+              
             </div>
           </fieldset>
 
@@ -103,7 +107,7 @@
           </fieldset>
         </form>
         <div class="footer"></div>
-          <button type="button" class="menu-item" onclick="window.history.back()">Voltar</button>
+          <button type="button" class="menu-item" onclick="window.location.href='../../';">Voltar</button>
         </div>
       </div>
     </div>
