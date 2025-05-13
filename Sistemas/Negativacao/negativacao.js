@@ -129,7 +129,7 @@ function limparTextarea(){
 }
 
 function copiarMultaONU() {
-    navigator.clipboard.writeText("MULTA ONU").then(() => {});
+    navigator.clipboard.writeText("MULTA COMODATO").then(() => {});
 }
 
 function copiarAcordoNaoPago() {

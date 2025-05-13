@@ -64,7 +64,7 @@ function calcularDesativacao() {
     }
 
     // Mensagem de uso total
-    const usoTexto = `PARCELA ${(dataVencimento.getMonth()+1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()} - REF ${resultado.totalDias} DIAS DE USO`;
+    const usoTexto = `PARCELA - ${(dataVencimento.getDate().toString().padStart(2,'0'))}/${(dataVencimento.getMonth()+1).toString().padStart(2, '0')}/${dataVencimento.getFullYear()} - REF ${resultado.totalDias} DIAS DE USO`;
     document.getElementById('usoTotal').value = usoTexto;
 
     
