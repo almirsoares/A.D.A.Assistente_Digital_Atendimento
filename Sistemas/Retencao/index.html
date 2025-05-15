@@ -31,6 +31,20 @@
                         <!-- INFORMACOES -->
                         <fieldset class="fieldset info center">
                             <legend>Informações</legend>
+                            <div class="flex top">
+                                <div class="column">
+                                    <label for="solicitante">Solicitante:</label>
+                                    <input class = "inputDados" type="text" id="solicitante" name="solicitante" placeholder="Digite o nome">
+                                </div>
+                                <div class="column">
+                                    <label for="parentesco">Parentesco/Função:</label>
+                                    <input class = "inputDados"  id="parentesco" name="parentesco" placeholder="Parentesco ou Função">
+                                </div>
+                                <div class="column">
+                                    <label for="numProtocolo">Protocolo:</label>
+                                    <input class = "inputDados"  id="numProtocolo" name="numProtocolo" placeholder="Digite o protocolo">
+                                </div>
+                            </div>
                             <div class="flex left">
                                 <div class="column">
                                     <label for="motivo">Motivo:</label>
@@ -107,9 +121,18 @@
                         <!-- DESATIVACAO -->
                         <fieldset id="desativacao" class="fieldset" style="display: none;">
                             <legend>Desativação</legend>
-                            <div class="column">
-                                <label for="valorPlano">Valor do Plano</label>
-                                <input type="number" id="valorPlano" name="valorPlano" required>
+                            <div class="flex">
+                                <div class="column">
+                                    <label for="gerarProporcional">Gerar Proporcional?</label>
+                                    <select id="gerarProporcional" name="gerarProporcional" class="taxas" required>
+                                        <option value="sim">Sim</option>
+                                        <option value="nao">Não</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                                    <label for="valorPlano">Valor do Plano</label>
+                                    <input type="number" id="valorPlano" name="valorPlano" required>
+                                </div>
                             </div>
                             <div class="flex">
                                 <div class="column">
@@ -167,9 +190,10 @@
                 <!-- FOOTER -->
                 <div class="footer">
                     <button onclick="location.href='../../';" class="menu-item">Voltar</button>
+                    <button id="gtnAbrirRetirada" type="button" class="menu-item" onclick="abrirRetirada()">Abrir Retirada</button>
                     <button id="btnGerarProtocolo" type="button" class="menu-item" onclick="protocoloRetencao()">Gerar protocolo</button>
                     <button type="button" class="menu-item" onclick="tutorial()">Tutorial</button>
-                    <button type="reset" class="menu-item">Limpar</button>
+                    <button type="button" class="menu-item" onclick="limpar()">Limpar</button>
                 </div>
             </form>
         </div>

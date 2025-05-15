@@ -168,8 +168,9 @@ buscarCep.addEventListener("click", function () {
         })
         .then(data => {
             if (data.length > 0) {
-                cepInput.value = data[0].cep; // Preenche o campo com o primeiro resultado
-            } else {
+                const ceps = data.map(endereco => endereco.cep).join(", ");
+                cepInput.value = ceps; // Preenche com todos os CEPs encontrados
+            }else {
                 alert("Nenhum CEP encontrado para a rua e cidade informadas.");
                 cepInput.value = "";
             }
