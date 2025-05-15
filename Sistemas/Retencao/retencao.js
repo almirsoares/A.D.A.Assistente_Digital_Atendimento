@@ -128,7 +128,7 @@ TELEFONE:
             return;
         }
   
-        let protocoloTexto = cabacalhoProtocolo
+        let protocoloTexto = cabacalhoProtocolo;
         protocoloTexto += `MOTIVO: ${motivo}
 OFERTAS PASSADAS:   (Mínimo 2 ofertas)
 ${ofertas.join('\n')}
@@ -208,8 +208,8 @@ Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}`;
             .map((input, index) => `                ${index + 1} - ${input.value.trim()}`)
             .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
         
-        let protocoloTexto =
-`CANCELADO: (X )SIM
+        let protocoloTexto = cabacalhoProtocolo;
+        protocoloTexto += `CANCELADO: (X )SIM
 MOTIVO: ${motivo}
 OFERTAS PASSADAS:   (Mínimo 2 ofertas)
 ${ofertas.join('\n')}\n`;
