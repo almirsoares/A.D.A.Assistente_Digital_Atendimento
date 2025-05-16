@@ -84,6 +84,22 @@ function calcularDesativacao() {
     document.getElementById('protocolo').value = protocoloTexto;
 }
 
+
+// adiciona função para quando cliente presionar o botão retirada
+function abrirRetirada() {
+    let textoRetirada = `OS ABERTA PARA RETIRADA DE ONU E EQUIPAMENTOS
+CTO/PORTA:
+RETIRADO: (   ) ONU  /  (   ) EQUIPAMENTOS
+ONU EXTRAVIADO: (  ) SIM
+OBSERVAÇÕES:`;
+
+    navigator.clipboard.writeText(textoRetirada).then(() => {
+        alert('O.S. de retirada copiada para a área de transferência!');
+    }).catch(err => {
+        console.error('Erro ao copiar o texto: ', err);
+    });
+}
+
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
       event.preventDefault(); // 🔥 impede o comportamento padrão (submit)
@@ -92,17 +108,18 @@ document.addEventListener('keydown', function(event) {
   });
 
 
+
+
+
 // Adiciona o evento de clique dos resultados para copiar o texto do textarea para a área de transferência
 document.getElementById('protocolo').addEventListener('click', function() {
     this.select();  // Seleciona todo o conteúdo do textarea
     document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-    alert('Protocolo copiado!');  // Exibe um alerta (opcional)
   });
 
 document.getElementById('usoTotal').addEventListener('click', function() {
     this.select();  // Seleciona todo o conteúdo do textarea
     document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-    alert('Uso Total copiado!');  // Exibe um alerta (opcional)
   });
 
 function startTutorial() {
