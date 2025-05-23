@@ -25,6 +25,43 @@
       <div class="box">
         <h1 style="color: #fff">Calcular Contratos</h1>
         <form id="formContratos">
+          <fieldset class="fieldset">
+            <legend> Dados pré gerados </legend>
+            <div class="flex left">
+                <div class="column">
+                <label for="cidadeCliente">Cidade</label>
+                <select id="cidadeCliente" name="cidadeCliente" required>
+                  <option value="">Selecione a cidade</option>
+                </select>
+                </div>
+                <div class="column">
+                  <label for="modalidade">Modalidade</label>
+                  <select id="modalidade" name="modalidade" required>
+                    <option value="residencial">Residencial</option>
+                    <option value="comercial">Comercial</option>
+                  </select>
+                </div>
+                <div class="column">
+                  <label for="promocional">Promocional</label>
+                  <select id="promocional" name="promocional" required>
+                    <option value="nao">Não</option>
+                    <option value="sim">Sim</option>
+                  </select>
+                </div>
+                <button type="button" class="menu-item" onclick="buscarPlanos()">Buscar Planos</button>
+            </div>
+            <div class="flex left">
+                <div class="column">
+                  <label for="plano">Plano</label>
+                  <select id="plano" name="plano" required>
+                    <option value="">Selecione a cidade</option>
+                  </select>
+                </div>
+                <div>
+                  <button type="button" class="menu-item" onclick="buscarValores()">Buscar Valores</button>
+                </div>
+            </div>
+          </fieldset>
           <fieldset class="fieldset info center">
             <legend>Contrato de Adesão / Termo Combo Residencial</legend>
             <div class="flex left colunmResp">
