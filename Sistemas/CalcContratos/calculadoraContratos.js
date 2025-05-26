@@ -6,6 +6,11 @@ function calcularContrato() {
 
     if (!valorOriginal || !beneficio || !taxaInstalacao || !equipamento) {
         alert('Por favor, preencha todos os campos antes de calcular.');
+        document.getElementById('totalPagarSimples').value = 'PREENCHA OS CAMPOS DE VALORES MANUALMENTE';
+        document.getElementById('valorOriginal12').value = '0';
+        document.getElementById('beneficio12').value = '0';
+        document.getElementById('totalPagarComodato').value = '0';
+        document.getElementById('totalBeneficios').value = '0';
         return;
     }
 
