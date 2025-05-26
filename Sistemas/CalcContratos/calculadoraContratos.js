@@ -133,3 +133,27 @@ document.getElementById('totalBeneficios').addEventListener('click', function() 
   document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
   alert('Total de Benefícios copiado!');  // Exibe um alerta (opcional)
 });
+
+document.getElementById('valorOriginal').addEventListener('click', function() {
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Valor Original copiado!');  // Exibe um alerta (opcional)
+});
+
+document.getElementById('beneficio').addEventListener('click', function() {
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Benefício copiado!');  // Exibe um alerta (opcional)
+});
+
+document.getElementById('taxaInstalacao').addEventListener('click', function() {
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Taxa de Instalação copiada!');  // Exibe um alerta (opcional)
+});
+
+document.getElementById('equipamentoComodato').addEventListener('click', function() {
+  this.select();  // Seleciona todo o conteúdo do textarea
+  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+  alert('Equipamento Comodato copiado!');  // Exibe um alerta (opcional)
+});

@@ -144,12 +144,15 @@ document.getElementById("promocional").addEventListener("change", function () {
   if (promocional === "sim") {
     // campo divClub aparece e campo divModalidade desaparece
     document.getElementById("divModalidade").style.display = "none";
-    document.getElementById("divClub").style.display = "block";
+    document.getElementById("divClub").style.display = "flex";
+    document.getElementById("divClub").style.flexDirection = "column";
     
   } else {
     // campo divClub desaparece e campo divModalidade aparece
     document.getElementById("divClub").style.display = "none";
-    document.getElementById("divModalidade").style.display = "block";
+    document.getElementById("divModalidade").style.display = "flex";
+    document.getElementById("divModalidade").style.flexDirection = "column";
+
   }
   buscarPlanos();
 });

@@ -25,18 +25,20 @@
         <h1 style="color: #fff">Calcular Contratos</h1>
         <form id="formContratos">
           <fieldset class="fieldset">
-            <legend>Dados pré gerados</legend>
+            <legend>Combos pré gerados</legend>
             <div class="flex left">
+              <!-- ==== PROMOCIONAL -->
               <div class="column">
                 <label for="promocional">Promocional</label>
-                <select id="promocional" name="promocional" required>
+                <select id="promocional" name="promocional" class="status" required>
                   <option value="nao">Não</option>
                   <option value="sim">Sim</option>
                 </select>
               </div>
-              <div class="column" id ="divBase">
+              <!-- ==== BASE -->
+              <div class="column" id="divBase">
                 <label class="base" for="base">Base</label>
-                <select class="base" id="base" name="base" required>
+                <select id="base" name="base" class="status" required>
                   <option value="">Selecione a base</option>
                   <option value="dtel">DTEL</option>
                   <option value="han">H&A</option>
@@ -48,33 +50,35 @@
                   <option value="soaressilva">SOARES & SILVA</option>
                 </select>
               </div>
+              <!-- ==== MODALIDADE -->
               <div class="column" id="divModalidade">
                 <label class="modalidade" for="modalidade">Modalidade</label>
-                <select class="modalidade" id="modalidade" name="modalidade" required>
+                <select id="modalidade" class="status" name="modalidade" required>
                   <option value="residencial">Residencial</option>
                   <option value="comercial">Comercial</option>
                 </select>
               </div>
-              <div class="column" id="divClub" style="display: none;">
+              <!-- ==== TEM CLUB? -->
+              <div class="column" id="divClub" style="display: none">
                 <label class="club" for="club">Tem Clube?</label>
-                <select class="club" id="club" name="club" required>
+                <select id="club" name="club" class="status" required>
                   <option value="sim">Sim</option>
                   <option value="nao">Não</option>
                 </select>
               </div>
             </div>
+            <!-- ==== PLANO -->
             <div class="flex left">
               <div class="column">
                 <label for="plano">Plano</label>
-                <select id="plano" name="plano" required>
+                <select id="plano" name="plano" class="status" required>
                   <option value="">Selecione a base</option>
                 </select>
               </div>
-              <div>
-              </div>
+              <div></div>
             </div>
           </fieldset>
-          <fieldset class="fieldset info center">
+          <fieldset class="fieldset info left">
             <legend>Contrato de Adesão / Termo Combo Residencial</legend>
             <div class="flex left colunmResp">
               <div class="column">
