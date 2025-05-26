@@ -3,10 +3,24 @@ function buscarPlanos() {
   const modalidade = document.getElementById("modalidade").value;
   const promocional = document.getElementById("promocional").value;
   const select = document.getElementById("plano");
+  const club = document.getElementById("club").value;
   select.innerHTML = '<option value="">Selecione um plano</option>'; // Limpa as opções anteriores
 
+  if (base === "") {
+    alert("SELECIONE A BASE");
+    return;
+  } 
+
   if (promocional === "sim") {
-    alert("Ainda em desenvolvimento!, coloque os valores manualmente.");
+    if (club === "sim"){
+      if (base === "dtel") {
+        buscarPlanosEmArquivo("PLANOS DTEL - PROMOCIONAL CLUB DTEL.csv");
+      } else {
+        buscarPlanosEmArquivo("PLANOS DTEL - PROMOCIONAL CLUB OUTRAS BASES.csv");
+      }
+    } else {
+      buscarPlanosEmArquivo("PLANOS DTEL - PROMOCIONAL SEM CLUB.csv");
+    }
   } else {
     if (base === "dtel") {
       if (modalidade === "residencial") {
@@ -49,14 +63,23 @@ function buscarValores() {
   const plano = document.getElementById("plano").value;
   const modalidade = document.getElementById("modalidade").value;
   const promocional = document.getElementById("promocional").value;
+  const club = document.getElementById("club").value;
 
   if (base === "") {
-    alert("Base não encontrada para a cidade selecionada.");
+    alert("SELECIONE A BASE");
     return;
   } 
 
   if (promocional === "sim") {
-    alert("Ainda em desenvolvimento!, coloque os valores manualmente.");
+    if (club === "sim"){
+      if (base === "dtel") {
+        buscarValoresEmArquivos("PLANOS DTEL - PROMOCIONAL CLUB DTEL.csv", plano);
+      } else {
+        buscarValoresEmArquivos("PLANOS DTEL - PROMOCIONAL CLUB OUTRAS BASES.csv", plano);
+      }
+    } else {
+      buscarValoresEmArquivos("PLANOS DTEL - PROMOCIONAL SEM CLUB.csv", plano);
+    }
   } else { 
     if (base === "dtel") {
       if (modalidade === "residencial") {
