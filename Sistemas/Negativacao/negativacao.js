@@ -133,15 +133,17 @@ function copiarMultaONU() {
     const btnCopiarMultaONU = document.getElementById("btnMultaOnu");
 
     if (btnCopiarMultaONU.textContent === "Valor multa!") {
-        // Se o botão já estiver com o texto "Valor multa!", muda para "Multa ONU!" e copia o valor 500
+        // Se o botão já estiver com o texto "Valor multa!", muda para "Multa ONU!" e copia o valor 500 e volta a cor para o amarelo do css
 
         navigator.clipboard.writeText("500").then(() => {});
         btnCopiarMultaONU.textContent = "Multa ONU!";
+        btnCopiarMultaONU.style.backgroundColor = "#ffd712"; // Muda a cor de fundo para amarelo
     } else {
-        // Se o botão estiver com o texto "Multa ONU!", muda para "Valor multa!" e copia o texto da multa
+        // Se o botão estiver com o texto "Multa ONU!", muda para "Valor multa!" e copia o texto da multa e muda a cor para verde
 
         navigator.clipboard.writeText("MULTA COMODATO").then(() => {});
         btnCopiarMultaONU.textContent = "Valor multa!";
+        btnCopiarMultaONU.style.backgroundColor = "white"; // Muda a cor de fundo para verde
     }
 }
 
