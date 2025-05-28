@@ -129,7 +129,20 @@ function limparTextarea(){
 }
 
 function copiarMultaONU() {
-    navigator.clipboard.writeText("MULTA COMODATO").then(() => {});
+
+    const btnCopiarMultaONU = document.getElementById("btnMultaOnu");
+
+    if (btnCopiarMultaONU.textContent === "Valor multa!") {
+        // Se o botão já estiver com o texto "Valor multa!", muda para "Multa ONU!" e copia o valor 500
+
+        navigator.clipboard.writeText("500").then(() => {});
+        btnCopiarMultaONU.textContent = "Multa ONU!";
+    } else {
+        // Se o botão estiver com o texto "Multa ONU!", muda para "Valor multa!" e copia o texto da multa
+
+        navigator.clipboard.writeText("MULTA COMODATO").then(() => {});
+        btnCopiarMultaONU.textContent = "Valor multa!";
+    }
 }
 
 function copiarAcordoNaoPago() {
