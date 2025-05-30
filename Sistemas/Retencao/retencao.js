@@ -224,15 +224,17 @@ ${ofertas.join('\n')}\n`;
 
             protocoloTexto += `VALORES: R$ ${valores.toFixed(2)} (  ) NÃO\n`
             protocoloTexto += `${textoProporcional}\n`;
+            valoresTexto = `Seguindo com o cancelamento nesse momento é gerado `;
 
             if (valorProporcional > 0) {
-                valoresTexto = `Seguindo com o cancelamento nesse momento é gerado proporcional de uso no valor de R$ ${valorProporcional.toFixed(2)}
+                valoresTexto += `uma fatura referente ao proporcional de uso no valor de R$ ${valorProporcional.toFixed(2)}
 esse valor é referente a distribuição de conexão do dia ${dataVencimento.getDate().toString().padStart(2, '0')}/${(dataVencimento.getMonth()).toString().padStart(2, '0')}/${dataVencimento.getFullYear()} até o dia ${dataCancelamento.getDate().toString().padStart(2, '0')}/${(dataCancelamento.getMonth() + 1).toString().padStart(2, '0')}/${dataCancelamento.getFullYear()}`;
+                if (valorMulta > 0) {
+                    valoresTexto += `e uma outra fatura referente a multa pela quebra de contrato ativo no valor de R$ ${valorMulta.toFixed(2)} com vencimento no dia ${dataVencimento.getDate().toString().padStart(2,'0')}/${(dataVencimento.getMonth()+1).toString().padStart(2,'0')}/${dataVencimento.getFullYear()}.`;
+                }
+            } else if (valorMulta > 0) {
+                valoresTexto += `uma fatura referente a multa pela quebra de contrato ativo no valor de R$ ${valorMulta.toFixed(2)} com vencimento no dia ${dataVencimento.getDate().toString().padStart(2,'0')}/${(dataVencimento.getMonth()+1).toString().padStart(2,'0')}/${dataVencimento.getFullYear()}.`;
             }
-            if (valorMulta > 0) {
-                valoresTexto += `\nA multa de contrato é de R$ ${valorMulta.toFixed(2)} e será cobrada no dia ${dataVencimento.getDate().toString().padStart(2,'0')}/${(dataVencimento.getMonth()+1).toString().padStart(2,'0')}.`;
-            }
-
             
         } else{
             valoresTexto = `Seguindo com o cancelamento nesse momento não é gerado proporcional de uso, visto que o cliente já pagou todas as faturas.`;
