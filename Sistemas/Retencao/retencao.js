@@ -4,12 +4,16 @@
 document.getElementById('cliente-retido').addEventListener('change', function () {
     const fieldsetDesativação = document.getElementById('desativacao');
     const fieldsetObsRetencao = document.getElementById('obsRetencao');
+    const textoFatura = document.getElementById('textoFatura');
     if (this.value === 'sim') {
         fieldsetDesativação.style.display = 'none';
         fieldsetObsRetencao.style.display = 'block';
+        textoFatura.style.display = 'none'; // Esconde o campo de texto de fatura
+
     } else {
         fieldsetDesativação.style.display = 'block';
         fieldsetObsRetencao.style.display = 'none';
+        textoFatura.style.display = 'block'; // Exibe o campo de texto de fatura
     }
 });
 
@@ -208,6 +212,7 @@ Data de Vencimento passada ao cliente: ${dataProporcionalFormatada}`;
             .map((input, index) => `                ${index + 1} - ${input.value.trim()}`)
             .filter(texto => texto.length > 4); // evita linhas vazias como "1 - "
         
+        let valoresTexto = '';
         let protocoloTexto = cabacalhoProtocolo;
         protocoloTexto += `CANCELADO: (X )SIM
 MOTIVO: ${motivo}
@@ -220,10 +225,17 @@ ${ofertas.join('\n')}\n`;
             protocoloTexto += `VALORES: R$ ${valores.toFixed(2)} (  ) NÃO\n`
             protocoloTexto += `${textoProporcional}\n`;
 
+            if (valorProporcional > 0) {
+                valoresTexto = `Seguindo com o cancelamento nesse momento é gerado proporcional de uso no valor de R$ ${valorProporcional.toFixed(2)}
+esse valor é referente a distribuição de conexão do dia ${dataVencimento.getDate().toString().padStart(2, '0')}/${(dataVencimento.getMonth()).toString().padStart(2, '0')}/${dataVencimento.getFullYear()} até o dia ${dataCancelamento.getDate().toString().padStart(2, '0')}/${(dataCancelamento.getMonth() + 1).toString().padStart(2, '0')}/${dataCancelamento.getFullYear()}`;
+            }
+            if (valorMulta > 0) {
+                valoresTexto += `\nA multa de contrato é de R$ ${valorMulta.toFixed(2)} e será cobrada no dia ${dataVencimento.getDate().toString().padStart(2,'0')}/${(dataVencimento.getMonth()+1).toString().padStart(2,'0')}.`;
+            }
 
-                
             
         } else{
+            valoresTexto = `Seguindo com o cancelamento nesse momento não é gerado proporcional de uso, visto que o cliente já pagou todas as faturas.`;
             protocoloTexto += `VALORES (X ) NÃO
 Valor Proporcional: R$ 0,00 - 0 dias\n`;
         }
@@ -232,6 +244,7 @@ Valor Proporcional: R$ 0,00 - 0 dias\n`;
         protocoloTexto += `- CLIENTE CIENTE QUE É NECESSÁRIO TER ALGUÉM  MAIOR DE 18 ANOS NA RESIDÊNCIA, COM O DOCUMENTO RG EM MÃOS PARA ACOMPANHAR A VISITA DOS TÉCNICOS
 - CIENTE DA ABERTURA DE O.S. PARA RETIRADA DE EQUIPAMENTO. PRAZO INFORMADO DE: 3 DIAS ÚTEIS.`;
         document.getElementById('protocolo').value = protocoloTexto;
+        document.getElementById('textoFatura').value = valoresTexto;
     }
 }
 
@@ -405,12 +418,16 @@ function alterarClienteRetido(valor) {
     // Atualiza a exibição dos fieldsets com base no valor do select
     const fieldsetDesativacao = document.getElementById('desativacao');
     const fieldsetObsRetencao = document.getElementById('obsRetencao');
+    const textoFatura = document.getElementById('textoFatura');
+
     if (valor === 'sim') {
         fieldsetDesativacao.style.display = 'none';
         fieldsetObsRetencao.style.display = 'block';
+        textoFatura.style.display = 'none'; // Esconde o campo de texto de fatura
     } else {
         fieldsetDesativacao.style.display = 'block';
         fieldsetObsRetencao.style.display = 'none';
+        textoFatura.style.display = 'block'; // Exibe o campo de texto de fatura
     }
 }
 
