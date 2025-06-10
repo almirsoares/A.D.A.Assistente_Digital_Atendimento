@@ -109,17 +109,25 @@ document.addEventListener('keydown', function(event) {
 
 
 
-
+function copiarComFeedback(inputId, tituloId, tituloPadrao) {
+  document.getElementById(inputId).select();
+  document.execCommand('copy');
+  const h2 = document.getElementById(tituloId);
+  if (h2) {
+    h2.textContent = 'Copiado!';
+    setTimeout(() => {
+      h2.textContent = tituloPadrao;
+    }, 1000);
+  }
+}
 
 // Adiciona o evento de clique dos resultados para copiar o texto do textarea para a área de transferência
 document.getElementById('protocolo').addEventListener('click', function() {
-    this.select();  // Seleciona todo o conteúdo do textarea
-    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    copiarComFeedback('protocolo', 'protocoloTitulo', 'Protocolo');
   });
 
 document.getElementById('usoTotal').addEventListener('click', function() {
-    this.select();  // Seleciona todo o conteúdo do textarea
-    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
+    copiarComFeedback('usoTotal', 'usoTotalTitulo', 'Uso Total');
   });
 
 function startTutorial() {

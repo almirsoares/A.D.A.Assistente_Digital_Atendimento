@@ -86,22 +86,29 @@ document.addEventListener('keydown', function(event) {
   });
 
 
+function copiarComFeedback(inputId, labelId, textoPadrao) {
+  document.getElementById(inputId).select();
+  document.execCommand('copy');
+  const label = document.getElementById(labelId);
+  if (label) {
+    label.textContent = 'Copiado!';
+    setTimeout(() => {
+      label.textContent = textoPadrao;
+    }, 1000);
+  }
+}
+
 // Adiciona o evento de clique dos resultadis para copiar o texto do textarea para a área de transferência
 document.getElementById('valorDescontoTotal').addEventListener('click', function() {
-    this.select();  // Seleciona todo o conteúdo do textarea
-    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-    alert('Desconto copiado!');  // Exibe um alerta (opcional)
+    copiarComFeedback('valorDescontoTotal', 'labelValorDescontoTotal', 'Valor total de desconto');
   });
 
 
   document.getElementById('valorFaturaTotal').addEventListener('click', function() {
-    this.select();  // Seleciona todo o conteúdo do textarea
-    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-    alert('Valor total copiado!');  // Exibe um alerta (opcional)
+    copiarComFeedback('valorFaturaTotal', 'labelValorFaturaTotal', 'Valor da fatura total');
   });
 
 document.getElementById('valorFinalCobrado').addEventListener('click', function() {
-    this.select();  // Seleciona todo o conteúdo do textarea
-    document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-    alert('Valor final copiado!');  // Exibe um alerta (opcional)
+    copiarComFeedback('valorFinalCobrado', 'labelValorFinalCobrado', 'Valor final cobrado');
   } );
+
