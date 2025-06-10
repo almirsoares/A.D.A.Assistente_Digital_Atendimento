@@ -120,6 +120,13 @@ form {
     background-color: #e6b800;
 }
 
+.status {
+  padding: 4px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  border: 2px solid transparent;
+}
 
 /* ========= DESCRIÇÕES ========= */
 
@@ -157,7 +164,7 @@ legend {
 }
 
 .info {
-    width: auto;
+    width: 100%;
 }
 
 .resultado {

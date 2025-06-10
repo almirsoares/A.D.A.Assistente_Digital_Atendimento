@@ -31,7 +31,7 @@ function calcularProporcionalVencimento() {
     let valorProporcional;
     let proporcionalDias;
     let mensagemProporcional;
-    let protocoloDesconto;
+    let protocoloDesconto = "";
 
     if (resultado.totalDias > 30) {
         proporcionalDias = resultado.totalDias - 30;
@@ -46,7 +46,7 @@ function calcularProporcionalVencimento() {
     // Mensagem ao cliente
     let mensagemCliente = `Muito obrigado por aguardar! Verifico que sua *primeira fatura* após a mudança de data será no valor de R$ ${resultado.valorTotal.toFixed(2)} devido ao *total de ${resultado.totalDias} dias* de uso, ${mensagemProporcional} tudo bem?`;
     if (descontoPlano > 0) {
-        mensagemCliente += `\npagando até a data de vencimento, você terá um desconto de R$ ${desconto}. e pagará apenas R$ ${valorFinal.toFixed(2)}.`;
+        mensagemCliente += `\nPagando até a data de vencimento, você terá um desconto de R$ ${desconto}. e pagará apenas R$ ${valorFinal.toFixed(2)}.`;
         protocoloDesconto = ` (DESCONTO DE R$ ${desconto} E VALOR FINAL DE R$ ${valorFinal.toFixed(2)})`;
     }
     document.getElementById('mensagemCliente').value = mensagemCliente;
@@ -70,7 +70,7 @@ function calcularProporcionalVencimento() {
 Motivo: Cliente solicitou alteração
 Gerou Proporcional? ( X )SIM ( )NÃO
 Ciente de proporcional no valor de: R$ ${valorProporcional.toFixed(2)} ${protocoloDesconto}
-${mensagemConfirmacao} ${mensagemApp}
+${mensagemConfirmacao}${mensagemApp}
 Atendimento finalizado.`;
 
     // Exibir o protocolo

@@ -102,58 +102,56 @@ document.addEventListener('keydown', function(event) {
     }
   });
 
-// Adiciona o evento de clique dos resultados para copiar o texto do textarea para a área de transferência
+function copiarComFeedback(inputId, labelId, textoPadrao) {
+  document.getElementById(inputId).select();
+  document.execCommand('copy');
+  const label = document.getElementById(labelId);
+  if (label) {
+    label.textContent = 'Copiado!';
+    setTimeout(() => {
+      label.textContent = textoPadrao;
+    }, 1000);
+  }
+}
+
+// Total a Pagar
 document.getElementById('totalPagarSimples').addEventListener('click', function() {
-  this.select();  // Seleciona todo o conteúdo do textarea
-  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-  alert('Total a Pagar copiado!');  // Exibe um alerta (opcional)
+  copiarComFeedback('totalPagarSimples', 'labelTotalAPagar', 'Total a Pagar');
 });
 
-
+// Valor Original (12 meses)
 document.getElementById('valorOriginal12').addEventListener('click', function() {
-  this.select();  // Seleciona todo o conteúdo do textarea
-  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-  alert('Valor Original 12x copiado!');  // Exibe um alerta (opcional)
+  copiarComFeedback('valorOriginal12', 'labelValorOriginal12', 'Valor Original (12 meses)');
 });
 
+// Benefício (12 meses)
 document.getElementById('beneficio12').addEventListener('click', function() {
-  this.select();  // Seleciona todo o conteúdo do textarea
-  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-  alert('Benefício 12x copiado!');  // Exibe um alerta (opcional)
+  copiarComFeedback('beneficio12', 'labelBeneficio12', 'Benefício (12 meses)');
 });
 
+// Total a Pagar (12 meses)
 document.getElementById('totalPagarComodato').addEventListener('click', function() {
-  this.select();  // Seleciona todo o conteúdo do textarea
-  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-  alert('Total a Pagar 12x copiado!');  // Exibe um alerta (opcional)
+  copiarComFeedback('totalPagarComodato', 'labelTotalPagarComodato', 'Total a Pagar (12 meses)');
 });
 
-document.getElementById('totalBeneficios').addEventListener('click', function() { 
-  this.select();  // Seleciona todo o conteúdo do textarea
-  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-  alert('Total de Benefícios copiado!');  // Exibe um alerta (opcional)
+// Total de Benefícios
+document.getElementById('totalBeneficios').addEventListener('click', function() {
+  copiarComFeedback('totalBeneficios', 'labelTotalBeneficios', 'Total de Benefícios');
 });
 
+// Valor Original
 document.getElementById('valorOriginal').addEventListener('click', function() {
-  this.select();  // Seleciona todo o conteúdo do textarea
-  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-  alert('Valor Original copiado!');  // Exibe um alerta (opcional)
+  copiarComFeedback('valorOriginal', 'labelValorOriginal', 'Valor Original');
 });
 
 document.getElementById('beneficio').addEventListener('click', function() {
-  this.select();  // Seleciona todo o conteúdo do textarea
-  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-  alert('Benefício copiado!');  // Exibe um alerta (opcional)
+  copiarComFeedback('beneficio', 'labelBeneficio', 'Benefício');
 });
 
 document.getElementById('taxaInstalacao').addEventListener('click', function() {
-  this.select();  // Seleciona todo o conteúdo do textarea
-  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-  alert('Taxa de Instalação copiada!');  // Exibe um alerta (opcional)
+  copiarComFeedback('taxaInstalacao', 'labelTaxaInstalacao', 'Taxa de Instalação');
 });
 
 document.getElementById('equipamentoComodato').addEventListener('click', function() {
-  this.select();  // Seleciona todo o conteúdo do textarea
-  document.execCommand('copy');  // Copia o conteúdo selecionado para a área de transferência
-  alert('Equipamento Comodato copiado!');  // Exibe um alerta (opcional)
+  copiarComFeedback('equipamentoComodato', 'labelEquipamentoComodato', 'Equipamento em Comodato');
 });
